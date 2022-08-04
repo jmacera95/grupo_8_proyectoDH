@@ -1,4 +1,4 @@
-# grupo_8_proyectoDH
+# DRIVIT
 
 # ¿Qué productos o servicios brindará nuestro sitio?
 El presente proyecto tiene objetivo la creación de un ecommerce de automóviles usados
