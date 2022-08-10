@@ -21,6 +21,6 @@ Apuntaremos al mercado nacional (Argentina) sin distinción específica dentro d
 5. https://app.nuestrosautos.com.ar/ --> por tener un diseño de la web agradable y fácil de utilizar
 
 # Quiénes somos
-:point_right: Juan Butler --> Hincha de River, 27 años, Ingeniero (UBA), actualmente trabajando en Ford
-:point_right: Manuel Roman --> 18 años, jugador de básquet, recién egresado
+:point_right: Juan Butler --> Hincha de River, 27 años, Ingeniero (UBA), actualmente trabajando en Ford <br>
+:point_right: Manuel Roman --> 18 años, jugador de básquet, recién egresado <br>
 :point_right: Julián Macera -->  27 años, economista devenido a sistemas, actualmente trabajando en PedidosYa
