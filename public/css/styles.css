@@ -3,7 +3,7 @@
 }
 
 body {
-    font-family: 'Fredoka', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
 }
 
@@ -12,6 +12,10 @@ header {
     justify-content: space-between;
     background-color: #edf9fc;
     align-items: center;
+}
+
+header .logo {
+    display: flex;
 }
 
 .drivit-logo {
@@ -91,7 +95,7 @@ input[type="search"]:focus {
 }
 
 @media (min-width: 769px) {
-    header .a-logo {
+    header .logo {
         width: 30%;
     }
     
