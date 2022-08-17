@@ -24,3 +24,6 @@ Apuntaremos al mercado nacional (Argentina) sin distinción específica dentro d
 :point_right: Juan Butler --> Hincha de River, 27 años, Ingeniero (UBA), actualmente trabajando en Ford <br>
 :point_right: Manuel Roman --> 18 años, jugador de básquet, recién egresado <br>
 :point_right: Julián Macera -->  27 años, economista devenido a sistemas, actualmente trabajando en PedidosYa
+
+# Tablero del proyecto en Trello
+- https://trello.com/b/RhLyOEfM/proyecto-integrador-dh
