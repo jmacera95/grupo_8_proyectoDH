@@ -1,0 +1,24 @@
+{
+  "name": "grupo_8_proyectodh",
+  "version": "1.0.0",
+  "description": "# ¿Qué productos o servicios brindará nuestro sitio? El presente proyecto tiene objetivo la creación de un ecommerce de automóviles usados",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmacera95/grupo_8_proyectoDH.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmacera95/grupo_8_proyectoDH/issues"
+  },
+  "homepage": "https://github.com/jmacera95/grupo_8_proyectoDH#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19"
+  }
+}
