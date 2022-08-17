@@ -36,6 +36,7 @@ input[type="search"] {
     color: inherit;
     border: 1px solid transparent;
     border-radius: inherit;
+    width: 90%;
   }
   
 input[type="search"]::placeholder {
@@ -64,6 +65,7 @@ input[type="search"]:focus {
   box-shadow: 0 0 3px 0 #95dbec;
   border-color: #95dbec;
   outline: none;
+  color: #707079;
 }
   
 .header-navbar ul {
