@@ -1,3 +1,44 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Fredoka', sans-serif;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #edf9fc;
+}
+
+.drivit-logo {
+    width: 50px;
+}
+
+.header-navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.header-navbar li {
+    margin: 0 5px;
+}
+
+.header-navbar a {
+    text-decoration: none;
+    color: #11111f;
+}
+
+@media (min-width: 480px) {
+
+}
+
+@media (min-width: 769) {
+    
+}
+
+@media (min-width: 1280) {
+    
 }
