@@ -24,7 +24,7 @@ header .logo p {
     color: #4ec3e0;
 }
 
-.drivit-logo {
+header .drivit-logo {
     width: 50px;
 }
 
@@ -95,8 +95,36 @@ input[type="search"]:focus {
 .header-navbar i {
     padding: 0 5px;
 }
-
 /*END HEADER CSS SECTION*/
+
+/*START FOOTER CSS SECTION*/
+footer {
+    background-color: #caedf6;
+    text-align: center;
+}
+
+footer .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .logo p {
+    font-weight: 500;
+}
+
+footer .drivit-logo {
+    width: 60px;
+}
+
+footer .footer-info h4 {
+    margin-bottom: 5px;
+}
+
+footer p {
+    margin: 0;
+}
+/*END FOOTER CSS SECTION*/
 
 @media (min-width: 480px) {
 
