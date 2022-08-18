@@ -7,6 +7,7 @@ body {
     margin: 0;
 }
 
+/*START HEADER CSS SECTION*/
 header {
     display: flex;
     justify-content: space-between;
@@ -95,11 +96,14 @@ input[type="search"]:focus {
     padding: 0 5px;
 }
 
+/*END HEADER CSS SECTION*/
+
 @media (min-width: 480px) {
 
 }
 
 @media (min-width: 769px) {
+    /*START HEADER CSS SECTION*/
     header .logo {
         width: 30%;
     }
@@ -108,6 +112,7 @@ input[type="search"]:focus {
         display: flex;
         justify-content: space-between;
     }
+    /*END HEADER CSS SECTION*/
 }
 
 @media (min-width: 1280px) {
