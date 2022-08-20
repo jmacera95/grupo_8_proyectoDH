@@ -97,10 +97,21 @@ input[type="search"]:focus {
 }
 /*END HEADER CSS SECTION*/
 
+/*START MAIN CSS SECTION*/
+main .banner {
+    background-image: url('../images/home-banner.jpeg');
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 40%;
+}
+/*END MAIN CSS SECTION*/
+
 /*START FOOTER CSS SECTION*/
 footer {
     background-color: #caedf6;
     text-align: center;
+    box-sizing: normal;
 }
 
 footer .logo {
@@ -111,11 +122,13 @@ footer .logo {
 
 footer .logo p {
     font-weight: 500;
+    color: #4ec3e0;
 }
 
 footer .drivit-logo {
     width: 60px;
 }
+
 
 footer .footer-info h4 {
     margin-bottom: 5px;
@@ -124,9 +137,21 @@ footer .footer-info h4 {
 footer p {
     margin: 0;
 }
-/*END FOOTER CSS SECTION*/
 
-/*END HEADER CSS SECTION*/
+footer #social-media {
+    margin: 20px 0;
+}
+
+footer #social-media a {
+    margin: 30px;
+    text-decoration: none;
+    color: #11111f;
+}
+
+footer #social-media a i {
+    font-size: 20px;
+}
+/*END FOOTER CSS SECTION*/
 
 @media (min-width: 480px) {
 
@@ -143,6 +168,24 @@ footer p {
         justify-content: space-between;
     }
     /*END HEADER CSS SECTION*/
+
+    /*START FOOTER CSS SECTION*/
+    footer .footer-flex {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    footer .footer-flex .footer-info {
+        flex-grow: 0.7;
+        display: flex;
+        text-align: left;
+        justify-content: space-around;
+    }
+
+    footer .footer-flex .footer-info p {
+        margin: 10px 0;
+    }
+    /*END FOOTER CSS SECTION*/
 }
 
 @media (min-width: 1280px) {
