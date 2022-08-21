@@ -24,7 +24,7 @@ header .logo p {
     color: #4ec3e0;
 }
 
-.drivit-logo {
+header .drivit-logo {
     width: 50px;
 }
 
@@ -95,8 +95,109 @@ input[type="search"]:focus {
 .header-navbar i {
     padding: 0 5px;
 }
-
 /*END HEADER CSS SECTION*/
+
+/*START MAIN CSS SECTION*/
+main .banner {
+    background-image: url('../images/home-banner.jpeg');
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 65%;
+}
+
+main .banner p {
+    font-size: 2rem;
+    color: #ffff;
+    margin: auto;
+    padding: 10px 50px 10px 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #4ec3e0;
+}
+
+main .featured-cars {
+    margin: auto;
+}
+
+main .featured-cars a {
+    text-align: center;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: auto 15px;
+    border: solid 1px #caedf6;
+    width: 305px;
+    display: block;
+    text-decoration: none;
+    color:#11111f;
+    box-shadow: 0px 0px 10px #b8b8bc;
+}
+
+main .featured-cars a article img {
+    width: 300px;
+    height: 200px;
+}
+
+main .featured-cars a article h3 {
+    margin: 0px;
+    text-align: left;
+    border-top: solid 1px #caedf6;
+}
+
+main .featured-cars a article h4 {
+    margin: 0px;
+    text-align: left;
+}
+/*END MAIN CSS SECTION*/
+
+/*START FOOTER CSS SECTION*/
+footer {
+    background-color: #caedf6;
+    text-align: center;
+    box-sizing: normal;
+}
+
+footer .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .logo p {
+    font-weight: 500;
+    color: #4ec3e0;
+}
+
+footer .drivit-logo {
+    width: 60px;
+}
+
+
+footer .footer-info h4 {
+    margin-bottom: 5px;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer #social-media {
+    margin-top: 20px;
+}
+
+footer #social-media a {
+    margin: 30px;
+    text-decoration: none;
+    color: #11111f;
+}
+
+footer #social-media a i {
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+/*END FOOTER CSS SECTION*/
 
 @media (min-width: 480px) {
 
@@ -113,6 +214,38 @@ input[type="search"]:focus {
         justify-content: space-between;
     }
     /*END HEADER CSS SECTION*/
+
+    /*START MAIN CSS SECTION*/
+    main .banner p {
+        font-size: 3rem;
+        padding: 20px 100px 20px 40px;
+    }
+
+    main .featured-cars {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+    }
+    /*END MAIN CSS SECTION*/
+
+    /*START FOOTER CSS SECTION*/
+    footer .footer-flex {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    footer .footer-flex .footer-info {
+        flex-grow: 0.7;
+        display: flex;
+        text-align: left;
+        justify-content: space-around;
+    }
+
+    footer .footer-flex .footer-info p {
+        margin: 10px 0;
+    }
+    /*END FOOTER CSS SECTION*/
 }
 
 @media (min-width: 1280px) {
@@ -120,4 +253,11 @@ input[type="search"]:focus {
         max-width: 1200px;
         margin: auto;
     }
+
+    /*START MAIN CSS SECTION*/
+    main .featured-cars a article img {
+        width: 90%;
+        height: 140px;
+    }
+    /*END MAIN CSS SECTION*/
 }
