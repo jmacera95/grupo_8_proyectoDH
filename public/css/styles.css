@@ -180,6 +180,12 @@ main.product-detail .product-overview form input {
     border-radius: 0.5rem;
 }
 
+main.product-detail .product-overview form input:hover {
+    color: #4ec3e0;
+    background-color: #ffff;
+    border: solid 1px #707079;
+}
+
 main.product-detail .product-features h2 {
     color: #11111f;
     text-align: center;
