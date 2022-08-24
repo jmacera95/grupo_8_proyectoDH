@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500&display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="/views/index.html"><img src="images/logo.png" alt="drivit-logo" class="drivit-logo"></a>
+                <p>DRIVIT</p>
+            </div>
+            <form>
+                <input type="search" placeholder="Buscar">
+                <button type="submit">Search</button>
+              </form>
+            <nav class="header-navbar">
+                <ul>
+                    <li><a href="">Comprar</a></li>
+                    <li><a href=""><i class="fas fa-user-circle"></i>Perfil</a></li>
+                    <li><a href="">Favoritos</a></li>
+                    <li><a href=""><i class="fas fa-shopping-cart"></i></a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="general">
+            <h3>Registrate</h3>
+
+            <form action="/registro" method="POST" class="form">
+                <h3>Ingresá tus datos</h5>
+                <p>
+                    <label for="nombre-completo">Nombre completo *</label>
+                    <div><input type="text" name="nombre-completo" id="nombre-completo"></div>
+                </p>
+
+                <div>
+                    <p>
+                         <label for="email">Email *</label>
+                        <div><input type="email" name="email" id="email"></div>
+                    </p>
+                    <p>
+                        <label for="telefono">Telefono *</label>
+                        <div><input type="tel" name="telefono" id="telefono"></div>
+                    </p>
+                </div>
+
+                <div>
+                    <p>
+                    <label for="cuit">CUIT *</label>
+                    <div><input type="text" name="cuit" id="cuit"></div>
+                    </p>
+    
+                    <p>
+                    <label for="contraseña">Contraseña *</label>
+                    <div><input type="password" name="contraseña" id="contraseña"></div>
+                    </p> 
+                </div>
+
+                <p>   
+                    <input type="checkbox" name="terminos" id="terminos">
+                    <label for="terminos">Acepto terminos y condiciones</label>
+                </p>
+                
+                <p> 
+                <button type="reset">Registrate</button>
+                </p>
+            
+            </form>
+
+
+
+
+
+        </main>
+        <footer>
+            <div class="footer-flex">
+                <div class="logo">
+                    <a href="/views/index.html"><img src="images/logo.png" alt="drivit-logo" class="drivit-logo"></a>
+                    <p>DRIVIT</p>
+                </div>
+                <div class="footer-info">
+                    <div id="contact">
+                        <h4>Contacto <i class="fas fa-address-book"></i></h4>
+                        <p>contacto@drivit.com</p>
+                        <p>Calle Falsa 123, Buenos Aires, Argentina</p>
+                        <p>Whatsapp +54 9 11 4196 2275</p>
+                    </div>
+                    <div id="info">
+                        <h4>Información <i class="fas fa-info"></i></h4>
+                        <p>Cotizá tu auto</p>
+                        <p>Preguntas frecuentes</p>
+                        <p>Testimonios</p>
+                    </div>
+                </div>
+            </div>
+            <div id="social-media" >
+                <a href=""><i class="fab fa-facebook-f"></i></a><a href=""><i class="fab fa-twitter"></i></a><a href=""><i class="fab fa-instagram"></i></a>
+            </div>
+        </footer>
+        <script src="" async defer></script>
+    </body>

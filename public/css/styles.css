@@ -150,7 +150,39 @@ main .featured-cars a article h4 {
     margin: 0px;
     text-align: left;
 }
+
+/* */
+
+.general {
+    text-align: center;
+}
+
+.form {
+    border: 1px solid #ebebeb;
+    font-size: 10px;
+    margin: 5%;
+}
+
+
+/* para desktop
+.form-groups {
+    display: flex;
+    justify-content: center;
+    padding: ;
+} */
+
+
+
+
+
+
+
 /*END MAIN CSS SECTION*/
+
+
+
+
+
 
 /*START FOOTER CSS SECTION*/
 footer {
