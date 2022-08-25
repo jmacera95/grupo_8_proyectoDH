@@ -164,6 +164,28 @@ main.product-detail .product-overview h4 {
     margin: 0px 15px;
 }
 
+main.product-detail .product-overview form {
+    text-align: center;
+    padding: 15px 15px 0;
+}
+
+main.product-detail .product-overview form input {
+    width: 100%;
+    color: #ffff;
+    padding: 5px;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: #4ec3e0;
+    border: none 1px #4ec3e0;
+    border-radius: 0.5rem;
+}
+
+main.product-detail .product-overview form input:hover {
+    color: #4ec3e0;
+    background-color: #ffff;
+    border: solid 1px #707079;
+}
+
 main.product-detail .product-features h2 {
     color: #11111f;
     text-align: center;
@@ -264,6 +286,7 @@ footer #social-media a i {
         padding: 50px;
         margin: 25px;
         font-size: 1.3rem;
+        box-shadow: 0px 0px 10px rgb(100, 100, 100);
     }
 
     main.product-detail .product-overview h4 {
@@ -271,7 +294,7 @@ footer #social-media a i {
     }
 
     main.product-detail .product-overview img {
-        width: 60%
+        width: 60%;
     }
 
     main.product-detail .product-features {
