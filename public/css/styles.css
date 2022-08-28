@@ -13,6 +13,9 @@ header {
     justify-content: space-between;
     background-color: #edf9fc;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 header .logo {
