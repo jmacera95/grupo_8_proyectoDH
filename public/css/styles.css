@@ -152,6 +152,126 @@ main .featured-cars a article h4 {
 }
 /*END MAIN CSS SECTION*/
 
+/* START PRODUCT LIST CSS SECTION */
+
+.barra-vertical{
+    display: flex;
+    width: 30%;
+}
+.filtros li{
+    list-style: none;
+    border: 1px solid;
+    padding: 10px;
+    justify-content: space-between;
+}
+li.li-filtros{
+    display: flex;
+}
+button{
+    border: none;
+    background-color: #ffffff;
+}
+ul.filtros{
+    padding: 0;
+    margin: 10px;
+}
+
+div a article img{
+    width: 300px;
+}
+.contenedor{
+    display: flex;
+}
+
+.productos{
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+
+div.productos a{
+    text-align: center;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: auto 15px;
+    border: solid 1px #caedf6;
+    width: 305px;
+    display: block;
+    text-decoration: none;
+    color:#11111f;
+    box-shadow: 0px 0px 10px #b8b8bc;
+}
+div.productos a article img{
+    width: 300px;
+    height: 200px;
+}
+div.productos a article h3{
+    margin: 0px;
+    text-align: left;
+    border-top: solid 1px #caedf6;
+}
+div.productos a article h4{
+    margin: 0px;
+    text-align: left;
+}
+
+
+/* END PRODUCT LIST CSS SECTION */
+
+/* START PRODUCT CART CSS SECTION */
+
+h2.titulo-cart{
+    color: #11111f;
+}
+div.productos-cart{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+div.productos-cart a.a-cart{
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: solid 1px #caedf6;
+    width: 60%;
+    text-decoration: none;
+    color: #11111f;
+    box-shadow: 0px 0px 10px #b8b8bc;
+}
+a.a-cart img{
+    width: 100%;
+}
+a.a-cart h4{
+    margin: 0;
+}
+div.contenedor-article.boton{
+    text-align: center;
+}
+button.eliminar{
+    border: solid 1px #b8b8bc;
+    background-color: #11111f;
+    color: #ffffff;
+    width: 60%;
+    border-radius: 5px;
+}
+button.eliminar-desktop{
+    display: none;
+}
+button.reserva{
+    border: solid 1px #b8b8bc;
+    background-color: #4ec3e0;
+    color: #ffffff;
+    width: 60%;
+    border-radius: 5px;
+}
+button i{
+    font-size: 25px;
+}
+
+/* END PRODUCT CART CSS SECTION */
+
 /*START FOOTER CSS SECTION*/
 footer {
     background-color: #caedf6;
@@ -246,6 +366,44 @@ footer #social-media a i {
         margin: 10px 0;
     }
     /*END FOOTER CSS SECTION*/
+    /*START PRODUCT CART SECTION*/
+
+    .contenedor-article{
+        width: 50%;
+        margin: 3px;
+    }
+    .contenedor-article.boton {
+        width: 20%;
+    }
+    button.reserva {
+        width: 100%;
+    }
+    button.eliminar{
+        /* width: 100%; */
+        display: none;
+    }
+    button.eliminar-desktop{
+        display: block;
+        font-size: 15px;
+        color: #11111f;
+        margin: auto;
+    }
+    a.a-cart article{
+        display: flex;
+        align-items: center;
+    }
+    div.productos-cart a.a-cart{
+        margin: auto;
+        margin-bottom: 20px;
+        padding: 10px;
+        border: solid 1px #caedf6;
+        width: 80%;
+        text-decoration: none;
+        color: #11111f;
+        box-shadow: 0px 0px 10px #b8b8bc;
+    }
+
+    /*END PRODUCT CART SECTION*/
 }
 
 @media (min-width: 1280px) {
