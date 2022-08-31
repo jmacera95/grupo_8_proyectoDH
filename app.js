@@ -13,6 +13,14 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views/index.html'));
 });
 
+app.get('/products', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views/productList.html'));
+});
+
+app.get('/cart', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views/productCart.html'))
+});
+
 app.get('/product-detail', (req, res) => {
     res.sendFile(path.join(__dirname, 'views/productDetail.html'));
 });
