@@ -256,21 +256,24 @@ main.product-detail .product-overview form {
     padding: 15px 15px 0;
 }
 
-main.product-detail .product-overview form input {
-    width: 100%;
+input[type="submit"] {
     color: #ffff;
-    padding: 5px;
-    font-size: 18px;
-    font-weight: 500;
     background-color: #4ec3e0;
     border: none 1px #4ec3e0;
     border-radius: 0.5rem;
+    padding: 5px;
 }
 
-main.product-detail .product-overview form input:hover {
+input[type="submit"]:hover {
     color: #4ec3e0;
     background-color: #ffff;
     border: solid 1px #707079;
+}
+
+main.product-detail .product-overview form input {
+    width: 100%;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 main.product-detail .product-features h2 {
@@ -398,18 +401,6 @@ button.eliminar{
 }
 button.eliminar-desktop{
     display: none;
-}
-button.reserva{
-    color: #ffff;
-    background-color: #4ec3e0;
-    border: none 1px #4ec3e0;
-    border-radius: 0.5rem;
-}
-
-button.reserva:hover {
-    color: #4ec3e0;
-    background-color: #ffff;
-    border: solid 1px #707079;
 }
 
 button i{
