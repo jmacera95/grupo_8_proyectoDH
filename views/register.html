@@ -35,47 +35,86 @@
         </header>
         <main class="register">
             <h4>Registrate</h4>
-
-            <form action="/registro" method="POST" class="form">
+            
+            <form action="/registro" method="POST" class="form1">
                 <h3>Ingresá tus datos</h5>
-                <p class="nombre">
-                    <label for="nombre-completo">Nombre completo *</label>
-                    <input type="text" name="nombre-completo" id="nombre-completo">
-                </p>
 
-                <div class="en-serie">
-                    <p class="paralelo">
-                         <label for="email">Email *</label>
-                        <div><input type="email" name="email" id="email"></div>
-                    </p>
-                    <p>
-                        <label for="telefono">Telefono *</label>
-                        <div><input type="tel" name="telefono" id="telefono"></div>
-                    </p>
-                </div>
+                <label for="nombre-completo">Nombre completo *</label>
+                <input type="text" name="nombre-completo" id="nombre-completo">
+                <label for="email">Email *</label>
+                <input type="email" name="email" id="email">
+                <label for="telefono">Telefono *</label>
+                <input type="tel" name="telefono" id="telefono">
+                <label for="cuit">CUIT *</label>
+                <input type="text" name="cuit" id="cuit">
+                <label for="contraseña">Contraseña *</label>
+                <input type="password" name="contraseña" id="contraseña">
 
-                <div class="en-serie">
-                    <p>
-                    <label for="cuit">CUIT *</label>
-                    <div><input type="text" name="cuit" id="cuit"></div>
-                    </p>
-    
-                    <p>
-                    <label for="contraseña">Contraseña *</label>
-                    <div><input type="password" name="contraseña" id="contraseña"></div>
-                    </p> 
-                </div>
-
-                <p class="check-label">   
+                <div id="terminos-condiciones">
                     <input type="checkbox" name="terminos" id="terminos">
                     <label for="terminos">Acepto terminos y condiciones</label>
-                </p>
-                
-                <p> 
-                <button type="submit">Registrate</button>
-                </p>
-            
+                </div>
+                <div id="boton-registro">
+                    <input type="submit" class="registro" name="registro" value="Registrate"> 
+                </div>    
             </form>
+
+
+
+
+
+            <form action="/registro" method="POST" class="form2">
+                <h3>Ingresá tus datos</h5>
+                <div id="nombre-completo">    
+                <label for="nombre-completo">Nombre completo *</label>
+                <input type="text" name="nombre-completo" id="nombre-completo">
+                </div>
+                <span class="en-serie">
+                    <p class="caja-1">   
+                        <label for="email">Email *</label>
+                        <input type="email" name="email" id="email">
+                    </p>
+                    <p class="caja-2">
+                        <label for="telefono">Telefono *</label>
+                        <input type="tel" name="telefono" id="telefono">
+                    </p>
+                </span>
+                
+                <span class="en-serie">
+                    <p class="caja-1">   
+                        <label for="cuit">CUIT *</label>
+                        <input type="text" name="cuit" id="cuit"> 
+                    </p>
+                    <p class="caja-2">    
+                        <label for="contraseña">Contraseña *</label>
+                        <input type="password" name="contraseña" id="contraseña">
+                    </p>    
+                </span>
+
+                <div id="terminos-condiciones">
+                    <input type="checkbox" name="terminos" id="terminos">
+                    <label for="terminos">Acepto terminos y condiciones</label>
+                </div>
+                
+                <div id="boton-registro">
+                    <input type="submit" class="registro" name="registro" value="Registrate"> 
+                </div>    
+            </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             <div class="inicia-sesion">
                 <div>¿Ya tenés cuenta? </div>
@@ -113,4 +152,4 @@
             </div>
         </footer>
         <script src="" async defer></script>
-    </body>
+    </b
