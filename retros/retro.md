@@ -17,3 +17,18 @@
 - Hacer uso de las dailies para facilitar el trabajo de cada integrante del grupo
 - Crear grupo de Whatsapp para agilizar la comunicación
 
+# Retro Sprint 2
+1. Comenzar a hacer
+    - Emprolijar el css y coordinarnos mejor con lo que respecta a la utilización de estilos que se pueden aplicar de forma cross a diferentes elementos de la web
+    - Comenzar a hacer revisión cruzada del código 
+    - Alguna juntada presencial
+2. Hacer más
+    - Hacer más juntadas de live coding dónde cada uno esté en la suya pero codeando al mismo tiempo sobre la aplicación
+    - Ser estrictos con las fechas de entrega
+3. Continuar haciendo
+    - Las juntada semanal de revisión
+    - La comunicación fluida a través de whatsapp
+4. Hacer menos
+    - Dependencia de un integrante para los pasajes a producción
+5. Dejar de hacer
+    - Descoordinación en la generación de estilos
