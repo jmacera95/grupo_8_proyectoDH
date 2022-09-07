@@ -1,9 +1,7 @@
-const path = require('path');
 const express = require('express');
 const router = express.Router();
+const cartController = require('../controllers/cartController');
 
-router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../views/productCart.html'))
-});
+router.get('/', cartController.cart);
 
 module.exports = router;
