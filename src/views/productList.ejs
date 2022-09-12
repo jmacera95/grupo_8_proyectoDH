@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head') %>
+    <body>
+        <%- include('./partials/header') %>  
+    <main>
+        <div class="contenedor">
+            <div class="barra-vertical">
+                <ul class="filtros">
+                    <li class="li-filtros"><button><i class="fa-solid fa-filter"></i>Ocultar filtros</button> <button>Borrar productos</button></li>
+                    <li class="li-filtros">Precio <i class="fa-solid fa-angle-down"></i></li>
+                    <li class="li-filtros">Año <i class="fa-solid fa-angle-down"></i></li>
+                    <li class="li-filtros">Kilometraje <i class="fa-solid fa-angle-down"></i></li>
+                    <li class="li-filtros">Marca y Modelo <i class="fa-solid fa-angle-down"></i></li>
+                    <li class="li-filtros">Combustible <i class="fa-solid fa-angle-down"></i></li>
+                    <li class="li-filtros">Transmision <i class="fa-solid fa-angle-down"></i></li>
+                    <li class="li-filtros">Tipo <i class="fa-solid fa-angle-down"></i></li>
+                    <li class="li-filtros">Ubicacion <i class="fa-solid fa-angle-down"></i></li>
+                    <li class="li-filtros">Cantidad de dueños <i class="fa-solid fa-angle-down"></i></li>
+                    <li class="li-filtros">Color <i class="fa-solid fa-angle-down"></i></li>
+                </ul>
+            </div>
+            <div class="productos">
+                <% for(let producto of productos) { %>
+                    <a href="/products/product-detail/<%=producto.id%>">
+                        <article>
+                            <img src="<%=producto.img%>" alt="<%=producto.modelo%>">
+                            <h3><%=producto.modelo%></h3>
+                            <h4><%=producto.breveDescripcion%></h4>
+                            <h4><%=producto.precio%></h4>
+                        </article>
+                    </a>
+                <% } %>          
+            </div>
+        </div>
+    </main>
+    <%- include('./partials/footer') %>
+    <script src="https://kit.fontawesome.com/bdc71fe14e.js" crossorigin="anonymous"></script>
+</body>
+</html>
