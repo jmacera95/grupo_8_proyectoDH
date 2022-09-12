@@ -52,6 +52,9 @@ const productController = {
     productDetail : (req, res) => {
         const producto = productos.filter(producto => producto.id == req.params.id)[0];
         res.render('productDetail', {producto: producto});
+    },
+    create : (req,res) => {
+       res.render('productCreate'); 
     }
 }
 
