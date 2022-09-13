@@ -437,6 +437,46 @@ button i{
 
 /* END PRODUCT CART CSS SECTION */
 
+/* START CREATE FORM CSS SECTION*/
+.create-product-form {
+    padding: 20px 5px;
+    background-color: #edf9fc;
+    opacity: 70%;
+    margin: 10px 10px;
+}
+
+.create-product-form h3 {
+    margin-top: 0;
+}
+
+.create-product-form div {
+    margin-bottom: 30px;
+}
+
+.create-product-form div label {
+    display: block;
+    margin-top: -15px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.create-product-form input {
+    width: 100%;
+    margin: auto;
+    padding: 7px 5px;
+    border: solid 0px;
+    border-radius: 4px;
+}
+
+.create-product-form input::placeholder {
+    font-size: 11px;
+    color:#666;
+    opacity: 80%;
+}
+/* END CREATE FORM CSS SECTION */
+
+
 /*START FOOTER CSS SECTION*/
 footer {
     background-color: #caedf6;
@@ -587,6 +627,12 @@ footer #social-media a i {
 
     /*END MAIN CSS SECTION*/
 
+    /* START CREATE FORM CSS SECTION */
+    .create-product-form {
+        width: 50%;
+    }
+    /* END CREATE FORM CSS SECTION */
+
     /*START FOOTER CSS SECTION*/
     footer .footer-flex {
         display: flex;
@@ -659,7 +705,7 @@ footer #social-media a i {
         flex-direction: column;
         align-items: center;
         border: 0.5px solid rgba(187, 178, 178, 0.705);
-        xmargin: 3% 10% 0% 10%;
+        margin: 3% 10% 0% 10%;
         justify-content: center;
         width: 80%;
         max-width: 800px;
