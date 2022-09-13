@@ -5,7 +5,7 @@
             <%- include('./partials/header') %>
             <main class="register">
                 <form action="/registro" method="POST" class="form2">
-                    <h3>Ingresá tus datos</h5>
+                    <h3>Crea un Nuevo Producto</h5>
     
                     <label for="marca">Marca *</label>
                     <input type="text" name="marca" id="marca">
@@ -14,25 +14,77 @@
                     <input type="text" name="modelo" id="modelo">
 
                     <label for="anio">Año *</label>
-                    <input type="text" name="anio" id="anio">
+                    <input type="number" min="2012" max="2017" step="1" value="2016" id="anio" name="anio"/>
 
                     <label for="kilometraje">kilometraje *</label>
-                    <input type="text" name="kilometraje" id="kilometraje">
+                    <input type="number" min="85000" max="200000" name="kilometraje" id="kilometraje">
 
-                    <label for="ubicacion">Ubicación *</label>
-                    <input type="text" name="ubicacion" id="ubicacion">
+                    <label for="provincia">Provincia *</label>
+                    <input type="text" name="provincia" id="provincia">
 
-                    <label for="precio">Precio *</label>
-                    <input type="text" name="precio" id="precio">
+                    <label for="localidad">Localidad*</label>
+                    <input type="text" name="localidad" id="localidad">
+
+                    <label for="precio">Precio (AR$) *</label>
+                    <input type="number" name="precio" id="precio" step="1000">
                     
-                    <label for="precio">Precio *</label>
-                    <input type="text" name="precio" id="precio">
-                    
+                    <label for="combustible">Tipo de Combustible *</label>
+                    <select name="combustible" id="combustible">
+                        <option value="nafta">Nafta</option>
+                        <option value="gasoil">Gasoil</option>
+                        <option value="gnc">GNC</option>
+                        <option value="hibrido">Hibrido</option>
+                    </select>
 
+                    <label for="transmision">Transmisión *</label>
+                    <select name="transmision" id="transmision">
+                        <option value="manual">Manual</option>
+                        <option value="automatico">Automático</option>
+                    </select>
 
+                    <label for="cantidad-duenios">Cantidad de Dueños *</label>
+                    <select name="cantidad-duenios" id="cantidad-duenios">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+
+                    <label for="fecha-service">Fecha Último Service *</label>
+                    <input type="date" name="fecha-service" id="fecha-service">
+
+                    <label for="embrague">Embrague *</label>
+                    <select name="embrague" id="embrague">
+                        <option value="fabrica">De Fábrica</option>
+                        <option value="repuesto">Repuesto</option>
+                    </select>
                     
-                    <div id="boton-registro">
-                        <input type="submit" class="registro" name="registro" value="Registrate"> 
+                    <label for="antiguedad-correa">Antiguedad Correa de Distribución *</label>
+                    <input type="number" name="antiguedad-correa" id="antiguedad-correa" step="500">
+
+                    <label for="alineacion-balanceo">Alineación y Balanceo *</label>
+                    <input type="date" name="alineacion-balanceo" id="alineacion-balanceo">
+
+                    <label for="cantidad-puertas">Cantidad de Puertas *</label>
+                    <select name="cantidad-puertas" id="cantidad-puertas">
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+
+                    <label for="abs">ABS *</label>
+                    <select name="abs" id="abs">
+                        <option value="si">Si</option>
+                        <option value="no">No</option>
+                    </select>
+                    
+                    <label for="airbag">Airbag *</label>
+                    <select name="airbag" id="airbag">
+                        <option value="tiene-adelante">Tiene - Solo Adelante</option>
+                        <option value="tiene-ambos">Tiene - Adelante y Atrás</option>
+                        <option value="no">No tiene</option>
+                    </select>
+                    
+                    <div id="boton-crear">
+                        <input type="submit" class="crear" name="crear" value="Crear Producto"> 
                     </div>    
                 </form>
 
