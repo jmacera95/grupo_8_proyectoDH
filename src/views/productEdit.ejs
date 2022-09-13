@@ -4,8 +4,8 @@
         <body>
             <%- include('./partials/header') %>
             <main class="register">
-                <form action="/products/create" method="POST" class="create-product-form">
-                    <h3>Crea un Nuevo Producto</h3>
+                <form action="/registro" method="POST" class="create-product-form">
+                    <h3>Editar Producto</h3>
                     
                     <div>
                         <input type="text" name="marca" id="marca" placeholder="Marca *" required>
@@ -115,8 +115,8 @@
                         <input type="file" name="imagen" id="imagen" accept=".jpg,.png">
                     </div>
                     
-                    <div id="boton-crear">
-                        <input type="submit" class="crear" name="crear" value="Crear Producto"> 
+                    <div id="boton-editar">
+                        <input type="submit" class="editar" name="editar" value="Editar Producto"> 
                     </div>    
                 </form>
 

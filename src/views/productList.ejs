@@ -24,10 +24,10 @@
                 <% for(let producto of productos) { %>
                     <a href="/products/product-detail/<%=producto.id%>">
                         <article>
-                            <img src="<%=producto.img%>" alt="<%=producto.modelo%>">
-                            <h3><%=producto.modelo%></h3>
-                            <h4><%=producto.breveDescripcion%></h4>
-                            <h4><%=producto.precio%></h4>
+                            <img src="<%=producto.img%>" alt="<%=producto.marca%> <%=producto.modelo%>">
+                            <h3><%=producto.marca%> <%=producto.modelo%></h3>
+                            <h4><%=producto.anio%> - <%=producto.kilometraje%>km - <%=producto.provincia%></h4>
+                            <h4>$<%=producto.precio%></h4>
                         </article>
                     </a>
                 <% } %>          

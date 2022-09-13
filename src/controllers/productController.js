@@ -12,8 +12,15 @@ const productController = {
         const producto = productos.filter(producto => producto.id == req.params.id)[0];
         res.render('productDetail', {producto: producto});
     },
-    create : (req,res) => {
-       res.render('productCreate'); 
+    create : (req, res) => {
+        res.render('productCreate'); 
+    },
+    saveNewProduct: (req, res) => {
+        console.log(1);
+    },
+    edit : (req, res) => {
+        const productoAEditar = productos.filter(producto => producto.id == req.params.id)[0];
+        res.render('productEdit', {producto: productoAEditar});
     }
 }
 
