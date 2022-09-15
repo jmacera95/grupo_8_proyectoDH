@@ -4,40 +4,48 @@
         <body>
             <%- include('./partials/header') %>
             <main class="register">
-                <form action="/registro" method="POST" class="create-product-form">
+                <form action="/products/edit/<%= producto.id %>?_method=PUT" method="POST" class="create-product-form">
                     <h3>Editar Producto</h3>
                     
                     <div>
-                        <input type="text" name="marca" id="marca" placeholder="Marca *" required>
+                        <label for="marca">Marca *</label> 
+                        <input type="text" name="marca" id="marca"  value="<%= producto.marca %>">
                     </div>  
 
                     <div>
-                        <input type="text" name="modelo" id="modelo" placeholder="Modelo *" required>
+                        <label for="modelo">Modelo *</label> 
+                        <input type="text" name="modelo" id="modelo" value="<%= producto.modelo %>">
                     </div>
                     
                     <div>
-                        <input type="number" min="2012" max="2017" step="1" id="anio" name="anio" placeholder="Año *" required>
+                        <label for="anio">Año *</label> 
+                        <input type="number" min="2012" max="2017" step="1" id="anio" name="anio" value="<%= producto.anio %>">
                     </div>
 
                     <div>
-                        <input type="number" min="85000" max="200000" name="kilometraje" id="kilometraje" placeholder="Kilometraje *" required>
+                        <label for="kilometraje">Kilometraje *</label> 
+                        <input type="number" min="85000" max="200000" name="kilometraje" id="kilometraje" value="<%= producto.kilometraje %>">
                     </div>
 
                     <div>
-                        <input type="text" name="provincia" id="provincia" placeholder="Provincia *" required>
+                        <label for="provincia">Provincia *</label> 
+                        <input type="text" name="provincia" id="provincia" value="<%= producto.provincia %>">
                     </div>                    
                     
                     <div>
-                        <input type="text" name="localidad" id="localidad" placeholder="Localidad *" required>
+                        <label for="localidad">Localidad *</label> 
+                        <input type="text" name="localidad" id="localidad" value="<%= producto.localidad %>">
                     </div>
 
                     <div>
-                        <input type="number" name="precio" id="precio" step="1000" placeholder="Precio (AR$) *" required> 
+                        <label for="precio">Precio *</label> 
+                        <input type="number" name="precio" id="precio" step="1000" value="<%= producto.precio %>"> 
                     </div>
 
                     <div>
-                        <label for="combustible">Tipo de Combustible *</label>
+                        <label for="combustible">Tipo de Combustible *</label> 
                         <select name="combustible" id="combustible">
+                            <option value="<%= producto.combustible %>"><%= producto.combustible %></option>
                             <option value="nafta">Nafta</option>
                             <option value="gasoil">Gasoil</option>
                             <option value="gnc">GNC</option>
@@ -48,45 +56,49 @@
                     <div>
                         <label for="transmision">Transmisión *</label>
                         <select name="transmision" id="transmision">
+                            <option value="<%= producto.transmision %>"><%= producto.transmision %></option>
                             <option value="manual">Manual</option>
                             <option value="automatico">Automático</option>
                         </select>
                     </div>
                     
                     <div>
-                        <label for="cantidad-duenios">Cantidad de Dueños *</label>
-                        <select name="cantidad-duenios" id="cantidad-duenios">
+                        <label for="cantidadDuenios">Cantidad de Dueños *</label>
+                        <select name="cantidadDuenios" id="cantidadDuenios">
+                            <option value="<%= producto.cantidadDuenios %>"><%= producto.cantidadDuenios %></option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                         </select>
                     </div>
                     
                     <div>
-                        <label for="fecha-service">Fecha Último Service *</label>
-                        <input type="date" name="fecha-service" id="fecha-service">
+                        <label for="fechaService">Fecha Último Service *</label>
+                        <input type="date" name="fechaService" id="fechaService" value="<%= producto.fechaService %>">
                     </div>
                     
                     <div>
                         <label for="embrague">Embrague *</label>
                         <select name="embrague" id="embrague">
+                            <option value="<%= producto.embrague %>"><%= producto.embrague %></option>
                             <option value="fabrica">De Fábrica</option>
                             <option value="repuesto">Repuesto</option>
                         </select>
                     </div>
                     
                     <div>
-                        <label for="antiguedad-correa">Antiguedad Correa de Distribución *</label>
-                        <input type="number" name="antiguedad-correa" id="antiguedad-correa" step="500">
+                        <label for="antiguedadCorrea">Antiguedad Correa de Distribución *</label>
+                        <input type="number" name="antiguedadCorrea" id="antiguedadCorrea" step="500" value="<%= producto.antiguedadCorrea %>">
                     </div>
                     
                     <div>
-                        <label for="alineacion-balanceo">Alineación y Balanceo *</label>
-                        <input type="date" name="alineacion-balanceo" id="alineacion-balanceo">
+                        <label for="alineacionBalanceo">Alineación y Balanceo *</label>
+                        <input type="date" name="alineacionBalanceo" id="alineacionBalanceo" value="<%= producto.alineacionBalanceo %>">
                     </div>
                     
                     <div>
-                        <label for="cantidad-puertas">Cantidad de Puertas *</label>
-                        <select name="cantidad-puertas" id="cantidad-puertas">
+                        <label for="cantidadPuertas">Cantidad de Puertas *</label>
+                        <select name="cantidadPuertas" id="cantidadPuertas">
+                            <option value="<%= producto.cantidadPuertas %>"><%= producto.cantidadPuertas %></option>
                             <option value="3">3</option>
                             <option value="4">4</option>
                             <option value="5">5</option>
@@ -96,6 +108,7 @@
                     <div>
                         <label for="abs">ABS *</label>
                         <select name="abs" id="abs">
+                            <option value="<%= producto.abs %>"><%= producto.abs %></option>
                             <option value="si">Si</option>
                             <option value="no">No</option>
                         </select>
@@ -104,6 +117,7 @@
                     <div>
                         <label for="airbag">Airbag *</label>
                         <select name="airbag" id="airbag">
+                            <option value="<%= producto.airbag %>"><%= producto.airbag %></option>
                             <option value="tiene-adelante">Tiene - Solo Adelante</option>
                             <option value="tiene-ambos">Tiene - Adelante y Atrás</option>
                             <option value="no">No tiene</option>
