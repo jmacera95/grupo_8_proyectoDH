@@ -9,11 +9,11 @@
         <%- include('./partials/header') %>
         <main class="product-detail">
             <div class="product-overview">
-                <img src="<%=producto.img%>" alt="<%=producto.modelo%>">
+                <img src="<%=producto.img%>" alt="<%=producto.marca%> <%=producto.modelo%>">
                 <div>
-                    <h3><%=producto.modelo%></h3>
-                    <h4><%=producto.breveDescripcion%></h4>
-                    <h4><%=producto.precio%></h4>
+                    <h3><%=producto.marca%> <%=producto.modelo%></h3>
+                    <h4><%=producto.anio%> - <%=producto.kilometraje%>km - <%=producto.provincia%></h4>
+                    <h4>$<%=producto.precio%></h4>
                     <form action="" method="POST">
                         <input type="submit" name="add-to-cart" value="Agregar al carrito" title="Podes agregarlo y decidir si reservarlo o no luego!">
                     </form> 
@@ -51,7 +51,7 @@
                         <span>Mayo 2022</span>
                     </div>
                     <div class="product-feature">
-                        <strong>Embriague</strong>
+                        <strong>Embrague</strong>
                         <span>De fábrica</span>
                     </div>
                 </div>
