@@ -659,7 +659,7 @@ footer #social-media a i {
         flex-direction: column;
         align-items: center;
         border: 0.5px solid rgba(187, 178, 178, 0.705);
-        xmargin: 3% 10% 0% 10%;
+        margin: 3% 10% 0% 10%;
         justify-content: center;
         width: 80%;
         max-width: 800px;
