@@ -28,7 +28,29 @@ const productController = {
         res.render('productCreate'); 
     },
     saveNewProduct: (req, res) => {
-        console.log(1);
+        const productos = TraerProductos();
+        productos.push({
+        marca: req.body.marca,
+        modelo: req.body.modelo,
+        anio: req.body.anio,
+        kilometraje: req.body.kilometraje,
+        provincia: req.body.provincia,
+        localidad: req.body.localidad,
+        precio: req.body.precio,
+        combustible: req.body.combustible,
+        transmision: req.body.transmision,
+        cantidadDueños: req.body.camtidadDueños,
+        fechaService: req.body.fechaService,
+        embrague: req.body.embrague,
+        antiguedadCorrea: req.body.antiguedadCorrea,
+        alineacionBalanceo: req.body.alineacionBalanceo,
+        cantidadPuertas: req.body.cantidadPuertas,
+        abs: req.body.abs,
+        airbag: req.body.airbag,
+        })
+        writeFile(productos)
+        res.redirect('/products/')
+
     },
     editar : (req, res) => {
         const productos = TraerProductos();
