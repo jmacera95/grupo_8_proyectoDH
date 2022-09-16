@@ -30,24 +30,27 @@ const productController = {
     saveNewProduct: (req, res) => {
         const productos = TraerProductos();
         productos.push({
+        id: productos.length + 1,
+        img: "/images/" + req.body.img,
         marca: req.body.marca,
         modelo: req.body.modelo,
-        anio: req.body.anio,
-        kilometraje: req.body.kilometraje,
+        anio: Number(req.body.anio),
+        kilometraje: Number(req.body.kilometraje),
         provincia: req.body.provincia,
         localidad: req.body.localidad,
-        precio: req.body.precio,
+        precio: Number(req.body.precio),
         combustible: req.body.combustible,
         transmision: req.body.transmision,
         cantidadDueños: req.body.camtidadDueños,
         fechaService: req.body.fechaService,
         embrague: req.body.embrague,
-        antiguedadCorrea: req.body.antiguedadCorrea,
+        antiguedadCorrea: Number(req.body.antiguedadCorrea),
         alineacionBalanceo: req.body.alineacionBalanceo,
-        cantidadPuertas: req.body.cantidadPuertas,
+        cantidadPuertas: Number(req.body.cantidadPuertas),
         abs: req.body.abs,
         airbag: req.body.airbag,
         })
+
         writeFile(productos)
         res.redirect('/products/')
 
