@@ -124,5 +124,25 @@
                     "cantidadPuertas": 4,
                     "abs": "Si",
                     "airbag": "Tiene - Adelante y Atrás"
+          },
+          {
+                    "id": 7,
+                    "img": "/images/products/1663418915604_etios.jpeg",
+                    "marca": "Toyota",
+                    "modelo": "Etios",
+                    "anio": 2015,
+                    "kilometraje": 153000,
+                    "provincia": "Bs As",
+                    "localidad": "San Fernando",
+                    "precio": 6000000,
+                    "combustible": "nafta",
+                    "transmision": "manual",
+                    "fechaService": "2022-09-01",
+                    "embrague": "fabrica",
+                    "antiguedadCorrea": 1000,
+                    "alineacionBalanceo": "2022-09-15",
+                    "cantidadPuertas": 3,
+                    "abs": "si",
+                    "airbag": "tiene-adelante"
           }
 ]

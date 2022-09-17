@@ -31,7 +31,7 @@ const productController = {
         const productos = TraerProductos();
         productos.push({
         id: productos.length + 1,
-        img: "/images/" + req.body.img,
+        img: "/images/products/" + req.file.filename,
         marca: req.body.marca,
         modelo: req.body.modelo,
         anio: Number(req.body.anio),
@@ -49,8 +49,7 @@ const productController = {
         cantidadPuertas: Number(req.body.cantidadPuertas),
         abs: req.body.abs,
         airbag: req.body.airbag,
-        })
-
+        }) 
         writeFile(productos)
         res.redirect('/products/')
 

@@ -4,7 +4,7 @@
         <body>
             <%- include('./partials/header') %>
             <main class="register">
-                <form action="/products/create" method="POST" class="create-product-form">
+                <form action="/products/create" method="POST" class="create-product-form" enctype="multipart/form-data">
                     <h3>Crea un Nuevo Producto</h3>
                     
                     <div>
@@ -111,8 +111,8 @@
                     </div>
                     
                     <div>
-                        <label for="imagen">Imagen *</label>
-                        <input type="file" name="img" id="imagen" accept=".jpg,.png">
+                        <label for="img">Imagen *</label>
+                        <input type="file" name="img" id="img" accept=".jpg,.png">
                     </div>
                     
                     <div id="boton-crear">
