@@ -27,32 +27,40 @@ const productController = {
     create : (req, res) => {
         res.render('productCreate'); 
     },
-    saveNewProduct: (req, res) => {
-        const productos = TraerProductos();
-        productos.push({
-        id: productos.length + 1,
-        img: "/images/products/" + req.file.filename,
-        marca: req.body.marca,
-        modelo: req.body.modelo,
-        anio: Number(req.body.anio),
-        kilometraje: Number(req.body.kilometraje),
-        provincia: req.body.provincia,
-        localidad: req.body.localidad,
-        precio: Number(req.body.precio),
-        combustible: req.body.combustible,
-        transmision: req.body.transmision,
-        cantidadDueños: req.body.camtidadDueños,
-        fechaService: req.body.fechaService,
-        embrague: req.body.embrague,
-        antiguedadCorrea: Number(req.body.antiguedadCorrea),
-        alineacionBalanceo: req.body.alineacionBalanceo,
-        cantidadPuertas: Number(req.body.cantidadPuertas),
-        abs: req.body.abs,
-        airbag: req.body.airbag,
-        }) 
-        writeFile(productos)
-        res.redirect('/products/')
-
+    saveNewProduct: (req, res, next) => {
+        if (!req.file) {
+            const error = new Error("La imagen no se ha subido de forma correcta.");
+            next(error);
+        } else {
+            const productos = TraerProductos();
+            const newProduct = {
+                id: productos.length + 1,
+                img: req.file.filename,
+                marca: req.body.marca,
+                modelo: req.body.modelo,
+                anio: Number(req.body.anio),
+                kilometraje: Number(req.body.kilometraje),
+                provincia: req.body.provincia,
+                localidad: req.body.localidad,
+                precio: Number(req.body.precio),
+                combustible: req.body.combustible,
+                transmision: req.body.transmision,
+                cantidadDueños: req.body.camtidadDuenios,
+                fechaService: req.body.fechaService,
+                embrague: req.body.embrague,
+                antiguedadCorrea: Number(req.body.antiguedadCorrea),
+                alineacionBalanceo: req.body.alineacionBalanceo,
+                cantidadPuertas: Number(req.body.cantidadPuertas),
+                abs: req.body.abs,
+                airbag: req.body.airbag,
+                destacado: req.body.destacado === "true"
+            };
+            console.log(req.body.destacado);
+            productos.push(newProduct); 
+            writeFile(productos);
+            res.redirect(`/products/product-detail/${newProduct.id}`);
+        }
+        
     },
     editar : (req, res) => {
         const productos = TraerProductos();
@@ -65,26 +73,32 @@ const productController = {
             return producto.id == req.params.id;            
         });
 
+        if (req.file) {
+            // TODO: DELETE old img file from database
+            productoAEditar.img = req.file.filename;
+        }
+
         productoAEditar.marca = req.body.marca ;
         productoAEditar.modelo = req.body.modelo ;
-        productoAEditar.anio = req.body.anio ;
-        productoAEditar.kilometraje = req.body.kilometraje ;
+        productoAEditar.anio = Number(req.body.anio) ;
+        productoAEditar.kilometraje = Number(req.body.kilometraje) ;
         productoAEditar.provincia = req.body.provincia ;
         productoAEditar.localidad = req.body.localidad ;
-        productoAEditar.precio = req.body.precio ;
+        productoAEditar.precio = Number(req.body.precio) ;
         productoAEditar.combustible = req.body.combustible ;
         productoAEditar.transmision = req.body.transmision ;
         productoAEditar.camtidadDueños = req.body.camtidadDueños ;
         productoAEditar.fechaService = req.body.fechaService ;
         productoAEditar.embrague = req.body.embrague ;
-        productoAEditar.antiguedadCorrea = req.body.antiguedadCorrea ;
+        productoAEditar.antiguedadCorrea = Number(req.body.antiguedadCorrea) ;
         productoAEditar.alineacionBalanceo = req.body.alineacionBalanceo ;
-        productoAEditar.cantidadPuertas = req.body.cantidadPuertas ;
+        productoAEditar.cantidadPuertas = Number(req.body.cantidadPuertas) ;
         productoAEditar.abs = req.body.abs ;
         productoAEditar.airbag = req.body.airbag ;
-
+        productoAEditar.destacado = req.body.destacado === "true" ;
+        
         writeFile(productos);
-        res.redirect("/products/");
+        res.redirect(`/products/product-detail/${productoAEditar.id}`);
 
     }
 }

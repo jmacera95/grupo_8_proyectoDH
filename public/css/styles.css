@@ -474,6 +474,10 @@ button i{
     color:#666;
     opacity: 80%;
 }
+
+.create-product-form img {
+    width: 20%;
+}
 /* END CREATE FORM CSS SECTION */
 
 

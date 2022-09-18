@@ -16,54 +16,16 @@
             </div>
             <h2>Autos Destacados</h2>
             <div class="featured-cars">
-                <a href="/products/product-detail">
-                    <article>
-                        <img src="images/ford-fiesta.jpeg" alt="ford-fiesta">
-                        <h3>Ford Fiesta</h3>
-                        <h4>2012 - 120.000km - Bs. As.</h4>
-                        <h4>$4.000.000</h4>
-                    </article>
-                </a>
-                <a href="">
-                    <article>
-                        <img src="images/chevrolet-onix.jpeg" alt="chevrolet-onix">
-                        <h3>Chevrolet Onix</h3>
-                        <h4>2014 - 176.000km - Mendoza</h4>
-                        <h4>$3.500.000</h4>
-                    </article>
-                </a>
-                <a href="">
-                    <article>
-                        <img src="images/renault-sandero.jpeg" alt="renault-sandero">
-                        <h3>Renault Sandero</h3>
-                        <h4>2016 - 153.000km - Rosario</h4>
-                        <h4>$3.750.000</h4>
-                    </article>
-                </a>
-                <a href="">
-                    <article>
-                        <img src="images/ford-focus.jpeg" alt="ford-focus">
-                        <h3>Ford Focus</h3>
-                        <h4>2013 - 120.000km - Córdoba</h4>
-                        <h4>$4.700.000</h4>
-                    </article>
-                </a>
-                <a href="">
-                    <article>
-                        <img src="images/peugeot-208.jpeg" alt="peugeot-208">
-                        <h3>Peugeot 208</h3>
-                        <h4>2014 - 132.000km - Bs. As.</h4>
-                        <h4>$4.200.000</h4>
-                    </article>
-                </a>
-                <a href="">
-                    <article>
-                        <img src="images/toyota-hilux.jpeg" alt="toyota-hilux">
-                        <h3>Toyota Hilux</h3>
-                        <h4>2015 - 150.000km - Entre Ríos</h4>
-                        <h4>$5.200.000</h4>
-                    </article>
-                </a>
+                <% productos.forEach(producto => { %>
+                    <a href="/products/product-detail/<%= producto.id %> ">
+                        <article>
+                            <img src="/images/products/<%= producto.img %> " alt="<%= producto.marca %> <%= producto.modelo %>">
+                            <h3><%= producto.marca %> <%= producto.modelo %></h3>
+                            <h4><%=producto.anio%> - <%=producto.kilometraje%>km - <%=producto.provincia%></h4>
+                            <h4>$<%= producto.precio %> </h4>
+                        </article>
+                    </a>
+                <% }) %>
             </div>
         </main>
         <%- include('./partials/footer') %>

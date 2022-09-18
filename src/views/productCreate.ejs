@@ -109,10 +109,18 @@
                             <option value="no">No tiene</option>
                         </select>
                     </div>
+
+                    <div>
+                        <label for="destacado">Producto Destacado *</label>
+                        <select name="destacado" id="destacado">
+                            <option value="true">Si</option>
+                            <option value="false" selected>No</option>
+                        </select>
+                    </div>
                     
                     <div>
                         <label for="img">Imagen *</label>
-                        <input type="file" name="img" id="img" accept=".jpg,.png">
+                        <input type="file" name="img" id="img" accept=".jpg,.png" required>
                     </div>
                     
                     <div id="boton-crear">

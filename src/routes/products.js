@@ -23,6 +23,6 @@ router.get('/create', productController.create);
 router.post('/create', uploadFile.single('img'), productController.saveNewProduct);
 
 router.get('/edit/:id', productController.editar);
-router.put('/edit/:id', productController.actualizar);
+router.put('/edit/:id', uploadFile.single('img'), productController.actualizar);
 
 module.exports = router;

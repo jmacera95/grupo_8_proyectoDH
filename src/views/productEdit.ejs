@@ -4,7 +4,7 @@
         <body>
             <%- include('./partials/header') %>
             <main class="register">
-                <form action="/products/edit/<%= producto.id %>?_method=PUT" method="POST" class="create-product-form">
+                <form action="/products/edit/<%= producto.id %>?_method=PUT" method="POST" class="create-product-form" enctype="multipart/form-data">
                     <h3>Editar Producto</h3>
                     
                     <div>
@@ -123,10 +123,20 @@
                             <option value="no">No tiene</option>
                         </select>
                     </div>
+
+                    <div>
+                        <label for="destacado">Producto Destacado *</label>
+                        <select name="destacado" id="destacado">
+                            <option value="<%= producto.destacado %>"><%= producto.destacado %></option>
+                            <option value="true">Si</option>
+                            <option value="false">No</option>
+                        </select>
+                    </div>
                     
                     <div>
-                        <label for="imagen">Imagen *</label>
-                        <input type="file" name="imagen" id="imagen" accept=".jpg,.png">
+                        <label for="img">Imagen *</label>
+                        <img src="/images/products/<%= producto.img %> ">
+                        <input type="file" name="img" id="img" accept=".jpg,.png">
                     </div>
                     
                     <div id="boton-editar">
