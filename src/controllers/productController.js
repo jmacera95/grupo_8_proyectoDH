@@ -95,7 +95,7 @@ const productController = {
         productoAEditar.cantidadPuertas = Number(req.body.cantidadPuertas) ;
         productoAEditar.abs = req.body.abs ;
         productoAEditar.airbag = req.body.airbag ;
-        productoAEditar.destacado = req.body.destacado === "true" ;
+        productoAEditar.destacado = req.body.destacado == "true" ;
         
         writeFile(productos);
         res.redirect(`/products/product-detail/${productoAEditar.id}`);
