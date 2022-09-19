@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <%- include('./partials/head') %>
+    <body>
+        <%- include('./partials/header') %>
+        <main class="product-detail">
+            <div class="product-overview">
+                <img src="/images/products/<%=producto.img%>" alt="<%=producto.marca%> <%=producto.modelo%>">
+                <div>
+                    <h3><%=producto.marca%> <%=producto.modelo%></h3>
+                    <h4><%=producto.anio%> - <%=producto.kilometraje%>km - <%=producto.provincia%></h4>
+                    <h4>$<%=producto.precio%></h4>
+                    <form action="" method="POST">
+                        <input type="submit" name="add-to-cart" value="Agregar al carrito" title="Podes agregarlo y decidir si reservarlo o no luego!">
+                    </form> 
+                </div>        
+            </div>
+            <div class="product-features">
+                <h2>Características</h2>
+                <h3>General</h3>
+                <div class="same-type-features">
+                    <div class="product-feature">
+                        <strong>Tipo de Combustible</strong>
+                        <span><%= producto.combustible %> </span>
+                    </div>
+                    <div class="product-feature">
+                        <strong>Transmisión</strong>
+                        <span><%= producto.transmision %> </span>
+                    </div>
+                    <div class="product-feature">
+                        <strong>Cantidad de dueños</strong>
+                        <span><%= producto.cantidadDuenios %> </span>
+                    </div>
+                </div>
+                <h3>Mecánica</h3>
+                <div class="same-type-features">
+                    <div class="product-feature">
+                        <strong>Fecha de último service</strong>
+                        <span><%= producto.fechaService %> </span>
+                    </div>
+                    <div class="product-feature">
+                        <strong>Antiguedad correa distribución</strong>
+                        <span><%= producto.antiguedadCorrea %>  km</span>
+                    </div>
+                    <div class="product-feature">
+                        <strong>Alineación y balanceo</strong>
+                        <span><%= producto.alineacionBalanceo %> </span>
+                    </div>
+                    <div class="product-feature">
+                        <strong>Embrague</strong>
+                        <span><%= producto.embrague %> </span>
+                    </div>
+                </div>
+                <h3>Exterior</h3>
+                <div class="same-type-features">
+                    <div class="product-feature">
+                        <strong>Número de puertas</strong>
+                        <span><%= producto.cantidadPuertas %> </span>
+                    </div>
+                </div>
+                <h3>Seguridad</h3>
+                <div class="same-type-features">
+                    <div class="product-feature">
+                        <strong>ABS</strong>
+                        <span><%= producto.abs %> </span>
+                    </div>
+                    <div class="product-feature">
+                        <strong>Airbags</strong>
+                        <span><%= producto.airbag %> </span>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <%- include('./partials/footer') %>
+        <script src="" async defer></script>
+    </body>
+</html>

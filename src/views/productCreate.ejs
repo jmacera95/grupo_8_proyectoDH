@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+        <%- include('./partials/head') %>
+        <body>
+            <%- include('./partials/header') %>
+            <main class="register">
+                <form action="/products/create" method="POST" class="create-product-form" enctype="multipart/form-data">
+                    <h3>Crea un Nuevo Producto</h3>
+                    
+                    <div>
+                        <input type="text" name="marca" id="marca" placeholder="Marca *" required>
+                    </div>  
+
+                    <div>
+                        <input type="text" name="modelo" id="modelo" placeholder="Modelo *" required>
+                    </div>
+                    
+                    <div>
+                        <input type="number" min="2012" max="2017" step="1" id="anio" name="anio" placeholder="Año *" required>
+                    </div>
+
+                    <div>
+                        <input type="number" min="85000" max="200000" name="kilometraje" id="kilometraje" placeholder="Kilometraje *" required>
+                    </div>
+
+                    <div>
+                        <input type="text" name="provincia" id="provincia" placeholder="Provincia *" required>
+                    </div>                    
+                    
+                    <div>
+                        <input type="text" name="localidad" id="localidad" placeholder="Localidad *" required>
+                    </div>
+
+                    <div>
+                        <input type="number" name="precio" id="precio" step="1000" placeholder="Precio (AR$) *" required> 
+                    </div>
+
+                    <div>
+                        <label for="combustible">Tipo de Combustible *</label>
+                        <select name="combustible" id="combustible">
+                            <option value="nafta">Nafta</option>
+                            <option value="gasoil">Gasoil</option>
+                            <option value="gnc">GNC</option>
+                            <option value="hibrido">Hibrido</option>
+                        </select>
+                    </div>
+                
+                    <div>
+                        <label for="transmision">Transmisión *</label>
+                        <select name="transmision" id="transmision">
+                            <option value="manual">Manual</option>
+                            <option value="automatico">Automático</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="cantidadDuenios">Cantidad de Dueños *</label>
+                        <select name="cantidadDuenios" id="cantidadDuenios">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="fechaService">Fecha Último Service *</label>
+                        <input type="date" name="fechaService" id="fechaService" value="">
+                    </div>
+                    
+                    <div>
+                        <label for="embrague">Embrague *</label>
+                        <select name="embrague" id="embrague">
+                            <option value="fabrica">De Fábrica</option>
+                            <option value="repuesto">Repuesto</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="antiguedadCorrea">Antiguedad Correa de Distribución *</label>
+                        <input type="number" name="antiguedadCorrea" id="antiguedadCorrea" step="500">
+                    </div>
+                    
+                    <div>
+                        <label for="alineacionBalanceo">Alineación y Balanceo *</label>
+                        <input type="date" name="alineacionBalanceo" id="alineacionBalanceo">
+                    </div>
+                    
+                    <div>
+                        <label for="cantidadPuertas">Cantidad de Puertas *</label>
+                        <select name="cantidadPuertas" id="cantidadPuertas">
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="abs">ABS *</label>
+                        <select name="abs" id="abs">
+                            <option value="si">Si</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="airbag">Airbag *</label>
+                        <select name="airbag" id="airbag">
+                            <option value="tiene-adelante">Tiene - Solo Adelante</option>
+                            <option value="tiene-ambos">Tiene - Adelante y Atrás</option>
+                            <option value="no">No tiene</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="destacado">Producto Destacado *</label>
+                        <select name="destacado" id="destacado">
+                            <option value="true">Si</option>
+                            <option value="false" selected>No</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="img">Imagen *</label>
+                        <input type="file" name="img" id="img" accept=".jpg,.png" required>
+                    </div>
+                    
+                    <div id="boton-crear">
+                        <input type="submit" class="crear" name="crear" value="Crear Producto"> 
+                    </div>    
+                </form>
+
+
+
+
+
+            </main>
+            <%- include('./partials/footer') %>
+            <script src="" async defer></script>
+        </body>
+        </html>
+
+
+
+
+
