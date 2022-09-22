@@ -32,3 +32,21 @@
     - Dependencia de un integrante para los pasajes a producción
 5. Dejar de hacer
     - Descoordinación en la generación de estilos
+
+
+# Retro Sprint 3
+1. Comenzar a hacer
+    - Emprolijar el css y coordinarnos mejor con lo que respecta a la utilización de estilos que se pueden aplicar de forma cross a diferentes elementos de la web
+    - Comenzar a hacer revisión cruzada del código 
+    - Alguna juntada presencial
+    - Mantener la regularidad en las weeklies
+    - Darle mas bola a lo analizado y anotado en el retro
+2. Hacer más
+    - Plasmar mas el status de las tareas en Trello
+3. Continuar haciendo
+    - Juntadas de live coding dónde cada uno esté en la suya pero codeando al mismo tiempo sobre la aplicación
+    - La comunicación fluida a través de whatsapp
+4. Hacer menos
+    - Dependencia de un integrante para los pasajes a producción
+5. Dejar de hacer
+    - Trabajar sobre la misma rama en todos los features del sprint todos juntos
