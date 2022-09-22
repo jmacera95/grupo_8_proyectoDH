@@ -74,7 +74,7 @@ const productController = {
         });
 
         if (req.file) {
-            // TODO: DELETE old img file from database
+            fs.unlinkSync(path.join(__dirname, '../../public/images/products', productoAEditar.img));
             productoAEditar.img = req.file.filename;
         }
 
@@ -100,6 +100,18 @@ const productController = {
         writeFile(productos);
         res.redirect(`/products/product-detail/${productoAEditar.id}`);
 
+    },
+    delete: (req, res) => {
+        const productos = TraerProductos();
+        const productoEliminar = productos.find(product => product.id == req.params.id)
+        const productoEliminarIndex = productos.findIndex(product => product.id == req.params.id);
+        if(productoEliminarIndex != -1){
+            const productImagePath = path.join(__dirname, '../../public/images/products', productoEliminar.img)
+            productos.splice(productoEliminarIndex, 1);
+            writeFile(productos);
+            fs.unlinkSync(productImagePath);
+        };
+        res.redirect('/products');
     }
 }
 

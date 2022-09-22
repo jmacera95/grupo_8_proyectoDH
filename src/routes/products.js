@@ -24,5 +24,6 @@ router.post('/create', uploadFile.single('img'), productController.saveNewProduc
 
 router.get('/edit/:id', productController.editar);
 router.put('/edit/:id', uploadFile.single('img'), productController.actualizar);
+router.delete('/delete/:id', productController.delete);
 
 module.exports = router;
