@@ -143,6 +143,11 @@
                         <input type="submit" class="editar" name="editar" value="Editar Producto"> 
                     </div>    
                 </form>
+                <form action="/products/delete/<%= producto.id %>?_method=DELETE" method="POST" class="create-product-form">
+                    <div id="boton-eliminar">
+                        <input type="submit" class="eliminar" name="eliminar" value="Eliminar Producto"> 
+                    </div>
+                </form>
 
 
 
