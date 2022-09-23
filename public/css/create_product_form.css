@@ -1,0 +1,50 @@
+/* START CREATE FORM CSS SECTION*/
+.create-product-form {
+    padding: 20px 5px;
+    background-color: #edf9fc;
+    opacity: 70%;
+    margin: 10px 10px;
+}
+
+.create-product-form h3 {
+    margin-top: 0;
+}
+
+.create-product-form div {
+    margin-bottom: 30px;
+}
+
+.create-product-form div label {
+    display: block;
+    margin-top: -15px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.create-product-form input {
+    width: 100%;
+    margin: auto;
+    padding: 7px 5px;
+    border: solid 0px;
+    border-radius: 4px;
+}
+
+.create-product-form input::placeholder {
+    font-size: 11px;
+    color:#666;
+    opacity: 80%;
+}
+
+.create-product-form img {
+    width: 20%;
+}
+/* END CREATE FORM CSS SECTION */
+
+@media (min-width: 769px) {
+    /* START CREATE FORM CSS SECTION */
+    .create-product-form {
+        width: 50%;
+    }
+    /* END CREATE FORM CSS SECTION */
+}
