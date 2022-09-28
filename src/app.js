@@ -1,5 +1,8 @@
 const path = require('path');
 const methodOverride = require('method-override');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+
 const mainRoutes = require('./routes/main');
 const productsRoutes = require('./routes/products');
 const userRoutes = require('./routes/users');
@@ -14,6 +17,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static(path.resolve(__dirname, '../public')));
 app.use(methodOverride('_method'));
+app.use(session({secret: "Esto es un secreto!"}));
+app.use(cookieParser());
 // app.use((req, res, next) => {
 //     res.status(404).render('not-found');
 // });
