@@ -1,9 +1,10 @@
 /* START CREATE FORM CSS SECTION*/
+
 .create-product-form {
     padding: 20px 5px;
     background-color: #edf9fc;
     opacity: 70%;
-    margin: 10px 10px;
+    margin: 10px auto;
 }
 
 .create-product-form h3 {
