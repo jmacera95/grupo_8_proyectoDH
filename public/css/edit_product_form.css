@@ -1,0 +1,50 @@
+/* START EDIT FORM CSS SECTION*/
+.edit-product-form {
+    padding: 20px 5px;
+    background-color: #edf9fc;
+    opacity: 70%;
+    margin: 10px auto;
+}
+
+.edit-product-form h3 {
+    margin-top: 0;
+}
+
+.edit-product-form div {
+    margin-bottom: 30px;
+}
+
+.edit-product-form div label {
+    display: block;
+    margin-top: -15px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.edit-product-form input {
+    width: 100%;
+    margin: auto;
+    padding: 7px 5px;
+    border: solid 0px;
+    border-radius: 4px;
+}
+
+.edit-product-form input::placeholder {
+    font-size: 11px;
+    color:#666;
+    opacity: 80%;
+}
+
+.edit-product-form img {
+    width: 20%;
+}
+/* END EDIT FORM CSS SECTION */
+
+@media (min-width: 769px) {
+    /* START EDIT FORM CSS SECTION */
+    .edit-product-form {
+        width: 50%;
+    }
+    /* END EDIT FORM CSS SECTION */
+}
