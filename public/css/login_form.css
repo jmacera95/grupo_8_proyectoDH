@@ -1,0 +1,91 @@
+
+main.login {
+    text-align: center;
+}
+
+
+main.login .form {
+    border: 1px solid #ebebeb;
+    font-size: 10px;
+    margin: 0 25%;
+    margin-bottom: 0px;
+}
+
+main.login .indicacion {
+   font-size: 10px;
+   color: #707079;
+   margin-bottom: 20px;
+}
+
+
+main.login .campo {
+    width: 150px;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+    border-bottom: 1px solid currentColor;
+        
+}
+
+main.login #definicion1 {
+    position: relative;
+    top:5px;
+    right: 55px;
+}
+
+main.login #definicion2 {
+    position: relative;
+    top:5px;
+    right: 40px;
+}
+
+main.login .recuerdame {
+    position: relative;
+    right: 35px;
+    margin-bottom: 20px;
+
+}
+
+main.login .registrate {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px; 
+    margin-bottom: 30px;
+    font-size: 10px;
+    
+}
+
+@media (min-width: 769px) {
+    main.login .form {
+        border: 1px solid #ebebebf5;
+        font-size: 13px;
+        margin: 0 25%;
+        margin-bottom: 0px;
+    }
+    
+    main.login .indicacion {
+       font-size: 13px;
+       color: #707079;
+       margin-bottom: 20px;
+    }
+    
+    main.login .campo {
+    width: 300px;
+    }
+
+    main.login #definicion1 {
+    top:5px;
+    right: 130px;
+    }
+
+    main.login #definicion2 {
+    top:5px;
+    right: 115px;
+    }
+
+    main.login .recuerdame {
+    position: relative;
+    right: 110px;
+    margin-bottom: 20px;
+    }
+}
