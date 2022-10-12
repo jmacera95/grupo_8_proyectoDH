@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <%- include('./partials/head', {title: "Profile", style: "user_profile"}) %>
+    <body>
+        <%- include('./partials/header') %>
+        <main id="user-profile">
+            <div>
+                <h2>Mi Perfil</h2>
+            </div>
+            <div>
+                <article>
+                    <h4><i class="far fa-user-circle"></i> Datos Personales</h4>
+                    <p>Julián Jejito</p>
+                    <p>+54 9 11 5689 2275</p>
+                    <p>pepitogrillo@gmail.com</p>
+                </article>
+                <br>
+                <article>
+                    <h4><i class="fas fa-lock"></i> Contraseña</h4>
+                    <p>* * * * *</p>
+                </article>
+            </div>
+        </main>
+        <%- include('./partials/footer') %>
+        <script src="" async defer></script>
+    </body>

@@ -41,6 +41,9 @@ const usersController = {
             },
             old: req.body
         })
+    },
+    profile: (req, res) => {
+        res.render('userProfile');
     }
 }
 
