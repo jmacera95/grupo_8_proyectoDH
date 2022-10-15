@@ -11,19 +11,23 @@
             <div>
                 <h2>Mi Perfil</h2>
             </div>
-            <div>
+            <div id="user-details">
                 <article>
                     <h4><i class="far fa-user-circle"></i> Datos Personales</h4>
-                    <p>Julián Jejito</p>
-                    <p>+54 9 11 5689 2275</p>
-                    <p>pepitogrillo@gmail.com</p>
+                    
+                    <p><%= user.firstName %> <%= user.lastName %></p>
+                    <p><%= user.phone %></p>
+                    <p><%= user.email %></p>
                 </article>
                 <br>
                 <article>
                     <h4><i class="fas fa-lock"></i> Contraseña</h4>
-                    <p>* * * * *</p>
+                    <p>* * * * * *</p>
                 </article>
             </div>
+            <form action="/user/logout" method="POST">
+                <i class="fa-solid fa-right-from-bracket"></i> <input type="submit" value="Cerrar Sesión">
+            </form>
         </main>
         <%- include('./partials/footer') %>
         <script src="" async defer></script>

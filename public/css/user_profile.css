@@ -7,7 +7,26 @@ h2 {
 }
 
 article {
+    margin: auto auto auto 10px;
+    padding: 0 0.5rem;
     border: solid 0.5px #e7e7e9;
     box-shadow: 5px 5px 5px #e7e7e9;
     height: 175px;
+    width: 90%;
+}
+
+form {
+    margin: 20px auto auto 10px;
+    color: #4ec3e0;
+    
+}
+
+@media (min-width: 769px) {
+    #user-details {
+        display: flex;
+    }
+
+    article {
+        width: 100%;
+    }
 }

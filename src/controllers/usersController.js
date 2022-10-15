@@ -20,7 +20,7 @@ const usersController = {
         if (userToLogin) {
             const passwordIsOk = bcrypt.compareSync(req.body.password, userToLogin.password);
             if (passwordIsOk) {
-                return res.render('login');
+                return res.render('userProfile', {user: userToLogin});
             } else {
                 res.render('login', {
                     errors: {
