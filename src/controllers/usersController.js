@@ -20,6 +20,8 @@ const usersController = {
         if (userToLogin) {
             const passwordIsOk = bcrypt.compareSync(req.body.password, userToLogin.password);
             if (passwordIsOk) {
+                delete userToLogin.password;
+                req.session.userLogged = userToLogin;
                 return res.render('userProfile', {user: userToLogin});
             } else {
                 res.render('login', {
@@ -43,7 +45,7 @@ const usersController = {
         })
     },
     profile: (req, res) => {
-        res.render('userProfile');
+        res.render('userProfile', {user: req.session.userLogged});
     }
 }
 
