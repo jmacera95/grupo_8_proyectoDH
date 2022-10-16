@@ -24,7 +24,7 @@ const usersController = {
                 req.session.userLogged = userToLogin;
                 return res.render('userProfile', {user: userToLogin});
             } else {
-                res.render('login', {
+                return res.render('login', {
                     errors: {
                         password: {
                             msg: 'La contraseña es incorrecta'
@@ -46,6 +46,10 @@ const usersController = {
     },
     profile: (req, res) => {
         res.render('userProfile', {user: req.session.userLogged});
+    },
+    logout: (req, res) => {
+        req.session.destroy();
+        return res.redirect('/');
     }
 }
 
