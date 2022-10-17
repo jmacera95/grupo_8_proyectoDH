@@ -10,70 +10,49 @@
         <main class="register">
             <h4>Registrate</h4>
             
-            <form action="/registro" method="POST" class="form1">
+
+            <form action="/user/register" method="POST" class="form1" enctype="multipart/form-data">
                 <h3>Ingresá tus datos</h5>
-
-                <label for="nombre-completo">Nombre completo *</label>
-                <input type="text" name="nombre-completo" id="nombre-completo">
-                <label for="email">Email *</label>
-                <input type="email" name="email" id="email">
-                <label for="telefono">Telefono *</label>
-                <input type="tel" name="telefono" id="telefono">
-                <label for="cuit">CUIT *</label>
-                <input type="text" name="cuit" id="cuit">
-                <label for="contraseña">Contraseña *</label>
-                <input type="password" name="contraseña" id="contraseña">
-
-                <div id="terminos-condiciones">
-                    <input type="checkbox" name="terminos" id="terminos">
-                    <label for="terminos">Acepto terminos y condiciones</label>
-                </div>
-                <div id="boton-registro">
-                    <input type="submit" class="registro" name="registro" value="Registrate"> 
-                </div>    
-            </form>
-
-            <form action="/registro" method="POST" class="form2">
-                <h3>Ingresá tus datos</h5>
-                <div id="nombre-completo">    
-                <label for="nombre-completo">Nombre completo *</label>
-                <input type="text" name="nombre-completo" id="nombre-completo">
-                </div>
-                <span class="en-serie">
-                    <p class="caja-1">   
+                <!-- <div id="nombre-completo">     -->
+                <label for="fullName">Nombre completo *</label>
+                <input type="text" name="fullName" id="nombre-completo">
+                <!-- </div> -->
+                <!-- <span class="en-serie"> -->
+                    <!-- <p class="caja-1">    -->
                         <label for="email">Email *</label>
                         <input type="email" name="email" id="email">
-                    </p>
-                    <p class="caja-2">
-                        <label for="telefono">Telefono *</label>
-                        <input type="tel" name="telefono" id="telefono">
-                    </p>
-                </span>
+                    <!-- </p> -->
+                    <!-- <p class="caja-2"> -->
+                        <label for="phone">Telefono *</label>
+                        <input type="tel" name="phone" id="telefono">
+                    <!-- </p> -->
+                <!-- </span> -->
                 
-                <span class="en-serie">
-                    <p class="caja-1">   
-                        <label for="cuit">CUIT *</label>
-                        <input type="text" name="cuit" id="cuit"> 
-                    </p>
-                    <p class="caja-2">    
-                        <label for="contraseña">Contraseña *</label>
-                        <input type="password" name="contraseña" id="contraseña">
-                    </p>    
-                </span>
-
-                <div id="terminos-condiciones">
+                <!-- <span class="en-serie"> -->
+                    <!-- <p class="caja-1">    -->
+                        <label for="CUIT">CUIT *</label>
+                        <input type="text" name="CUIT" id="cuit"> 
+                    <!-- </p> -->
+                    <!-- <p class="caja-2">     -->
+                        <label for="password">Contraseña *</label>
+                        <input type="password" name="password" id="contraseña">
+                    <!-- </p>     -->
+                <!-- </span> -->
+                        <label for="image">Imagen</label>
+                        <input type="file" name="image" accept=".png, .jpeg">
+                <!-- <div id="terminos-condiciones"> -->
                     <input type="checkbox" name="terminos" id="terminos">
                     <label for="terminos">Acepto terminos y condiciones</label>
-                </div>
+                <!-- </div> -->
                 
-                <div id="boton-registro">
+                <!-- <div id="boton-registro"> -->
                     <input type="submit" class="registro" name="registro" value="Registrate"> 
-                </div>    
-            </form>
-            <div class="inicia-sesion">
+                <!-- </div>     -->
+            <!-- </form> -->
+            <!-- <div class="inicia-sesion"> -->
                 <div>¿Ya tenés cuenta? </div>
                 <a href="/user/login">Iniciá Sesión</a></li>
-            </div>
+            <!-- </div> -->
         </main>
         
         <%- include('./partials/footer') %>
