@@ -2,8 +2,9 @@ const path = require('path');
 const fs = require('fs');
 const bcrypt = require('bcryptjs');
 
+const usersJSONPath = path.join(__dirname, '../database/users.json');
 const getUsers = () => {
-    const usersJson = fs.readFileSync(path.join(__dirname, '../database/users.json'));
+    const usersJson = fs.readFileSync(usersJSONPath);
     return JSON.parse(usersJson);
 };
 
@@ -20,14 +21,14 @@ const usersController = {
            fullName: req.body.fullName,
            email: req.body.email,
            phone: req.body.phone,
-           CUIT: req.body.cuit,
+           CUIT: Number(req.body.cuit),
            password: password,
            image: req.file.filename,
            userType: "basic"
         }
         users.push(newUser)
         const usersJson = JSON.stringify(users, null, 3);
-        fs.writeFileSync(userPath, usersJson);
+        fs.writeFileSync(usersJSONPath, usersJson);
         res.redirect('/');
     } ,
     login:(req, res) => {
