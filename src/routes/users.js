@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const path = require('path')
 const usersController = require('../controllers/usersController');
+const guestMiddleware = require('../middlewares/guestMiddleware');
+const authMiddleware = require('../middlewares/authMiddleware');
 const multer = require('multer')
 
 const storage = multer.diskStorage(
@@ -15,9 +17,15 @@ const storage = multer.diskStorage(
     }
 );
 const uploadFile = multer({ storage });
-router.get('/register',usersController.register );
+
+router.get('/register', guestMiddleware, usersController.register );
 router.post('/register',uploadFile.single('image') , usersController.postRegister );
 
-router.get('/login', usersController.login);
+router.get('/login', guestMiddleware, usersController.login);
+router.post('/login', usersController.processLogin);
+
+router.get('/profile', authMiddleware, usersController.profile);
+
+router.get('/logout', usersController.logout);
 
 module.exports = router;
