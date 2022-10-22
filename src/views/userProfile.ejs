@@ -25,7 +25,12 @@
                     <p>* * * * * *</p>
                 </article>
             </div>
-            <form action="/user/logout" method="GET">
+            <% if (user.userType=="admin") { %>
+                <form action="/products/create" method="GET">
+                    <input type="submit" value="Crear Nuevo Producto">
+                </form>
+            <% } %>
+            <form action="/user/logout" method="GET" id="user-logout-form">
                 <i class="fa-solid fa-right-from-bracket"></i> <input type="submit" value="Cerrar Sesión">
             </form>
         </main>
