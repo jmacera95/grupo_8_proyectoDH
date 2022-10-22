@@ -50,3 +50,15 @@
     - Dependencia de un integrante para los pasajes a producción
 5. Dejar de hacer
     - Trabajar sobre la misma rama en todos los features del sprint todos juntos
+
+# Retro sprint 4
+1. Comenzar a hacer
+    - Comenzar a darle mas relevancia a la parte del frontend y avanzar con eso
+2. Hacer más
+    - Ser proactivos en la eleccion de tareas del sprint, sin depender de los otros integrantes para comenzar a desarrollar
+    - seleccionar tareas que representen un desafio tecnico para uno
+    - hacer mas uso de trello para status y seguimiento de las tareas 
+3. Continuar haciendo
+    - Desarrollar código de forma individual y luego hacer revisiones grupales
+4. Hacer menos
+    - no relajarnos con los tiempos del proyecto
