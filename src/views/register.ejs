@@ -20,7 +20,12 @@
                 <!-- <span class="en-serie"> -->
                     <!-- <p class="caja-1">    -->
                         <label for="email">Email *</label>
-                        <input type="email" name="email" id="email">
+                        <input type="email" name="email" id="email" value= <%= locals.old && locals.old.email ? locals.old.email : null %>>
+                        <% if (locals.errors && locals.errors.email) { %>
+                            <div>
+                                <span><%= locals.errors.email.msg %> </span>
+                            </div>
+                        <% } %>
                     <!-- </p> -->
                     <!-- <p class="caja-2"> -->
                         <label for="phone">Telefono *</label>

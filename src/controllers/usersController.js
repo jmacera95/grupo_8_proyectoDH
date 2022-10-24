@@ -8,17 +8,29 @@ const getUsers = () => {
     return JSON.parse(usersJson);
 };
 
+
 const usersController = {
     register: (req, res) => {
         res.render('register');
     } ,
     postRegister: (req, res) => {
         const users = getUsers();
+        const userExist = users.find(user => (user.email === req.body.email));
+        if(userExist){
+            return res.render('register', {errors: {
+                email: {
+                    msg: 'El email ya existe'
+                } 
+            },
+            old: req.body
+        });
+        }
         const password = bcrypt.hashSync(req.body.password, 10)
 
         const newUser = {
            id: users.length + 1,
-           fullName: req.body.fullName,
+           firstName: req.body.firstName,
+           lastName: req.body.lastName,
            email: req.body.email,
            phone: req.body.phone,
            CUIT: Number(req.body.cuit),
