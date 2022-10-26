@@ -8,56 +8,80 @@
     <body>
         <%- include('./partials/header') %>
         <main class="register">
-            <h4>Registrate</h4>
+            <h2>Registrate</h2>
             
-
+            <div class="general">
+                <h3>Ingresá tus datos</h3>
             <form action="/user/register" method="POST" class="form1" enctype="multipart/form-data">
-                <h3>Ingresá tus datos</h5>
-                <!-- <div id="nombre-completo">     -->
-                <label for="fullName">Nombre completo *</label>
-                <input type="text" name="fullName" id="nombre-completo">
-                <!-- </div> -->
-                <!-- <span class="en-serie"> -->
-                    <!-- <p class="caja-1">    -->
-                        <label for="email">Email *</label>
-                        <input type="email" name="email" id="email" value= <%= locals.old && locals.old.email ? locals.old.email : null %>>
-                        <% if (locals.errors && locals.errors.email) { %>
-                            <div>
-                                <span><%= locals.errors.email.msg %> </span>
-                            </div>
-                        <% } %>
-                    <!-- </p> -->
-                    <!-- <p class="caja-2"> -->
-                        <label for="phone">Telefono *</label>
-                        <input type="tel" name="phone" id="telefono">
-                    <!-- </p> -->
-                <!-- </span> -->
+                        
                 
-                <!-- <span class="en-serie"> -->
-                    <!-- <p class="caja-1">    -->
-                        <label for="cuit">CUIT *</label>
-                        <input type="text" name="cuit" id="cuit"> 
-                    <!-- </p> -->
-                    <!-- <p class="caja-2">     -->
-                        <label for="password">Contraseña *</label>
-                        <input type="password" name="password" id="contraseña">
-                    <!-- </p>     -->
-                <!-- </span> -->
-                        <label for="image">Imagen</label>
-                        <input type="file" name="image" accept=".png, .jpeg">
-                <!-- <div id="terminos-condiciones"> -->
+                <div class="campos">
+                <label for="firstName">Nombre *</label>
+                <input type="text" name="firstName" id="firstName" class="hola">
+                </div>
+
+                <div class="campos">
+                <label for="lastName">Apellido *</label>
+                <input type="text" name="lastName" id="lastName">
+                </div>
+
+                <div class="campos">
+                <label for="cuit">CUIT *</label>
+                <input type="text" name="cuit" id="cuit">
+                </div>
+
+                <div class="campos">
+                <label for="phone">Telefono *</label>
+                <input type="tel" name="phone" id="phone">
+                </div>
+
+                <div class="campos">
+                    <label for="email">Email *</label>
+                    <input type="email" name="email" id="email" value= <%= locals.old && locals.old.email ? locals.old.email : null %>>
+                    <% if (locals.errors && locals.errors.email) { %>
+                        <div>
+                            <span><%= locals.errors.email.msg %> </span>
+                        </div>
+                    <% } %>    
+                </div>
+
+                <div class="campos">
+                <label for="cp">Código Postal *</label>
+                <input type="text" name="cp" id="cp">
+                </div>
+
+                <div class="campos">
+                <label for="password">Contraseña *</label>
+                <input type="password" name="password" id="password">
+                </div>
+
+                <div class="campos">
+                <label for="checkpassword">Confirmar Contraseña *</label>
+                <input type="password" name="checkpassword" id="checkpassword">
+                </div>
+
+                <div class="imagenes">
+                <label for="image">Adjuntar imagenes del vehiculo</label>
+                <input type="file" name="image" accept=".png, .jpeg">
+                </div>
+            
+                <div id="terminos-condiciones">
                     <input type="checkbox" name="terminos" id="terminos">
                     <label for="terminos">Acepto terminos y condiciones</label>
-                <!-- </div> -->
+                </div>
                 
-                <!-- <div id="boton-registro"> -->
+                <div id="boton-registro">
                     <input type="submit" class="registro" name="registro" value="Registrate"> 
-                <!-- </div>     -->
-            <!-- </form> -->
-            <!-- <div class="inicia-sesion"> -->
+                </div>
+            
+
+            </form>
+
+            <div class="inicia-sesion">
                 <div>¿Ya tenés cuenta? </div>
                 <a href="/user/login">Iniciá Sesión</a></li>
-            <!-- </div> -->
+            </div>
+        </div>
         </main>
         
         <%- include('./partials/footer') %>

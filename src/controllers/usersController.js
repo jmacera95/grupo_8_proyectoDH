@@ -34,6 +34,7 @@ const usersController = {
            email: req.body.email,
            phone: req.body.phone,
            CUIT: Number(req.body.cuit),
+           cp: req.body.cp,
            password: password,
            image: req.file.filename,
            userType: "basic"
