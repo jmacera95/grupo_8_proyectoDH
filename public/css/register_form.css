@@ -83,8 +83,22 @@ main.register #boton-registro {
     }
     
     main.register #terminos-condiciones {
-        
-        font-size: 13px;
+        flex-direction: row;
+        font-size: 11px;
+        position: relative;
+        top: 37px;
+        right: 98px;   
+    }
+
+    main.register #boton-registro {
+        position:relative;
+        top: 68px;
+        right: 235px ;
+        margin-top: 10px;
+    }
+    
+    main.register .inicia-sesion {
+        margin-top: 50px    
     }
 
 }
