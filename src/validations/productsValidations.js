@@ -23,7 +23,10 @@ const productsValidations = {
             .notEmpty().withMessage('Debes completar el campo Localidad.').bail(),
         body('precio')
             .notEmpty().withMessage('Debes completar el campo Precio.').bail()
-            .isInt().withMessage('El precio debe ser un número entero.')
+            .isInt().withMessage('El precio debe ser un número entero.').bail(),
+        body('combustible')
+            .notEmpty().withMessage('Debes compeltar el campo Tipo de Combustible').bail()
+            .isIn(['nafta', 'gasoil', 'gnc', 'hibrido']).withMessage('Los valores posibles para tipo de combustible son nafta, gasoil, gnc e híbrido.').bail()
     ]
 }
 
