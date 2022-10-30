@@ -9,30 +9,45 @@
                     
                     <div>
                         <input type="text" name="marca" id="marca" placeholder="Marca *" required>
+                        <% if (locals.errors && locals.errors.marca) { %>
+                            <div>
+                                <p><%= locals.errors.marca.msg %></p>
+                            </div>
+                        <% } %>
                     </div>  
 
                     <div>
                         <input type="text" name="modelo" id="modelo" placeholder="Modelo *" required>
+                        <% if (locals.errors && locals.errors.modelo) { %>
+                            <div>
+                                <p><%= locals.errors.modelo.msg %></p>
+                            </div>
+                        <% } %>
                     </div>
                     
                     <div>
-                        <input type="number" min="2012" max="2017" step="1" id="anio" name="anio" placeholder="Año *" required>
+                        <input type="number" min="<%= minYearOfManufacture %>" max="<%= maxYearOfManufacture %>" step="1" id="anio" name="anio" placeholder="Año *">
+                        <% if (locals.errors && locals.errors.anio) { %>
+                            <div>
+                                <p><%= locals.errors.anio.msg %></p>
+                            </div>
+                        <% } %>
                     </div>
 
                     <div>
-                        <input type="number" min="85000" max="200000" name="kilometraje" id="kilometraje" placeholder="Kilometraje *" required>
+                        <input type="number" min="85000" max="200000" name="kilometraje" id="kilometraje" placeholder="Kilometraje *" >
                     </div>
 
                     <div>
-                        <input type="text" name="provincia" id="provincia" placeholder="Provincia *" required>
+                        <input type="text" name="provincia" id="provincia" placeholder="Provincia *" >
                     </div>                    
                     
                     <div>
-                        <input type="text" name="localidad" id="localidad" placeholder="Localidad *" required>
+                        <input type="text" name="localidad" id="localidad" placeholder="Localidad *" >
                     </div>
 
                     <div>
-                        <input type="number" name="precio" id="precio" step="1000" placeholder="Precio (AR$) *" required> 
+                        <input type="number" name="precio" id="precio" step="1000" placeholder="Precio (AR$) *" > 
                     </div>
 
                     <div>
@@ -120,7 +135,7 @@
                     
                     <div>
                         <label for="img">Imagen *</label>
-                        <input type="file" name="img" id="img" accept=".jpg,.png" required>
+                        <input type="file" name="img" id="img" accept=".jpg,.png" >
                     </div>
                     
                     <div id="boton-crear">
