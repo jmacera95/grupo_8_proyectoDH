@@ -13,7 +13,17 @@ const productsValidations = {
             .notEmpty().withMessage('Debes completar el campo modelo.').bail(),
         body('anio')
             .notEmpty().withMessage('Debes completar el campo año.').bail()
-            .isInt({min: minYearOfManufacture, max: maxYearOfManufacture}).withMessage(`El año debe ser un número entero. Además, no debe ser menor a ${minYearOfManufacture} ni mayor a ${maxYearOfManufacture}`).bail()
+            .isInt({min: minYearOfManufacture, max: maxYearOfManufacture}).withMessage(`El año debe ser un número entero. Además, no debe ser menor a ${minYearOfManufacture} ni mayor a ${maxYearOfManufacture}`).bail(),
+        body('kilometraje')
+            .notEmpty().withMessage('Debes completar el campo kilometraje.').bail()
+            .isInt({min: 85000, max: 200000}).withMessage('El vehículo no debe tener menos de 85.000 ni más de 200.000 kilómetros.').bail(),
+        body('provincia')
+            .notEmpty().withMessage('Debes completar el campo Provincia').bail(),
+        body('localidad')
+            .notEmpty().withMessage('Debes completar el campo Localidad.').bail(),
+        body('precio')
+            .notEmpty().withMessage('Debes completar el campo Precio.').bail()
+            .isInt().withMessage('El precio debe ser un número entero.')
     ]
 }
 
