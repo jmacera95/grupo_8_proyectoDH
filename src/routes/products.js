@@ -8,7 +8,15 @@ const userTypeMiddleware = require('../middlewares/userTypeMiddleware');
 const { productsCreateValidations } = require('../validations/productsValidations');
 
 const storage = multer.memoryStorage();
-const uploadFile = multer({ storage });
+function fileFilter(req, file, cb) {
+    const acceptedFileExtensions = [".jpg", ".png", ".jpeg"];
+    const isAccepted = acceptedFileExtensions.includes(path.extname(file.originalname));
+    if (!isAccepted) {
+        req.file = file;
+    }
+    cb(null, isAccepted);
+}
+const uploadFile = multer({ storage: storage, fileFilter: fileFilter });
 
 router.get('/', productController.productList);
 

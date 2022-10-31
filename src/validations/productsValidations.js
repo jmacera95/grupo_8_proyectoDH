@@ -25,8 +25,46 @@ const productsValidations = {
             .notEmpty().withMessage('Debes completar el campo Precio.').bail()
             .isInt().withMessage('El precio debe ser un número entero.').bail(),
         body('combustible')
-            .notEmpty().withMessage('Debes compeltar el campo Tipo de Combustible').bail()
-            .isIn(['nafta', 'gasoil', 'gnc', 'hibrido']).withMessage('Los valores posibles para tipo de combustible son nafta, gasoil, gnc e híbrido.').bail()
+            .notEmpty().withMessage('Debes compeltar el campo Tipo de Combustible.').bail()
+            .isIn(['nafta', 'gasoil', 'gnc', 'hibrido']).withMessage('Los valores posibles para tipo de combustible son nafta, gasoil, gnc e híbrido.').bail(),
+        body('transmision')
+            .notEmpty().withMessage('Debes compeltar el campo Transmisión.').bail()
+            .isIn(['manual', 'automatico']).withMessage('Los valores posibles para transmisión son manual y automático.').bail(),
+        body('cantidadDuenios')
+            .notEmpty().withMessage('Debes compeltar el campo Cantidad de dueños.').bail()
+            .isIn(['1', '2']).withMessage('El vehículo no puede haber tenido más de dos dueños.').bail(),
+        body('fechaService')
+            .notEmpty().withMessage('Debes completar el campo Fecha Último Service.').bail()
+            .isDate().withMessage('El valor debe ser una fecha.').bail(),
+        body('embrague')
+            .notEmpty().withMessage('Debes compeltar el campo Embrague.').bail()
+            .isIn(['fabrica', 'repuesto']).withMessage('Los valores posibles para embrague son De Fábrica o Repuesto.').bail(),
+        body('antiguedadCorrea')
+            .notEmpty().withMessage('Debes completar el campo Antiguedad Correa de Distribución.').bail()
+            .isInt().withMessage('El valor debe ser un número entero.').bail(),
+        body('alineacionBalanceo')
+            .notEmpty().withMessage('Debes completar el campo Alineación y Balanceo.').bail()
+            .isDate().withMessage('El valor debe ser una fecha.').bail(),
+        body('cantidadPuertas')
+            .notEmpty().withMessage('Debes compeltar el campo Cantidad de Puertas.').bail()
+            .isIn(['3', '4', '5']).withMessage('Los valores posibles son 3, 4 o 5 puertas.').bail(),
+        body('abs')
+            .notEmpty().withMessage('Debes compeltar el campo ABS.').bail()
+            .isIn(['si', 'no']).withMessage('Los valores posibles son Sí o No.').bail(),
+        body('airbag')
+            .notEmpty().withMessage('Debes compeltar el campo Airbag.').bail()
+            .isIn(['tiene-adelante', 'tiene-ambos', 'no']).withMessage('Los valores posibles son Tiene - Solo Adelante, Tiene - Adelante y Atrás y No tiene.').bail(),
+        body('destacado')
+            .notEmpty().withMessage('Debes completar el campo Producto Destacado.').bail()
+            .isIn(["true", "false"]).withMessage('Los valores posibles son Sí o No.').bail(),
+        body('img')
+            .notEmpty().withMessage('Debes subir una imagen').bail()
+            .custom(
+                ({req}) => {
+                    const acceptedFileExtensions = [".jpg", ".png", ".jpeg"];
+                    return acceptedFileExtensions.includes(path.extname(req.file.filename));
+                }
+            ).withMessage("El archivo no posee un formato adecuado. Las extensiones aceptadas son .jpg, .png y .jpeg")
     ]
 }
 

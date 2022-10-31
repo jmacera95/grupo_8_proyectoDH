@@ -26,7 +26,7 @@
                     </div>
                     
                     <div>
-                        <input type="number" min="<%= minYearOfManufacture %>" max="<%= maxYearOfManufacture %>" step="1" id="anio" name="anio" placeholder="Año *">
+                        <input type="number" min="<%= minYearOfManufacture %>" max="<%= maxYearOfManufacture %>" step="1" id="anio" name="anio" placeholder="Año *" required>
                         <% if (locals.errors && locals.errors.anio) { %>
                             <div>
                                 <p><%= locals.errors.anio.msg %></p>
@@ -36,18 +36,38 @@
 
                     <div>
                         <input type="number" min="85000" max="200000" name="kilometraje" id="kilometraje" placeholder="Kilometraje *" required>
+                        <% if (locals.errors && locals.errors.kilometraje) { %>
+                            <div>
+                                <p><%= locals.errors.kilometraje.msg %></p>
+                            </div>
+                        <% } %>
                     </div>
 
                     <div>
                         <input type="text" name="provincia" id="provincia" placeholder="Provincia *" required>
+                        <% if (locals.errors && locals.errors.provincia) { %>
+                            <div>
+                                <p><%= locals.errors.provincia.msg %></p>
+                            </div>
+                        <% } %>
                     </div>                    
                     
                     <div>
                         <input type="text" name="localidad" id="localidad" placeholder="Localidad *" required>
+                        <% if (locals.errors && locals.errors.localidad) { %>
+                            <div>
+                                <p><%= locals.errors.localidad.msg %></p>
+                            </div>
+                        <% } %>
                     </div>
 
                     <div>
-                        <input type="number" name="precio" id="precio" step="1000" placeholder="Precio (AR$) *" required> 
+                        <input type="number" name="precio" id="precio" step="1000" placeholder="Precio (AR$) *" required>
+                        <% if (locals.errors && locals.errors.precio) { %>
+                            <div>
+                                <p><%= locals.errors.precio.msg %></p>
+                            </div>
+                        <% } %> 
                     </div>
 
                     <div>
@@ -58,6 +78,11 @@
                             <option value="gnc">GNC</option>
                             <option value="hibrido">Hibrido</option>
                         </select>
+                        <% if (locals.errors && locals.errors.combustible) { %>
+                            <div>
+                                <p><%= locals.errors.combustible.msg %></p>
+                            </div>
+                        <% } %>
                     </div>
                 
                     <div>
@@ -66,6 +91,11 @@
                             <option value="manual">Manual</option>
                             <option value="automatico">Automático</option>
                         </select>
+                        <% if (locals.errors && locals.errors.transmision) { %>
+                            <div>
+                                <p><%= locals.errors.transmision.msg %></p>
+                            </div>
+                        <% } %>
                     </div>
                     
                     <div>
@@ -74,11 +104,21 @@
                             <option value="1">1</option>
                             <option value="2">2</option>
                         </select>
+                        <% if (locals.errors && locals.errors.cantidadDuenios) { %>
+                            <div>
+                                <p><%= locals.errors.cantidadDuenios.msg %></p>
+                            </div>
+                        <% } %>
                     </div>
                     
                     <div>
                         <label for="fechaService">Fecha Último Service *</label>
                         <input type="date" name="fechaService" id="fechaService" value="">
+                        <% if (locals.errors && locals.errors.fechaService) { %>
+                            <div>
+                                <p><%= locals.errors.fechaService.msg %></p>
+                            </div>
+                        <% } %>
                     </div>
                     
                     <div>
@@ -87,16 +127,31 @@
                             <option value="fabrica">De Fábrica</option>
                             <option value="repuesto">Repuesto</option>
                         </select>
+                        <% if (locals.errors && locals.errors.embrague) { %>
+                            <div>
+                                <p><%= locals.errors.embrague.msg %></p>
+                            </div>
+                        <% } %>
                     </div>
                     
                     <div>
                         <label for="antiguedadCorrea">Antiguedad Correa de Distribución *</label>
                         <input type="number" name="antiguedadCorrea" id="antiguedadCorrea" step="500">
+                        <% if (locals.errors && locals.errors.antiguedadCorrea) { %>
+                            <div>
+                                <p><%= locals.errors.antiguedadCorrea.msg %></p>
+                            </div>
+                        <% } %>
                     </div>
                     
                     <div>
                         <label for="alineacionBalanceo">Alineación y Balanceo *</label>
                         <input type="date" name="alineacionBalanceo" id="alineacionBalanceo">
+                        <% if (locals.errors && locals.errors.alineacionBalanceo) { %>
+                            <div>
+                                <p><%= locals.errors.alineacionBalanceo.msg %></p>
+                            </div>
+                        <% } %>
                     </div>
                     
                     <div>
@@ -106,14 +161,24 @@
                             <option value="4">4</option>
                             <option value="5">5</option>
                         </select>
+                        <% if (locals.errors && locals.errors.cantidadPuertas) { %>
+                            <div>
+                                <p><%= locals.errors.cantidadPuertas.msg %></p>
+                            </div>
+                        <% } %>
                     </div>
                     
                     <div>
                         <label for="abs">ABS *</label>
                         <select name="abs" id="abs">
-                            <option value="si">Si</option>
+                            <option value="si">Sí</option>
                             <option value="no">No</option>
                         </select>
+                        <% if (locals.errors && locals.errors.abs) { %>
+                            <div>
+                                <p><%= locals.errors.abs.msg %></p>
+                            </div>
+                        <% } %>
                     </div>
                     
                     <div>
@@ -123,19 +188,34 @@
                             <option value="tiene-ambos">Tiene - Adelante y Atrás</option>
                             <option value="no">No tiene</option>
                         </select>
+                        <% if (locals.errors && locals.errors.airbag) { %>
+                            <div>
+                                <p><%= locals.errors.airbag.msg %></p>
+                            </div>
+                        <% } %>
                     </div>
 
                     <div>
                         <label for="destacado">Producto Destacado *</label>
                         <select name="destacado" id="destacado">
-                            <option value="true">Si</option>
+                            <option value="true">Sí</option>
                             <option value="false" selected>No</option>
                         </select>
+                        <% if (locals.errors && locals.errors.destacado) { %>
+                            <div>
+                                <p><%= locals.errors.destacado.msg %></p>
+                            </div>
+                        <% } %>
                     </div>
                     
                     <div>
                         <label for="img">Imagen *</label>
                         <input type="file" name="img" id="img" accept=".jpg,.png" >
+                        <% if (locals.errors && locals.errors.img) { %>
+                            <div>
+                                <p><%= locals.errors.img.msg %></p>
+                            </div>
+                        <% } %>
                     </div>
                     
                     <div id="boton-crear">
