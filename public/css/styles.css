@@ -216,6 +216,14 @@ footer #social-media a i {
 }
 /*END FOOTER CSS SECTION*/
 
+/*START is-invalid CSS SECTION*/
+.is-invalid {
+    color: red;
+    font-size: 10px;
+    margin: auto;
+}
+/*END is-invalid CSS SECTION*/
+
 @media (min-width: 769px) {
     /*START HEADER CSS SECTION*/
     header .logo {

@@ -130,5 +130,25 @@
                     "abs": "si",
                     "airbag": "tiene-ambos",
                     "destacado": false
+          },
+          {
+                    "id": 7,
+                    "marca": "Toyota",
+                    "modelo": "Etios",
+                    "anio": 2013,
+                    "kilometraje": 150000,
+                    "provincia": "Bs As",
+                    "localidad": "San Fernando",
+                    "precio": 4500000,
+                    "combustible": "gasoil",
+                    "transmision": "automatico",
+                    "fechaService": "2022-10-15",
+                    "embrague": "repuesto",
+                    "antiguedadCorrea": 1500,
+                    "alineacionBalanceo": "2022-10-08",
+                    "cantidadPuertas": 3,
+                    "abs": "si",
+                    "airbag": "tiene-adelante",
+                    "destacado": true
           }
 ]

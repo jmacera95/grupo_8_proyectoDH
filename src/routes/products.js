@@ -11,6 +11,7 @@ const storage = multer.memoryStorage();
 function fileFilter(req, file, cb) {
     const acceptedFileExtensions = [".jpg", ".png", ".jpeg"];
     const isAccepted = acceptedFileExtensions.includes(path.extname(file.originalname));
+    console.log(isAccepted);
     if (!isAccepted) {
         req.file = file;
     }

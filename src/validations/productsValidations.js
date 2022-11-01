@@ -1,3 +1,4 @@
+const path = require('path');
 const { body } = require('express-validator');
 
 // const's for business logic related validations
@@ -41,7 +42,7 @@ const productsValidations = {
             .isIn(['fabrica', 'repuesto']).withMessage('Los valores posibles para embrague son De Fábrica o Repuesto.').bail(),
         body('antiguedadCorrea')
             .notEmpty().withMessage('Debes completar el campo Antiguedad Correa de Distribución.').bail()
-            .isInt().withMessage('El valor debe ser un número entero.').bail(),
+            .isInt({min: 0}).withMessage('El valor debe ser un número entero positivo.').bail(),
         body('alineacionBalanceo')
             .notEmpty().withMessage('Debes completar el campo Alineación y Balanceo.').bail()
             .isDate().withMessage('El valor debe ser una fecha.').bail(),
@@ -58,11 +59,10 @@ const productsValidations = {
             .notEmpty().withMessage('Debes completar el campo Producto Destacado.').bail()
             .isIn(["true", "false"]).withMessage('Los valores posibles son Sí o No.').bail(),
         body('img')
-            .notEmpty().withMessage('Debes subir una imagen').bail()
             .custom(
-                ({req}) => {
+                (value, { req }) => {
                     const acceptedFileExtensions = [".jpg", ".png", ".jpeg"];
-                    return acceptedFileExtensions.includes(path.extname(req.file.filename));
+                    return acceptedFileExtensions.includes(path.extname(req.file.originalname));
                 }
             ).withMessage("El archivo no posee un formato adecuado. Las extensiones aceptadas son .jpg, .png y .jpeg")
     ]
