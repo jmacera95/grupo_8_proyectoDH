@@ -11,7 +11,6 @@ const storage = multer.memoryStorage();
 function fileFilter(req, file, cb) {
     const acceptedFileExtensions = [".jpg", ".png", ".jpeg"];
     const isAccepted = acceptedFileExtensions.includes(path.extname(file.originalname));
-    console.log(isAccepted);
     if (!isAccepted) {
         req.file = file;
     }
@@ -24,7 +23,7 @@ router.get('/', productController.productList);
 router.get('/product-detail/:id', productController.productDetail);
 
 router.get('/create', userTypeMiddleware, productController.create);
-router.post('/create', uploadFile.single('img'), productsCreateValidations, productController.saveNewProduct);
+router.post('/create', uploadFile.single('img'), resizeImagesMiddleware, productsCreateValidations, productController.saveNewProduct);
 
 router.get('/edit/:id', userTypeMiddleware, productController.editar);
 router.put('/edit/:id', uploadFile.single('img'), resizeImagesMiddleware, productController.actualizar);
