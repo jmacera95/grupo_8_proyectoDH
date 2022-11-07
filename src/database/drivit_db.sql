@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS vehicles_models (
     traction VARCHAR(50) NOT NULL,
     abs BOOL NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (brand_id) REFERENCES brands(id)
+    FOREIGN KEY (brand_id) REFERENCES brands (id)
 );
 INSERT INTO vehicles_models (brand_id, `name`, model_name, `year`, fuel_type, transmission_type, airbag, doors_quantity, `engine`, traction, abs)
 VALUES 
@@ -54,3 +54,54 @@ VALUES
     (1, 'Ford Fiesta titanium 2013 1.6 nafta manual', 'Fiesta', 2013, 'Nafta', 'Manual', True, 5, 1.6, '4x2', True),
     (5, 'Toyota Etios 2016 1.3 automático full nafta', 'Etios', 2016, 'Nafta', 'Automático', True, 5, 1.3, '4x2', True)
 ;
+
+/*vehicles table*/
+DROP TABLE IF EXISTS vehicles;
+CREATE TABLE IF NOT EXISTS vehicles (
+	id INT NOT NULL AUTO_INCREMENT,
+    vehicle_model_id INT NOT NULL,
+    kilometers INT NOT NULL,
+    last_service_date DATE NOT NULL,
+    color VARCHAR(200) NOT NULL,
+    last_balancing_alignment_date DATE NOT NULL,
+    timing_belt_age_kilometers INT NOT NULL,
+    airbag_status VARCHAR(200) NOT NULL,
+    total_owners TINYINT NOT NULL,
+    legal_identifier VARCHAR(250) NOT NULL,
+    location_province VARCHAR(300) NOT NULL,
+    clutch_status VARCHAR(250) NOT NULL,
+    image_path VARCHAR(300) NOT NULL,
+    outstanding BOOL NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (vehicle_model_id) REFERENCES vehicles_models (id)
+);
+
+/*user_type table*/
+DROP TABLE IF EXISTS user_type;
+CREATE TABLE IF NOT EXISTS user_type (
+	id INT NOT NULL AUTO_INCREMENT,
+    user_type VARCHAR(200) NOT NULL,
+    PRIMARY KEY (id)
+);
+INSERT INTO user_type (id, user_type)
+VALUES
+	(1, 'admin'),
+    (2, 'basic')
+;
+
+/*users table*/
+DROP TABLE IF EXISTS users;
+CREATE TABLE IF NOT EXISTS users (
+	id INT NOT NULL AUTO_INCREMENT,
+    user_type_id INT NOT NULL,
+    first_name VARCHAR(500) NOT NULL,
+    last_name VARCHAR(500) NOT NULL,
+    legal_identifier VARCHAR(250) NOT NULL,
+    phone_number INT NOT NULL,
+    email VARCHAR(500) NOT NULL,
+    postal_code VARCHAR(200) NOT NULL,
+    `password` VARCHAR(400) NOT NULL,
+    image_path VARCHAR(300) NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_type_id) REFERENCES user_type (id)
+);
