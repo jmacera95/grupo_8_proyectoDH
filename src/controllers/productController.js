@@ -1,6 +1,8 @@
 const path = require('path');
 const fs = require('fs');
 const { validationResult } = require('express-validator');
+const db = require('../database/models');
+const { Op } = require("sequelize");
 
 // const's for business logic related validations
 const currentYear = (new Date).getFullYear();
@@ -31,7 +33,17 @@ const productController = {
         res.render('productDetail', {producto: producto});
     },
     create : (req, res) => {
-        res.render('productCreate', {minYearOfManufacture: minYearOfManufacture, maxYearOfManufacture: maxYearOfManufacture}); 
+        db.VehiclesModels.findAll(
+            {
+                where: {
+                    year: {[Op.gte] : minYearOfManufacture, [Op.lte] : maxYearOfManufacture}
+                }
+            }
+        )
+            .then(vehicles => {
+                return res.render('productCreate', {minYearOfManufacture: minYearOfManufacture, maxYearOfManufacture: maxYearOfManufacture, vehicles: vehicles}); 
+            })
+        
     },
     saveNewProduct: (req, res, next) => {
         const errors = validationResult(req);
