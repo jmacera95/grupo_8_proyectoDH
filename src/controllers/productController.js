@@ -48,7 +48,7 @@ const productController = {
     saveNewProduct: (req, res, next) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.render('productCreate', { errors: errors.mapped(), old: req.body, minYearOfManufacture: minYearOfManufacture, maxYearOfManufacture: maxYearOfManufacture, vehicles: [] });
+            return res.render('productCreate', { errors: errors.mapped(), old: req.body, minYearOfManufacture: minYearOfManufacture, maxYearOfManufacture: maxYearOfManufacture, vehicles: [] }); // vehicles must be obtained from database and passed to form
         } else {
             if (!req.file) {
                 const error = new Error("La imagen no se ha subido de forma correcta.");
@@ -57,6 +57,23 @@ const productController = {
                 db.VehiclesModels.findByPk(req.body.vehicle_model)
                     .then(vehicle_model => {
                         return res.send(vehicle_model);
+                        db.Vehicles.create(
+                            {
+                                vehicle_model_id: req.body.vehicle_model,
+                                kilometers:,
+                                last_service_date:,
+                                color:,
+                                last_balancing_alignment_date:,
+                                timing_belt_age_kilometers:,
+                                airbag_status:,
+                                total_owners:,
+                                legal_identifier:,
+                                location_province:,
+                                clutch_status:,
+                                image_path:,
+                                outstanding:
+                            }
+                        )
                     })
             //     const productos = TraerProductos();
             //     const newProduct = {
