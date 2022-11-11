@@ -48,39 +48,43 @@ const productController = {
     saveNewProduct: (req, res, next) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.render('productCreate', { errors: errors.mapped(), old: req.body, minYearOfManufacture: minYearOfManufacture, maxYearOfManufacture: maxYearOfManufacture });
+            return res.render('productCreate', { errors: errors.mapped(), old: req.body, minYearOfManufacture: minYearOfManufacture, maxYearOfManufacture: maxYearOfManufacture, vehicles: [] });
         } else {
             if (!req.file) {
                 const error = new Error("La imagen no se ha subido de forma correcta.");
                 next(error);
             } else {
-                const productos = TraerProductos();
-                const newProduct = {
-                    id: productos.length + 1,
-                    img: req.file.filename,
-                    marca: req.body.marca,
-                    modelo: req.body.modelo,
-                    anio: Number(req.body.anio),
-                    kilometraje: Number(req.body.kilometraje),
-                    provincia: req.body.provincia,
-                    localidad: req.body.localidad,
-                    precio: Number(req.body.precio),
-                    combustible: req.body.combustible,
-                    transmision: req.body.transmision,
-                    cantidadDueños: req.body.camtidadDuenios,
-                    fechaService: req.body.fechaService,
-                    embrague: req.body.embrague,
-                    antiguedadCorrea: Number(req.body.antiguedadCorrea),
-                    alineacionBalanceo: req.body.alineacionBalanceo,
-                    cantidadPuertas: Number(req.body.cantidadPuertas),
-                    abs: req.body.abs,
-                    airbag: req.body.airbag,
-                    destacado: req.body.destacado === "true"
-            };
+                db.VehiclesModels.findByPk(req.body.vehicle_model)
+                    .then(vehicle_model => {
+                        return res.send(vehicle_model);
+                    })
+            //     const productos = TraerProductos();
+            //     const newProduct = {
+            //         id: productos.length + 1,
+            //         img: req.file.filename,
+            //         marca: req.body.marca,
+            //         modelo: req.body.modelo,
+            //         anio: Number(req.body.anio),
+            //         kilometraje: Number(req.body.kilometraje),
+            //         provincia: req.body.provincia,
+            //         localidad: req.body.localidad,
+            //         precio: Number(req.body.precio),
+            //         combustible: req.body.combustible,
+            //         transmision: req.body.transmision,
+            //         cantidadDueños: req.body.camtidadDuenios,
+            //         fechaService: req.body.fechaService,
+            //         embrague: req.body.embrague,
+            //         antiguedadCorrea: Number(req.body.antiguedadCorrea),
+            //         alineacionBalanceo: req.body.alineacionBalanceo,
+            //         cantidadPuertas: Number(req.body.cantidadPuertas),
+            //         abs: req.body.abs,
+            //         airbag: req.body.airbag,
+            //         destacado: req.body.destacado === "true"
+            // };
 
-                productos.push(newProduct); 
-                writeFile(productos);
-                res.redirect(`/products/product-detail/${newProduct.id}`);
+            //     productos.push(newProduct); 
+            //     writeFile(productos);
+            //     res.redirect(`/products/product-detail/${newProduct.id}`);
             }
         }
     },

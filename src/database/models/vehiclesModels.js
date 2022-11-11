@@ -38,11 +38,11 @@ module.exports = (sequelize, DataTypes) => {
     
     const VehiclesModels = sequelize.define(alias, cols, config);
 
-    // Movies.associate = function(models) {
-    //     Movies.belongsTo(models.Genres, {
-    //         as: "genre",
-    //         foreignKey: "genre_id"
-    //     })
+    VehiclesModels.associate = function(models) {
+        VehiclesModels.hasMany(models.Vehicles, {
+            as: "vehicles",
+            foreignKey: "vehicle_model_id"
+        })
 
     //     Movies.belongsToMany(models.Actor, {
     //         as: "actors",
@@ -51,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
     //         otherKey: "actor_id",
     //         timestamps: false
     //     })
-    // }
+    }
 
     return VehiclesModels;
 }
