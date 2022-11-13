@@ -24,7 +24,7 @@
                 <% for(let producto of productos) { %>
                     <a href="/products/product-detail/<%=producto.id%>">
                         <article>
-                            <img src="/images/products/<%=producto.img%>" alt="<%=producto.marca%> <%=producto.modelo%>">
+                            <img src="/images/products/<%=producto.image_path%>" alt="<%=producto.vehicles_models.marca%> <%=producto.modelo%>">
                             <h3><%=producto.marca%> <%=producto.modelo%></h3>
                             <h4><%=producto.anio%> - <%=producto.kilometraje%>km - <%=producto.provincia%></h4>
                             <h4>$<%=producto.precio%></h4>

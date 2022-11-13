@@ -44,6 +44,11 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: "vehicle_model_id"
         })
 
+        VehiclesModels.belongsTo(models.Brand, {
+            as: "model_brand",
+            foreignKey: "brand_id"
+        })
+
     //     Movies.belongsToMany(models.Actor, {
     //         as: "actors",
     //         through: "actor_movie",

@@ -54,7 +54,10 @@ module.exports = (sequelize, DataTypes) => {
     const Vehicles = sequelize.define(alias, cols, config);
 
     Vehicles.associate = function(models) {
-        Vehicles.belongsTo(models.VehiclesModels)
+        Vehicles.belongsTo(models.VehiclesModels, {
+            as: "vehicles_models",
+            foreignKey: "vehicle_model_id"
+        })
     //     Movies.belongsToMany(models.Actor, {
     //         as: "actors",
     //         through: "actor_movie",

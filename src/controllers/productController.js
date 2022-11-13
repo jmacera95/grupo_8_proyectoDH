@@ -24,8 +24,27 @@ function writeFile(productos) {
 
 const productController = {
     productList : (req, res) => {
-        const productos = TraerProductos();
-        res.render('productList', {productos: productos});
+        db.Vehicles.findAll(
+            {
+                include: [
+                    {
+                        model: db.VehiclesModels,
+                        as: "vehicles_models",
+                        include: [{
+                            model: db.Brand,
+                            as: 'model_brand'
+                        }]
+                    }
+                ]
+            }
+        )
+            .then(
+                vehicles => {
+                    return res.send(vehicles);
+                }
+            )
+        // const productos = TraerProductos();
+        // res.render('productList', {productos: productos});
     },
     productDetail : (req, res) => {
         const productos = TraerProductos();
@@ -54,27 +73,29 @@ const productController = {
                 const error = new Error("La imagen no se ha subido de forma correcta.");
                 next(error);
             } else {
-                db.VehiclesModels.findByPk(req.body.vehicle_model)
-                    .then(vehicle_model => {
-                        return res.send(vehicle_model);
-                        db.Vehicles.create(
-                            {
-                                vehicle_model_id: req.body.vehicle_model,
-                                kilometers:,
-                                last_service_date:,
-                                color:,
-                                last_balancing_alignment_date:,
-                                timing_belt_age_kilometers:,
-                                airbag_status:,
-                                total_owners:,
-                                legal_identifier:,
-                                location_province:,
-                                clutch_status:,
-                                image_path:,
-                                outstanding:
-                            }
-                        )
-                    })
+                db.Vehicles.create(
+                    {
+                        vehicle_model_id: req.body.vehicle_model,
+                        kilometers: Number(req.body.kilometraje),
+                        last_service_date: req.body.fechaService,
+                        color: "white", // must be added to form
+                        last_balancing_alignment_date: req.body.alineacionBalanceo,
+                        timing_belt_age_kilometers: Number(req.body.antiguedadCorrea),
+                        airbag_status: req.body.airbag,
+                        total_owners: req.body.cantidadDuenios,
+                        legal_identifier: "NAN", //must me added to form
+                        location_province: req.body.provincia,
+                        clutch_status: req.body.embrague,
+                        image_path: req.file.filename,
+                        outstanding: req.body.destacado === "true"
+                    }
+                )
+                .then(response => {
+                    return res.send(response);
+                })
+                // return res.redirect(`/products`);
+                //     res.redirect(`/products/product-detail/${newProduct.id}`);
+                    
             //     const productos = TraerProductos();
             //     const newProduct = {
             //         id: productos.length + 1,
@@ -88,7 +109,7 @@ const productController = {
             //         precio: Number(req.body.precio),
             //         combustible: req.body.combustible,
             //         transmision: req.body.transmision,
-            //         cantidadDueños: req.body.camtidadDuenios,
+            //         cantidadDueños: req.body.cantidadDuenios,
             //         fechaService: req.body.fechaService,
             //         embrague: req.body.embrague,
             //         antiguedadCorrea: Number(req.body.antiguedadCorrea),
