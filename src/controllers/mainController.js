@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const db = require('../database/models');
 
 function TraerProductosDestacados() {
     const productsFile = fs.readFileSync(path.join(__dirname, '../database/products.json'))
@@ -9,8 +10,26 @@ function TraerProductosDestacados() {
 
 const mainController = {
     index : (req, res) => {
-        const productos = TraerProductosDestacados();
-        res.render('index', {productos: productos});
+        db.Vehicles.findAll(
+            {
+                where: {outstanding: true},
+                include: [
+                    {
+                        model: db.VehiclesModels,
+                        as: "vehicles_models",
+                        include: [{
+                            model: db.Brand,
+                            as: 'model_brand'
+                        }]
+                    }
+                ]
+            }
+        )
+            .then(
+                vehicles => {
+                    res.render('index', {productos: vehicles})
+                }
+            )
     }
 }
 

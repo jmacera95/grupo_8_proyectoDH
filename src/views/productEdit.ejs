@@ -8,135 +8,97 @@
                     <h3>Editar Producto</h3>
                     
                     <div>
-                        <label for="marca">Marca</label> 
-                        <input type="text" name="marca" id="marca"  value="<%= producto.marca %>">
-                    </div>  
-
-                    <div>
-                        <label for="modelo">Modelo</label> 
-                        <input type="text" name="modelo" id="modelo" value="<%= producto.modelo %>">
-                    </div>
-                    
-                    <div>
-                        <label for="anio">Año</label> 
-                        <input type="number" min="2012" max="2017" step="1" id="anio" name="anio" value="<%= producto.anio %>">
+                        <select name="vehicle_model" id="vehicle_model" disabled>
+                            <option value="<%= producto.vehicles_models.id %>" selected><%=producto.vehicles_models.name%> </option>   
+                        </select>
                     </div>
 
                     <div>
                         <label for="kilometraje">Kilometraje</label> 
-                        <input type="number" min="85000" max="200000" name="kilometraje" id="kilometraje" value="<%= producto.kilometraje %>">
+                        <input type="number" min="85000" max="200000" name="kilometraje" id="kilometraje" value="<%= producto.kilometers %>">
+                    </div>
+
+
+                    <div>
+                        <label for="color">Color *</label>
+                        <select name="color" id="color" required>
+                            <option value="black" <%= producto.color == "black" ? "selected" : null %>>Negro</option>
+                            <option value="white" <%= producto.color == "white" ? "selected" : null %>>Blanco</option>
+                            <option value="grey" <%= producto.color == "grey" ? "selected" : null %>>Gris</option>
+                            <option value="yellow" <%= producto.color == "yellow" ? "selected" : null %>>Amarillo</option>
+                            <option value="green" <%= producto.color == "green" ? "selected" : null %>>Verde</option>
+                            <option value="blue" <%= producto.color == "blue" ? "selected" : null %>>Azul</option>
+                            <option value="red" <%= producto.color == "red" ? "selected" : null %>>Red</option>
+                        </select>
+                        <% if (locals.errors && locals.errors.color) { %>
+                            <div class="is-invalid">
+                                <p><%= locals.errors.color.msg %></p>
+                            </div>
+                        <% } %>
                     </div>
 
                     <div>
                         <label for="provincia">Provincia</label> 
-                        <input type="text" name="provincia" id="provincia" value="<%= producto.provincia %>">
-                    </div>                    
-                    
-                    <div>
-                        <label for="localidad">Localidad *</label> 
-                        <input type="text" name="localidad" id="localidad" value="<%= producto.localidad %>">
+                        <input type="text" name="provincia" id="provincia" value="<%= producto.location_province %>">
                     </div>
-
+                    
                     <div>
                         <label for="precio">Precio</label> 
-                        <input type="number" name="precio" id="precio" step="1000" value="<%= producto.precio %>"> 
+                        <input type="number" name="precio" id="precio" step="1000" value="<%= producto.price %>"> 
                     </div>
 
-                    <div>
-                        <label for="combustible">Tipo de Combustible</label> 
-                        <select name="combustible" id="combustible">
-                            <option value="<%= producto.combustible %>"><%= producto.combustible %></option>
-                            <option value="nafta">Nafta</option>
-                            <option value="gasoil">Gasoil</option>
-                            <option value="gnc">GNC</option>
-                            <option value="hibrido">Hibrido</option>
-                        </select>
-                    </div>
-                
-                    <div>
-                        <label for="transmision">Transmisión</label>
-                        <select name="transmision" id="transmision">
-                            <option value="<%= producto.transmision %>"><%= producto.transmision %></option>
-                            <option value="manual">Manual</option>
-                            <option value="automatico">Automático</option>
-                        </select>
-                    </div>
-                    
                     <div>
                         <label for="cantidadDuenios">Cantidad de Dueños</label>
                         <select name="cantidadDuenios" id="cantidadDuenios">
-                            <option value="<%= producto.cantidadDuenios %>"><%= producto.cantidadDuenios %></option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
+                            <option value="1" <%= producto.total_owners == 1 ? "selected" : null %>>1</option>
+                            <option value="2" <%= producto.total_owners == 2 ? "selected" : null %>>2</option>
                         </select>
                     </div>
-                    
+
                     <div>
                         <label for="fechaService">Fecha Último Service *</label>
-                        <input type="date" name="fechaService" id="fechaService" value="<%= producto.fechaService %>">
+                        <input type="date" name="fechaService" id="fechaService" value="<%= producto.last_service_date %>">
                     </div>
-                    
+
                     <div>
                         <label for="embrague">Embrague</label>
                         <select name="embrague" id="embrague">
-                            <option value="<%= producto.embrague %>"><%= producto.embrague %></option>
-                            <option value="fabrica">De Fábrica</option>
-                            <option value="repuesto">Repuesto</option>
+                            <option value="fabrica" <%= producto.clutch_status == "fabrica" ? "selected" : null %>>De Fábrica</option>
+                            <option value="repuesto" <%= producto.clutch_status == "repuesto" ? "selected" : null %>>Repuesto</option>
                         </select>
                     </div>
-                    
-                    <div>
+
+                     <div>
                         <label for="antiguedadCorrea">Antiguedad Correa de Distribución</label>
-                        <input type="number" name="antiguedadCorrea" id="antiguedadCorrea" step="500" value="<%= producto.antiguedadCorrea %>">
+                        <input type="number" name="antiguedadCorrea" id="antiguedadCorrea" step="500" value="<%= producto.timing_belt_age_kilometers %>">
                     </div>
-                    
+
                     <div>
                         <label for="alineacionBalanceo">Alineación y Balanceo</label>
-                        <input type="date" name="alineacionBalanceo" id="alineacionBalanceo" value="<%= producto.alineacionBalanceo %>">
+                        <input type="date" name="alineacionBalanceo" id="alineacionBalanceo" value="<%= producto.last_balancing_alignment_date %>">
                     </div>
-                    
-                    <div>
-                        <label for="cantidadPuertas">Cantidad de Puertas</label>
-                        <select name="cantidadPuertas" id="cantidadPuertas">
-                            <option value="<%= producto.cantidadPuertas %>"><%= producto.cantidadPuertas %></option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                    </div>
-                    
-                    <div>
-                        <label for="abs">ABS</label>
-                        <select name="abs" id="abs">
-                            <option value="<%= producto.abs %>"><%= producto.abs %></option>
-                            <option value="si">Si</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-                    
+
                     <div>
                         <label for="airbag">Airbag</label>
                         <select name="airbag" id="airbag">
-                            <option value="<%= producto.airbag %>"><%= producto.airbag %></option>
-                            <option value="tiene-adelante">Tiene - Solo Adelante</option>
-                            <option value="tiene-ambos">Tiene - Adelante y Atrás</option>
-                            <option value="no">No tiene</option>
+                            <option value="tiene-adelante" <%= producto.airbag_status == "tiene-adelante" ? "selected" : null %>>Tiene - Solo Adelante</option>
+                            <option value="tiene-ambos" <%= producto.airbag_status == "tiene-ambos" ? "selected" : null %>>Tiene - Adelante y Atrás</option>
+                            <option value="no" <%= producto.airbag_status == "no" ? "selected" : null %>>No tiene</option>
                         </select>
                     </div>
 
                     <div>
                         <label for="destacado">Producto Destacado</label>
                         <select name="destacado" id="destacado">
-                            <option value="<%= producto.destacado %>"><%= producto.destacado %></option>
-                            <option value="true">Si</option>
-                            <option value="false">No</option>
+                            <option value="true" <%= producto.outstanding == true ? "selected" : null %>>Si</option>
+                            <option value="false" <%= producto.outstanding == false ? "selected" : null %>>No</option>
                         </select>
                     </div>
-                    
+
                     <div>
                         <label for="img">Imagen</label>
-                        <img src="/images/products/<%= producto.img %> ">
-                        <input type="file" name="img" id="img" accept=".jpg,.png">
+                        <img src="/images/products/<%= producto.image_path %> ">
+                        <input type="file" name="img" id="img" accept=".jpg,.png" value="<%= producto.image_path %>">
                     </div>
                     
                     <div id="boton-editar">
