@@ -11,8 +11,13 @@ const productsValidations = {
         body('kilometraje')
             .notEmpty().withMessage('Debes completar el campo kilometraje.').bail()
             .isInt({min: 85000, max: 200000}).withMessage('El vehículo no debe tener menos de 85.000 ni más de 200.000 kilómetros.').bail(),
+        body('color')
+            .notEmpty().withMessage('Debes completar el campo Color.').bail()
+            .isIn(["black", "white", "grey", "green", "red", "yellow", "blue"]).withMessage('Color inválido.').bail(),
         body('provincia')
             .notEmpty().withMessage('Debes completar el campo Provincia').bail(),
+        body('legal_identifier')
+            .notEmpty().withMessage('Debes completar el campo Patente').bail(),
         body('precio')
             .notEmpty().withMessage('Debes completar el campo Precio.').bail()
             .isInt().withMessage('El precio debe ser un número entero.').bail(),

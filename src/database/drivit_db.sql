@@ -62,6 +62,7 @@ VALUES
 CREATE TABLE IF NOT EXISTS vehicles (
 	id INT NOT NULL AUTO_INCREMENT,
     vehicle_model_id INT NOT NULL,
+    price INT NOT NULL,
     kilometers INT NOT NULL,
     last_service_date DATE NOT NULL,
     color VARCHAR(200) NOT NULL,

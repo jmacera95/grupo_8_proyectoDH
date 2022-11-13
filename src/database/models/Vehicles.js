@@ -9,6 +9,9 @@ module.exports = (sequelize, DataTypes) => {
         vehicle_model_id: {
             type: DataTypes.INTEGER
         },
+        price: {
+            type: DataTypes.INTEGER
+        },
         kilometers: {
             type: DataTypes.INTEGER
         },

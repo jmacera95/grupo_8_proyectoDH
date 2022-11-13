@@ -40,16 +40,34 @@ const productController = {
         )
             .then(
                 vehicles => {
-                    return res.send(vehicles);
+                    return res.render('productList', {productos: vehicles});
                 }
             )
         // const productos = TraerProductos();
         // res.render('productList', {productos: productos});
     },
     productDetail : (req, res) => {
-        const productos = TraerProductos();
-        const producto = productos.filter(producto => producto.id == req.params.id)[0];
-        res.render('productDetail', {producto: producto});
+        db.Vehicles.findByPk(req.params.id, {
+            include: [
+                {
+                    model: db.VehiclesModels,
+                    as: "vehicles_models",
+                    include: [{
+                        model: db.Brand,
+                        as: 'model_brand'
+                    }]
+                }
+            ]
+        })
+            .then(
+                vehicle => {
+                    // return res.send(vehicle)
+                    return res.render('productDetail', {producto: vehicle});
+                }
+            )
+        // const productos = TraerProductos();
+        // const producto = productos.filter(producto => producto.id == req.params.id)[0];
+        // res.render('productDetail', {producto: producto});
     },
     create : (req, res) => {
         db.VehiclesModels.findAll(
@@ -76,14 +94,15 @@ const productController = {
                 db.Vehicles.create(
                     {
                         vehicle_model_id: req.body.vehicle_model,
+                        price: Number(req.body.precio),
                         kilometers: Number(req.body.kilometraje),
                         last_service_date: req.body.fechaService,
-                        color: "white", // must be added to form
+                        color: req.body.color, 
                         last_balancing_alignment_date: req.body.alineacionBalanceo,
                         timing_belt_age_kilometers: Number(req.body.antiguedadCorrea),
                         airbag_status: req.body.airbag,
                         total_owners: req.body.cantidadDuenios,
-                        legal_identifier: "NAN", //must me added to form
+                        legal_identifier: req.body.legal_identifier,
                         location_province: req.body.provincia,
                         clutch_status: req.body.embrague,
                         image_path: req.file.filename,

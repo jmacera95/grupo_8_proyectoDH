@@ -25,13 +25,40 @@
                     </div>
 
                     <div>
+                        <label for="color">Color *</label>
+                        <select name="color" id="color" required>
+                            <option value="black" <%= locals.old && locals.old.color == "black" ? "selected" : null %>>Negro</option>
+                            <option value="white" <%= locals.old && locals.old.color == "white" ? "selected" : null %>>Blanco</option>
+                            <option value="grey" <%= locals.old && locals.old.color == "grey" ? "selected" : null %>>Gris</option>
+                            <option value="yellow" <%= locals.old && locals.old.color == "yellow" ? "selected" : null %>>Amarillo</option>
+                            <option value="green" <%= locals.old && locals.old.color == "green" ? "selected" : null %>>Verde</option>
+                            <option value="blue" <%= locals.old && locals.old.color == "blue" ? "selected" : null %>>Azul</option>
+                            <option value="red" <%= locals.old && locals.old.color == "red" ? "selected" : null %>>Red</option>
+                        </select>
+                        <% if (locals.errors && locals.errors.color) { %>
+                            <div class="is-invalid">
+                                <p><%= locals.errors.color.msg %></p>
+                            </div>
+                        <% } %>
+                    </div>
+
+                    <div>
                         <input type="text" name="provincia" id="provincia" placeholder="Provincia *" required value="<%= locals.old && locals.old.provincia ? locals.old.provincia : null %>">
                         <% if (locals.errors && locals.errors.provincia) { %>
                             <div class="is-invalid">
                                 <p><%= locals.errors.provincia.msg %></p>
                             </div>
                         <% } %>
-                    </div>                    
+                    </div>
+                    
+                    <div>
+                        <input type="text" name="legal_identifier" id="legal_identifier" placeholder="Patente *" required value="<%= locals.old && locals.old.legal_identifier ? locals.old.legal_identifier : null %>">
+                        <% if (locals.errors && locals.errors.legal_identifier) { %>
+                            <div class="is-invalid">
+                                <p><%= locals.errors.legal_identifier.msg %></p>
+                            </div>
+                        <% } %>
+                    </div>
 
                     <div>
                         <input type="number" name="precio" id="precio" step="1000" placeholder="Precio (AR$) *" required value="<%= locals.old && locals.old.precio ? locals.old.precio : null %>">
