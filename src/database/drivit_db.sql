@@ -79,6 +79,24 @@ CREATE TABLE IF NOT EXISTS vehicles (
     FOREIGN KEY (vehicle_model_id) REFERENCES vehicles_models (id)
 );
 
+INSERT INTO vehicles (vehicle_model_id, price, kilometers, last_service_date, color, last_balancing_alignment_date, timing_belt_age_kilometers,
+	airbag_status, total_owners, legal_identifier, location_province, clutch_status, image_path, outstanding)
+VALUES
+	(1, 2500000, 120000, "2022-01-07", "grey", "2022-10-06", 5000, "tiene-ambos", 1, "MGF842", "Buenos Aires", 
+    "fabrica", "focus-2013.png", 1),
+    (2, 3500000, 85000, "2021-12-07", "white", "2022-05-06", 15000, "tiene-ambos", 2, "MGX842", "La Pampa", 
+    "repuesto", "focus-2015.png", 1),
+    (3, 2000000, 97000, "2021-05-07", "red", "2022-04-26", 9000, "tiene-ambos", 1, "FJH675", "Mendoza", 
+    "fabrica", "208-2016.png", 0),
+    (4, 2800000, 106000, "2021-05-07", "black", "2022-04-26", 13000, "no", 2, "ARE789", "Santa Fe", 
+    "fabrica", "hilux-2016.png", 1),
+    (5, 2200000, 170000, "2021-05-07", "black", "2022-04-26", 15000, "tiene-ambos", 1, "ALM755", "Entre Ríos", 
+    "repuesto", "sandero-2012.png", 1),
+    (6, 2100000, 105000, "2021-05-07", "red", "2022-04-26", 10000, "tiene-adelante", 2, "NGP267", "Río Negro", 
+    "fabrica", "gol-2014.png", 1),
+    (7, 1800000, 95000, "2021-05-07", "yellow", "2022-04-26", 9000, "tiene-ambos", 1, "ALM907", "Corrientes", 
+    "fabrica", "fiesta-2013.png", 1);
+
 /*user_type table*/
 CREATE TABLE IF NOT EXISTS user_type (
 	id INT NOT NULL AUTO_INCREMENT,

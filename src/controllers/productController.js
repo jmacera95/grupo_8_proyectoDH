@@ -9,19 +9,6 @@ const currentYear = (new Date).getFullYear();
 const minYearOfManufacture = currentYear-10;
 const maxYearOfManufacture = currentYear-5;
 
-function TraerProductos() {
-    const productsFile = fs.readFileSync(path.join(__dirname, '../database/products.json'))
-    const productos = JSON.parse(productsFile);
-    return productos      
-};
-
-function writeFile(productos) {
-    const productosString = JSON.stringify(productos,null,19);
-    fs.writeFileSync(path.join(__dirname,"../database/products.json"),productosString)
-}
-
-
-
 const productController = {
     productList : (req, res) => {
         db.Vehicles.findAll(
@@ -115,36 +102,6 @@ const productController = {
                 .then(response => {
                     return res.send(response);
                 })
-                // return res.redirect(`/products`);
-                //     res.redirect(`/products/product-detail/${newProduct.id}`);
-                    
-            //     const productos = TraerProductos();
-            //     const newProduct = {
-            //         id: productos.length + 1,
-            //         img: req.file.filename,
-            //         marca: req.body.marca,
-            //         modelo: req.body.modelo,
-            //         anio: Number(req.body.anio),
-            //         kilometraje: Number(req.body.kilometraje),
-            //         provincia: req.body.provincia,
-            //         localidad: req.body.localidad,
-            //         precio: Number(req.body.precio),
-            //         combustible: req.body.combustible,
-            //         transmision: req.body.transmision,
-            //         cantidadDueños: req.body.cantidadDuenios,
-            //         fechaService: req.body.fechaService,
-            //         embrague: req.body.embrague,
-            //         antiguedadCorrea: Number(req.body.antiguedadCorrea),
-            //         alineacionBalanceo: req.body.alineacionBalanceo,
-            //         cantidadPuertas: Number(req.body.cantidadPuertas),
-            //         abs: req.body.abs,
-            //         airbag: req.body.airbag,
-            //         destacado: req.body.destacado === "true"
-            // };
-
-            //     productos.push(newProduct); 
-            //     writeFile(productos);
-            //     res.redirect(`/products/product-detail/${newProduct.id}`);
             }
         }
     },
