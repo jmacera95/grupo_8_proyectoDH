@@ -9,11 +9,11 @@
         <%- include('./partials/header') %>
         <main class="product-detail">
             <div class="product-overview">
-                <img src="/images/products/<%=producto.img%>" alt="<%=producto.marca%> <%=producto.modelo%>">
+                <img src="/images/products/<%=producto.image_path%>" alt="<%=producto.vehicles_models.model_brand.name%> <%=producto.vehicles_models.model_name%>">
                 <div>
-                    <h3><%=producto.marca%> <%=producto.modelo%></h3>
-                    <h4><%=producto.anio%> - <%=producto.kilometraje%>km - <%=producto.provincia%></h4>
-                    <h4>$<%=producto.precio%></h4>
+                    <h3><%=producto.vehicles_models.model_brand.name%> <%=producto.vehicles_models.model_name%></h3>
+                    <h4><%=producto.vehicles_models.year%> - <%=producto.kiolemeters%>km - <%=producto.location_province%></h4>
+                    <h4>$<%=producto.price%></h4>
                     <form action="" method="POST">
                         <input type="submit" name="add-to-cart" value="Agregar al carrito" title="Podes agregarlo y decidir si reservarlo o no luego!">
                     </form>
@@ -30,52 +30,52 @@
                 <div class="same-type-features">
                     <div class="product-feature">
                         <strong>Tipo de Combustible</strong>
-                        <span><%= producto.combustible %> </span>
+                        <span><%= producto.vehicles_models.fuel_type %> </span>
                     </div>
                     <div class="product-feature">
                         <strong>Transmisión</strong>
-                        <span><%= producto.transmision %> </span>
+                        <span><%= producto.vehicles_models.transmission_type %> </span>
                     </div>
                     <div class="product-feature">
                         <strong>Cantidad de dueños</strong>
-                        <span><%= producto.cantidadDuenios %> </span>
+                        <span><%= producto.total_owners %> </span>
                     </div>
                 </div>
                 <h3>Mecánica</h3>
                 <div class="same-type-features">
                     <div class="product-feature">
                         <strong>Fecha de último service</strong>
-                        <span><%= producto.fechaService %> </span>
+                        <span><%= producto.last_service_date %> </span>
                     </div>
                     <div class="product-feature">
                         <strong>Antiguedad correa distribución</strong>
-                        <span><%= producto.antiguedadCorrea %>  km</span>
+                        <span><%= producto.timing_belt_age_kilometers %>  km</span>
                     </div>
                     <div class="product-feature">
                         <strong>Alineación y balanceo</strong>
-                        <span><%= producto.alineacionBalanceo %> </span>
+                        <span><%= producto.last_balancing_alignment_date %> </span>
                     </div>
                     <div class="product-feature">
                         <strong>Embrague</strong>
-                        <span><%= producto.embrague %> </span>
+                        <span><%= producto.clutch_status %> </span>
                     </div>
                 </div>
                 <h3>Exterior</h3>
                 <div class="same-type-features">
                     <div class="product-feature">
                         <strong>Número de puertas</strong>
-                        <span><%= producto.cantidadPuertas %> </span>
+                        <span><%= producto.vehicles_models.doors_quantity %> </span>
                     </div>
                 </div>
                 <h3>Seguridad</h3>
                 <div class="same-type-features">
                     <div class="product-feature">
                         <strong>ABS</strong>
-                        <span><%= producto.abs %> </span>
+                        <span><%= producto.vehicles_models.abs ? 'Sí' : 'No' %> </span>
                     </div>
                     <div class="product-feature">
                         <strong>Airbags</strong>
-                        <span><%= producto.airbag %> </span>
+                        <span><%= producto.airbag_status %> </span>
                     </div>
                 </div>
             </div>

@@ -8,30 +8,11 @@
                     <h3>Crea un Nuevo Producto</h3>
                     
                     <div>
-                        <input type="text" name="marca" id="marca" placeholder="Marca *" required value="<%= locals.old && locals.old.marca ? locals.old.marca : null %>" >
-                        <% if (locals.errors && locals.errors.marca) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.marca.msg %></p>
-                            </div>
-                        <% } %>
-                    </div>  
-
-                    <div>
-                        <input type="text" name="modelo" id="modelo" placeholder="Modelo *" required value="<%= locals.old && locals.old.modelo ? locals.old.modelo : null %>">
-                        <% if (locals.errors && locals.errors.modelo) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.modelo.msg %></p>
-                            </div>
-                        <% } %>
-                    </div>
-                    
-                    <div>
-                        <input type="number" min="<%= minYearOfManufacture %>" max="<%= maxYearOfManufacture %>" step="1" id="anio" name="anio" placeholder="Año *" required value="<%= locals.old && locals.old.anio ? locals.old.anio : null %>">
-                        <% if (locals.errors && locals.errors.anio) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.anio.msg %></p>
-                            </div>
-                        <% } %>
+                        <select name="vehicle_model" id="vehicle_model">
+                            <% for( let i = 0; i < vehicles.length; i++ ) { %>
+                                <option value="<%= vehicles[i].id %>" <%= locals.old && locals.old.vehicle_model == vehicles[i].id ? "selected" : null %>><%=vehicles[i].name%> </option>   
+                            <% } %>
+                        </select>
                     </div>
 
                     <div>
@@ -44,19 +25,37 @@
                     </div>
 
                     <div>
+                        <label for="color">Color *</label>
+                        <select name="color" id="color" required>
+                            <option value="black" <%= locals.old && locals.old.color == "black" ? "selected" : null %>>Negro</option>
+                            <option value="white" <%= locals.old && locals.old.color == "white" ? "selected" : null %>>Blanco</option>
+                            <option value="grey" <%= locals.old && locals.old.color == "grey" ? "selected" : null %>>Gris</option>
+                            <option value="yellow" <%= locals.old && locals.old.color == "yellow" ? "selected" : null %>>Amarillo</option>
+                            <option value="green" <%= locals.old && locals.old.color == "green" ? "selected" : null %>>Verde</option>
+                            <option value="blue" <%= locals.old && locals.old.color == "blue" ? "selected" : null %>>Azul</option>
+                            <option value="red" <%= locals.old && locals.old.color == "red" ? "selected" : null %>>Red</option>
+                        </select>
+                        <% if (locals.errors && locals.errors.color) { %>
+                            <div class="is-invalid">
+                                <p><%= locals.errors.color.msg %></p>
+                            </div>
+                        <% } %>
+                    </div>
+
+                    <div>
                         <input type="text" name="provincia" id="provincia" placeholder="Provincia *" required value="<%= locals.old && locals.old.provincia ? locals.old.provincia : null %>">
                         <% if (locals.errors && locals.errors.provincia) { %>
                             <div class="is-invalid">
                                 <p><%= locals.errors.provincia.msg %></p>
                             </div>
                         <% } %>
-                    </div>                    
+                    </div>
                     
                     <div>
-                        <input type="text" name="localidad" id="localidad" placeholder="Localidad *" required value="<%= locals.old && locals.old.localidad ? locals.old.localidad : null %>">
-                        <% if (locals.errors && locals.errors.localidad) { %>
+                        <input type="text" name="legal_identifier" id="legal_identifier" placeholder="Patente *" required value="<%= locals.old && locals.old.legal_identifier ? locals.old.legal_identifier : null %>">
+                        <% if (locals.errors && locals.errors.legal_identifier) { %>
                             <div class="is-invalid">
-                                <p><%= locals.errors.localidad.msg %></p>
+                                <p><%= locals.errors.legal_identifier.msg %></p>
                             </div>
                         <% } %>
                     </div>
@@ -68,34 +67,6 @@
                                 <p><%= locals.errors.precio.msg %></p>
                             </div>
                         <% } %> 
-                    </div>
-
-                    <div>
-                        <label for="combustible">Tipo de Combustible *</label>
-                        <select name="combustible" id="combustible" required>
-                            <option value="nafta" <%= locals.old && locals.old.combustible == "nafta" ? "selected" : null %>>Nafta</option>
-                            <option value="gasoil" <%= locals.old && locals.old.combustible == "gasoil" ? "selected" : null %>>Gasoil</option>
-                            <option value="gnc" <%= locals.old && locals.old.combustible == "gnc" ? "selected" : null %>>GNC</option>
-                            <option value="hibrido" <%= locals.old && locals.old.combustible == "hibrido" ? "selected" : null %>>Hibrido</option>
-                        </select>
-                        <% if (locals.errors && locals.errors.combustible) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.combustible.msg %></p>
-                            </div>
-                        <% } %>
-                    </div>
-                
-                    <div>
-                        <label for="transmision">Transmisión *</label>
-                        <select name="transmision" id="transmision" required>
-                            <option value="manual" <%= locals.old && locals.old.transmision == "manual" ? "selected" : null %>>Manual</option>
-                            <option value="automatico" <%= locals.old && locals.old.transmision == "automatico" ? "selected" : null %>>Automático</option>
-                        </select>
-                        <% if (locals.errors && locals.errors.transmision) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.transmision.msg %></p>
-                            </div>
-                        <% } %>
                     </div>
                     
                     <div>
@@ -155,33 +126,6 @@
                     </div>
                     
                     <div>
-                        <label for="cantidadPuertas">Cantidad de Puertas *</label>
-                        <select name="cantidadPuertas" id="cantidadPuertas" required>
-                            <option value="3" <%= locals.old && locals.old.cantidadPuertas == "3" ? "selected" : null %>>3</option>
-                            <option value="4" <%= locals.old && locals.old.cantidadPuertas == "4" ? "selected" : null %>>4</option>
-                            <option value="5" <%= locals.old && locals.old.cantidadPuertas == "5" ? "selected" : null %>>5</option>
-                        </select>
-                        <% if (locals.errors && locals.errors.cantidadPuertas) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.cantidadPuertas.msg %></p>
-                            </div>
-                        <% } %>
-                    </div>
-                    
-                    <div>
-                        <label for="abs">ABS *</label>
-                        <select name="abs" id="abs" required>
-                            <option value="si" <%= locals.old && locals.old.abs == "si" ? "selected" : null %>>Sí</option>
-                            <option value="no" <%= locals.old && locals.old.abs == "no" ? "selected" : null %>>No</option>
-                        </select>
-                        <% if (locals.errors && locals.errors.abs) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.abs.msg %></p>
-                            </div>
-                        <% } %>
-                    </div>
-                    
-                    <div>
                         <label for="airbag">Airbag *</label>
                         <select name="airbag" id="airbag" required>
                             <option value="tiene-adelante" <%= locals.old && locals.old.airbag == "tiene-adelante" ? "selected" : null %>>Tiene - Solo Adelante</option>
@@ -222,9 +166,6 @@
                         <input type="submit" class="crear" name="crear" value="Crear Producto"> 
                     </div>    
                 </form>
-
-
-
 
 
             </main>
