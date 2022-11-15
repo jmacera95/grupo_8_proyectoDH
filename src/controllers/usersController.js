@@ -1,6 +1,8 @@
 const path = require('path');
 const fs = require('fs');
 const bcrypt = require('bcryptjs');
+const db = require('../database/models');
+const { Op } = require("sequelize");
 
 const usersJSONPath = path.join(__dirname, '../database/users.json');
 const getUsers = () => {
@@ -80,6 +82,11 @@ const usersController = {
                 }
             },
             old: req.body
+        })
+    },
+    edit: (req, res) => {
+        db.users.findByPk(req.params.id, {
+            firstName: db.firstName
         })
     },
     profile: (req, res) => {
