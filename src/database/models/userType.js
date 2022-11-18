@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true
         },
         user_type:{
-            type: DataTypes.VARCHAR(200)
+            type: DataTypes.STRING(200)
         }
     }
 
