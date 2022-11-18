@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const alias = "users";
+    const alias = "Users";
     const cols = {
         id: {
             type: DataTypes.INTEGER,
@@ -7,28 +7,28 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true
         },
         first_name: {
-            type: DataTypes.VARCHAR(500)
+            type: DataTypes.STRING(500)
         },
         last_name: {
-            type: DataTypes.VARCHAR(500)
+            type: DataTypes.STRING(500)
         },
         legal_identifier: {
-            type: DataTypes.VARCHAR(250)
+            type: DataTypes.STRING(250)
         },
         phone_number: {
-            type: DataTypes.VARCHAR(300)
+            type: DataTypes.STRING(300)
         },
         email: {
-            type: DataTypes.VARCHAR(500)
+            type: DataTypes.STRING(500)
         },
         postal_code: {
-            type: DataTypes.VARCHAR(200)
+            type: DataTypes.STRING(200)
         },
         password: {
-            type: DataTypes.VARCHAR(400)
+            type: DataTypes.STRING(400)
         },
         image_path: {
-            type: DataTypes.VARCHAR(300)
+            type: DataTypes.STRING(300)
         },
         user_type_id: {
             type: DataTypes.INTEGER
@@ -39,13 +39,13 @@ module.exports = (sequelize, DataTypes) => {
         tableName: "users",
         timestamps: false
     }
-    const users = sequelize.define(alias, cols, config)
+    const Users = sequelize.define(alias, cols, config)
 
-    users.associate = function(models) {
-        users.hasMany(models.userType, {
+    Users.associate = function(models) {
+        Users.hasMany(models.UserType, {
             as: "user_type",
             foreignKey: "user_type_id"
         })
     }
-    return users
+    return Users
 }

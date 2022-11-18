@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const alias = "userType";
+    const alias = "UserType";
     const cols = {
         id: {
             type: DataTypes.INTEGER,
@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true
         },
         user_type:{
-            type: DataTypes.VARCHAR(200)
+            type: DataTypes.STRING(200)
         }
     }
 
@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     const userType = sequelize.define(alias, cols, config);
 
     userType.associate = function(models) {
-        userType.belongsTo(models.users, {
+        userType.belongsTo(models.Users, {
             as: "users",
             foreignKey: "user_type_id"
         })

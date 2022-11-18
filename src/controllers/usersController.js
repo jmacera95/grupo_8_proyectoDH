@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const db = require('../database/models');
 const { Op } = require("sequelize");
 
+
 const usersJSONPath = path.join(__dirname, '../database/users.json');
 const getUsers = () => {
     const usersJson = fs.readFileSync(usersJSONPath);
@@ -85,9 +86,19 @@ const usersController = {
         })
     },
     edit: (req, res) => {
-        db.users.findByPk(req.params.id, {
-            firstName: db.firstName
+        db.Users.findByPK(req.params.id, {
+            include: [
+                {
+                  model: db.Users,
+                  as: 'users'  
+                }
+            ]
         })
+        .then(
+            user => {
+                return res.render('userEdit', {usuario: user});
+            }
+        )
     },
     profile: (req, res) => {
         res.render('userProfile', {user: req.session.userLogged});
