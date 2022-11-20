@@ -48,7 +48,7 @@ const usersController = {
             })
             .then(response => {
                 res.redirect('/')
-            } )    
+            })    
         }
         })        
         
@@ -60,8 +60,9 @@ const usersController = {
     processLogin: (req, res) => {
         db.Users.findAll()
         .then(users => {
-            const userToLogin = Array.from(users).find(user => (user.email == req.body.email));
-        
+            const userToLogin = users.find(user => (user.email == req.body.email));
+            console.log(userToLogin);
+    
             if (userToLogin) {
                 const passwordIsOk = bcrypt.compareSync(req.body.password, userToLogin.password);
                 if (passwordIsOk) {
@@ -84,18 +85,17 @@ const usersController = {
                     })
                 }
             }
-
-        } )  
-        return res.render('login', {
-            errors: {
-                email: {
-                    msg: 'No existe un usuario registrado con este email.'
-                }
-            },
-            old: req.body
+            return res.render('login', {
+                errors: {
+                    email: {
+                        msg: 'No existe un usuario registrado con este email.'
+                    }
+                },
+                old: req.body
+            })
         })
+        
     },
-
 
     edit: (req, res) => {
         db.Users.findByPk (req.params.id)
