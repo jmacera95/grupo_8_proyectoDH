@@ -105,6 +105,7 @@ const productController = {
             }
         }
     },
+    
     editar : (req, res) => {
         db.Vehicles.findByPk(req.params.id, {
             include: [

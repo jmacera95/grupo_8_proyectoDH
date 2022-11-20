@@ -3,6 +3,7 @@ const fs = require('fs');
 const bcrypt = require('bcryptjs');
 const db = require('../database/models');
 const { Op } = require("sequelize");
+const { send } = require('process');
 
 
 const usersJSONPath = path.join(__dirname, '../database/users.json');
@@ -17,39 +18,44 @@ const usersController = {
         res.render('register');
     } ,
     postRegister: (req, res) => {
-        const users = getUsers();
-        const userExist = users.find(user => (user.email === req.body.email));
-        if(userExist){
+        db.Users.findAll()
+        .then(users => {
+            const userExist = users.find(user => (user.email === req.body.email))
+            console.log(userExist)
+            /*console.log(Array.from(users));*/
+            /*return res.send(Array.from(users))*/
+            if(userExist){
             return res.render('register', {errors: {
                 email: {
                     msg: 'El email ya existe'
                 } 
             },
-            old: req.body
+            old: req.body /* revisar porque no aparece la info que ya se escribio anteriormente */
         });
+        } else {
+            const password = bcrypt.hashSync(req.body.password, 10)
+            db.Users.create({
+                id: users.length + 1,
+                first_name: req.body.firstName,
+                last_name: req.body.lastName,
+                email: req.body.email,
+                phone: req.body.phone,
+                CUIT: Number(req.body.cuit),
+                cp: req.body.cp,
+                password: password,
+                image: req.file.filename,
+                userType: "basic"    
+            })
+            .then(response => {
+                res.redirect('/')
+            } )    
         }
-        const password = bcrypt.hashSync(req.body.password, 10)
-
-        const newUser = {
-           id: users.length + 1,
-           firstName: req.body.firstName,
-           lastName: req.body.lastName,
-           email: req.body.email,
-           phone: req.body.phone,
-           CUIT: Number(req.body.cuit),
-           cp: req.body.cp,
-           password: password,
-           image: req.file.filename,
-           userType: "basic"
-        }
-        users.push(newUser)
-        const usersJson = JSON.stringify(users, null, 3);
-        fs.writeFileSync(usersJSONPath, usersJson);
-        res.redirect('/');
-    } ,
+        })        
+        
+    },
     login:(req, res) => {
         res.render('login');
-    } ,
+    },
     processLogin: (req, res) => {
         const existingUsers = getUsers();
         const userToLogin = existingUsers.find(user => user.email == req.body.email);
@@ -85,21 +91,17 @@ const usersController = {
             old: req.body
         })
     },
+
     edit: (req, res) => {
-        db.Users.findByPK(req.params.id, {
-            include: [
-                {
-                  model: db.Users,
-                  as: 'users'  
-                }
-            ]
-        })
-        .then(
-            user => {
-                return res.render('userEdit', {usuario: user});
+        db.Users.findByPk (req.params.id)
+            .then(
+            userEdit => {
+                return res.render('userEdit', {usuario: userEdit})
             }
         )
     },
+    
+
     profile: (req, res) => {
         res.render('userProfile', {user: req.session.userLogged});
     },
@@ -108,6 +110,7 @@ const usersController = {
         req.session.destroy();
         return res.redirect('/');
     }
+
 }
 
 module.exports = usersController;
