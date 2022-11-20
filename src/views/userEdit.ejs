@@ -49,10 +49,20 @@
                     <input type="text" name="cp" id="cp" value="<%= usuario.postal_code %>">
                 </div>
                 
-                <div id="boton-registro">
-                    <input type="submit" class="registro" name="registro" value="Actualizar datos"> 
+                <div class="botones">
+                    
+                    <div id="boton-registro">
+                        <input type="submit" class="registro" name="registro" value="Actualizar datos"> 
+                    </div>
+                    
+                    
                 </div>
                 
+            </form>
+            <form action="/user/delete/<%= usuario.id %>?_method=DELETE" method="POST" class="edit-user-form">
+                <div id="boton-eliminar">
+                    <input type="submit" class="eliminar" name="eliminar" value="Borrar Cuenta"> 
+                </div>
             </form>
 
         </div>

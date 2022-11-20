@@ -16,44 +16,49 @@ const getUsers = () => {
 const usersController = {
     register: (req, res) => {
         res.render('register');
-    } ,
+    },
     postRegister: (req, res) => {
         db.Users.findAll()
-        .then(users => {
-            const userExist = users.find(user => (user.email === req.body.email))
-            console.log(userExist)
-            /*console.log(Array.from(users));*/
-            /*return res.send(Array.from(users))*/
-            if(userExist){
-            return res.render('register', {errors: {
-                email: {
-                    msg: 'El email ya existe'
-                } 
-            },
-            old: req.body /* revisar porque no aparece la info que ya se escribio anteriormente */
-        });
-        } else {
-            const password = bcrypt.hashSync(req.body.password, 10)
-            db.Users.create({
-                id: users.length + 1,
-                first_name: req.body.firstName,
-                last_name: req.body.lastName,
-                email: req.body.email,
-                phone_number: req.body.phone,
-                legal_identifier: Number(req.body.cuit),
-                postal_code: req.body.cp,
-                password: password,
-                image: req.file.filename,
-                user_type_id: 2    
+            .then(users => {
+                const userExist = users.find(user => (user.email === req.body.email))
+                console.log(userExist)
+                /*console.log(Array.from(users));*/
+                /*return res.send(Array.from(users))*/
+                if (userExist) {
+                    return res.render('register', {
+                        errors: {
+                            email: {
+                                msg: 'El email ya existe'
+                            }
+                        },
+                        old: req.body /* revisar porque no aparece la info que ya se escribio anteriormente */
+                    });
+                } else {
+                    const password = bcrypt.hashSync(req.body.password, 10)
+                    db.Users.create({
+                        id: users.length + 1,
+                        first_name: req.body.firstName,
+                        last_name: req.body.lastName,
+                        email: req.body.email,
+                        phone_number: req.body.phone,
+                        legal_identifier: Number(req.body.cuit),
+                        postal_code: req.body.cp,
+                        password: password,
+                        image: req.file.filename,
+                        user_type_id: 2
+                    })
+                        .then(response => {
+                            res.redirect('/')
+                        })
+                }
             })
             .then(response => {
                 res.redirect('/')
             })    
-        }
-        })        
+        },
+    
         
-    },
-    login:(req, res) => {
+    login: (req, res) => {
         res.render('login');
     },
 
@@ -98,15 +103,15 @@ const usersController = {
     },
 
     edit: (req, res) => {
-        db.Users.findByPk (req.params.id)
+        db.Users.findByPk(req.params.id)
             .then(
-            userEdit => {
-                return res.render('userEdit', {usuario: userEdit})
-            }
-        )
+                userEdit => {
+                    return res.render('userEdit', { usuario: userEdit })
+                }
+            )
     },
 
-    actualizar: (req,res) => {
+    actualizar: (req, res) => {
         db.Users.update(
             {
                 first_name: req.body.firstName,
@@ -114,10 +119,10 @@ const usersController = {
                 email: req.body.email,
                 phone_number: req.body.phone,
                 legal_identifier: Number(req.body.cuit),
-                postal_code: req.body.cp,    
+                postal_code: req.body.cp,
             },
             {
-                where: {id: req.params.id}
+                where: { id: req.params.id }
             }
         )
             .then(response => {
@@ -125,8 +130,25 @@ const usersController = {
             })
     },
 
+    delete: (req, res) => {
+        db.Users.findByPk(req.params.id)
+            .then(
+                user => {
+                    // fs.unlinkSync(path.join(__dirname, '../../public/images/userImage', user.image_path));
+                    db.Users.destroy(
+                        {
+                            where: { id: req.params.id }
+                        }
+                    )
+                        .then(response => {
+                            return res.redirect('/')
+                        })
+                }
+            )
+    },
+
     profile: (req, res) => {
-        res.render('userProfile', {user: req.session.userLogged});
+        res.render('userProfile', { user: req.session.userLogged });
     },
     logout: (req, res) => {
         res.clearCookie('userEmail');

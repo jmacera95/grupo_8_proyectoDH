@@ -37,6 +37,23 @@ main.register #boton-registro {
     margin-top: 10px;
 }
 
+.botones {
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    align-items: center;
+    margin-top: 30px;
+}
+
+input[type="submit"] .eliminar {
+    background-color: red;
+}
+
+.edit-user-form {
+    margin-bottom: 20px;
+}
+
+
 @media (min-width: 480px) {
     .campos {
         width: 70%;
@@ -59,12 +76,21 @@ main.register #boton-registro {
         padding: 0% 5% 0% 5%;
         justify-content: space-around;
     }
-    
-    main.register #boton-registro {
+  
+    .botones {
         display: flex;
-        width: 55%;
-        justify-content: end;
-        margin-top: 40px;   
+        justify-content: center;
+        width: 100%;
+        align-items: center;
+        margin-top: 30px;
     }
-    
+
+    /* #boton-eliminar {
+        color: #ffff;
+        background-color: red;
+        border: none 1px red;
+        border-radius: 0.5rem;
+        padding: 5px;
+    } */
+
 }
