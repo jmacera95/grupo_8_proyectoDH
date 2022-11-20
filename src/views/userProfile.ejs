@@ -33,6 +33,9 @@
             <form action="/user/logout" method="GET" id="user-logout-form">
                 <i class="fa-solid fa-right-from-bracket"></i> <input type="submit" value="Cerrar Sesión">
             </form>
+            <form action="/user/edit/<%= user.id %>" method="GET" id="user-logout-form">
+                <i class="fa-solid fa-right-from-bracket"></i> <input type="submit" value="Editar">
+            </form>
         </main>
         <%- include('./partials/footer') %>
         <script src="" async defer></script>

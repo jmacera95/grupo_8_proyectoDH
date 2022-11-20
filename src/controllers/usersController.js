@@ -6,11 +6,11 @@ const { Op } = require("sequelize");
 const { send } = require('process');
 
 
-const usersJSONPath = path.join(__dirname, '../database/users.json');
-const getUsers = () => {
-    const usersJson = fs.readFileSync(usersJSONPath);
-    return JSON.parse(usersJson);
-};
+// const usersJSONPath = path.join(__dirname, '../database/users.json');
+// const getUsers = () => {
+//     const usersJson = fs.readFileSync(usersJSONPath);
+//     return JSON.parse(usersJson);
+// };
 
 
 const usersController = {
