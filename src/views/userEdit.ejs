@@ -4,15 +4,61 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-    <%- include('./partials/head', {title: "Register", style: "register_form"}) %>
+    <%- include('./partials/head', {title: "Register", style: "user_edit"}) %>
     <body>
         <%- include('./partials/header') %>
-    <main>
-        <div>
-            <label for="firstName">Nombre</label> 
-            <input type="text" name="firstName" id="firstName" value="<%= usuario.first_name %>">
-        </div> 
-    </main>
+        <main class="register">
+            
+            <div class="general">
+                <h3>Perfil del Usuario</h3>
+            <form action="/user/edit/<%= usuario.id %>?_method=PUT" method="POST" class="form1" enctype="multipart/form-data">
+                        
+                
+                <div class="campos">
+                    <label for="firstName">Nombre *</label>
+                    <input type="text" name="firstName" id="firstName" class="hola" value="<%= usuario.first_name %>">
+                </div>
+
+                <div class="campos">
+                    <label for="lastName">Apellido *</label>
+                    <input type="text" name="lastName" id="lastName" value="<%= usuario.last_name %>">
+                </div>
+
+                <div class="campos">
+                    <label for="cuit">CUIT *</label>
+                    <input type="text" name="cuit" id="cuit" value="<%= usuario.legal_identifier %>">
+                </div>
+
+                <div class="campos">
+                    <label for="phone">Telefono *</label>
+                    <input type="tel" name="phone" id="phone" value="<%= usuario.phone_number %>">
+                </div>
+
+                <div class="campos">
+                    <label for="email">Email *</label>
+                    <input type="email" name="email" id="email" value= <%= locals.old && locals.old.email ? locals.old.email : null %>>
+                    <% if (locals.errors && locals.errors.email) { %>
+                        <div>
+                            <span><%= locals.errors.email.msg %> </span>
+                        </div>
+                    <% } %>    
+                </div>
+
+                <div class="campos">
+                    <label for="cp">Código Postal *</label>
+                    <input type="text" name="cp" id="cp" value="<%= usuario.postal_code %>">
+                </div>
+                
+                <div id="boton-registro">
+                    <input type="submit" class="registro" name="registro" value="Actualizar datos"> 
+                </div>
+                
+            </form>
+
+        </div>
+        </main>
+        
+        <%- include('./partials/footer') %>
+        <script src="" async defer></script>
     </body>
-    
 </html>

@@ -39,12 +39,12 @@ const usersController = {
                 first_name: req.body.firstName,
                 last_name: req.body.lastName,
                 email: req.body.email,
-                phone: req.body.phone,
-                CUIT: Number(req.body.cuit),
-                cp: req.body.cp,
+                phone_number: req.body.phone,
+                legal_identifier: Number(req.body.cuit),
+                postal_code: req.body.cp,
                 password: password,
                 image: req.file.filename,
-                userType: "basic"    
+                user_type_id: 2    
             })
             .then(response => {
                 res.redirect('/')
@@ -56,32 +56,36 @@ const usersController = {
     login:(req, res) => {
         res.render('login');
     },
+
     processLogin: (req, res) => {
-        const existingUsers = getUsers();
-        const userToLogin = existingUsers.find(user => user.email == req.body.email);
-        if (userToLogin) {
-            const passwordIsOk = bcrypt.compareSync(req.body.password, userToLogin.password);
-            if (passwordIsOk) {
-                delete userToLogin.password;
-                req.session.userLogged = userToLogin;
-
-                if (req.body.remember_me) {
-                    res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 60 * 24 * 15 }); // the cookie will exist for fifteen days
-                }
-
-                return res.render('userProfile', {user: userToLogin});
-            } else {
-                return res.render('login', {
-                    errors: {
-                        password: {
-                            msg: 'La contraseña es incorrecta'
-                        }
-                    },
-                    old: req.body
-                })
-            }
-        } 
+        db.Users.findAll()
+        .then(users => {
+            const userToLogin = Array.from(users).find(user => (user.email == req.body.email));
         
+            if (userToLogin) {
+                const passwordIsOk = bcrypt.compareSync(req.body.password, userToLogin.password);
+                if (passwordIsOk) {
+                    delete userToLogin.password;
+                    req.session.userLogged = userToLogin;
+    
+                    if (req.body.remember_me) {
+                        res.cookie('userEmail', req.body.email, { maxAge: (1000 * 60) * 60 * 24 * 15 }); // the cookie will exist for fifteen days
+                    }
+    
+                    return res.render('userProfile', {user: userToLogin});
+                } else {
+                    return res.render('login', {
+                        errors: {
+                            password: {
+                                msg: 'La contraseña es incorrecta'
+                            }
+                        },
+                        old: req.body
+                    })
+                }
+            }
+
+        } )  
         return res.render('login', {
             errors: {
                 email: {
@@ -92,6 +96,7 @@ const usersController = {
         })
     },
 
+
     edit: (req, res) => {
         db.Users.findByPk (req.params.id)
             .then(
@@ -100,7 +105,25 @@ const usersController = {
             }
         )
     },
-    
+
+    actualizar: (req,res) => {
+        db.Users.update(
+            {
+                first_name: req.body.firstName,
+                last_name: req.body.lastName,
+                email: req.body.email,
+                phone_number: req.body.phone,
+                legal_identifier: Number(req.body.cuit),
+                postal_code: req.body.cp,    
+            },
+            {
+                where: {id: req.params.id}
+            }
+        )
+            .then(response => {
+                res.redirect(`/user/edit/${req.params.id}`);
+            })
+    },
 
     profile: (req, res) => {
         res.render('userProfile', {user: req.session.userLogged});
