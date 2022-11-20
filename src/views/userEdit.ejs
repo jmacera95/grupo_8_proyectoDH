@@ -11,7 +11,7 @@
             
             <div class="general">
                 <h3>Perfil del Usuario</h3>
-            <form action="/user/edit/<%= usuario.id %>?_method=PUT" method="POST" class="form1" enctype="multipart/form-data">
+            <form action="/user/edit/<%= usuario.id %>?_method=PUT" method="POST" class="form1">
                         
                 
                 <div class="campos">
@@ -36,12 +36,8 @@
 
                 <div class="campos">
                     <label for="email">Email *</label>
-                    <input type="email" name="email" id="email" value= <%= locals.old && locals.old.email ? locals.old.email : null %>>
-                    <% if (locals.errors && locals.errors.email) { %>
-                        <div>
-                            <span><%= locals.errors.email.msg %> </span>
-                        </div>
-                    <% } %>    
+                    <input type="email" name="email" id="email" value="<%= usuario.email %> ">
+
                 </div>
 
                 <div class="campos">

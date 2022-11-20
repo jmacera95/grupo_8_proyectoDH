@@ -1,7 +1,7 @@
 function userTypeMiddleware(req, res, next) {
     const userLogged = req.session.userLogged;
     if (userLogged) {
-        if (userLogged.userType !== "admin") {
+        if (userLogged.user_type.user_type !== "admin") {
             res.status(403);
             return res.send("Unauthorized");
         }

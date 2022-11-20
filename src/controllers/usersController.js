@@ -41,7 +41,7 @@ const usersController = {
                         last_name: req.body.lastName,
                         email: req.body.email,
                         phone_number: req.body.phone,
-                        legal_identifier: Number(req.body.cuit),
+                        legal_identifier: req.body.cuit,
                         postal_code: req.body.cp,
                         password: password,
                         image: req.file.filename,
@@ -63,10 +63,13 @@ const usersController = {
     },
 
     processLogin: (req, res) => {
-        db.Users.findAll()
+        db.Users.findAll(
+            {
+                include: "user_type"
+            }
+        )
         .then(users => {
             const userToLogin = users.find(user => (user.email == req.body.email));
-            console.log(userToLogin);
     
             if (userToLogin) {
                 const passwordIsOk = bcrypt.compareSync(req.body.password, userToLogin.password);
@@ -118,15 +121,15 @@ const usersController = {
                 last_name: req.body.lastName,
                 email: req.body.email,
                 phone_number: req.body.phone,
-                legal_identifier: Number(req.body.cuit),
-                postal_code: req.body.cp,
+                legal_identifier: req.body.cuit,
+                postal_code: req.body.cp
             },
             {
                 where: { id: req.params.id }
             }
         )
             .then(response => {
-                res.redirect(`/user/edit/${req.params.id}`);
+                return res.redirect(`/user/profile`);
             })
     },
 
