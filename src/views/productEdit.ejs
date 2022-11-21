@@ -38,8 +38,17 @@
                     </div>
 
                     <div>
-                        <label for="provincia">Provincia</label> 
-                        <input type="text" name="provincia" id="provincia" value="<%= producto.location_province %>">
+                        <label for="provincia">Provincia *</label>
+                        <select name="provincia" id="provincia" required>
+                            <% provinces.forEach(province => { %>
+                                <option value="<%= province.nombre %>" <%= producto.location_province == province.nombre ? "selected" : null %>><%= province.nombre %> </option>
+                            <% }) %>
+                        </select>
+                        <% if (locals.errors && locals.errors.provincia) { %>
+                            <div class="is-invalid">
+                                <p><%= locals.errors.provincia.msg %></p>
+                            </div>
+                        <% } %>
                     </div>
                     
                     <div>
@@ -117,7 +126,6 @@
 
             </main>
             <%- include('./partials/footer') %>
-            <script src="" async defer></script>
         </body>
         </html>
 
