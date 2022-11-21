@@ -5,14 +5,6 @@ const db = require('../database/models');
 const { Op } = require("sequelize");
 const { send } = require('process');
 
-
-// const usersJSONPath = path.join(__dirname, '../database/users.json');
-// const getUsers = () => {
-//     const usersJson = fs.readFileSync(usersJSONPath);
-//     return JSON.parse(usersJson);
-// };
-
-
 const usersController = {
     register: (req, res) => {
         res.render('register');
@@ -21,9 +13,6 @@ const usersController = {
         db.Users.findAll()
             .then(users => {
                 const userExist = users.find(user => (user.email === req.body.email))
-                console.log(userExist)
-                /*console.log(Array.from(users));*/
-                /*return res.send(Array.from(users))*/
                 if (userExist) {
                     return res.render('register', {
                         errors: {
@@ -44,17 +33,14 @@ const usersController = {
                         legal_identifier: req.body.cuit,
                         postal_code: req.body.cp,
                         password: password,
-                        image: req.file.filename,
+                        image_path: req.file.filename,
                         user_type_id: 2
                     })
                         .then(response => {
-                            res.redirect('/')
+                            return res.redirect('/user/login')
                         })
                 }
-            })
-            .then(response => {
-                res.redirect('/')
-            })    
+            }) 
         },
     
         
@@ -129,7 +115,16 @@ const usersController = {
             }
         )
             .then(response => {
-                return res.redirect(`/user/profile`);
+                db.Users.findByPk(
+                    req.params.id,
+                    {
+                        include: "user_type"
+                    }
+                )
+                .then(user => {
+                    req.session.userLogged = user;
+                    return res.redirect(`/user/profile`);
+                })                
             })
     },
 
@@ -137,13 +132,15 @@ const usersController = {
         db.Users.findByPk(req.params.id)
             .then(
                 user => {
-                    // fs.unlinkSync(path.join(__dirname, '../../public/images/userImage', user.image_path));
+                    fs.unlinkSync(path.join(__dirname, '../../public/images/usersImage', user.image_path));
                     db.Users.destroy(
                         {
                             where: { id: req.params.id }
                         }
                     )
                         .then(response => {
+                            res.clearCookie('userEmail');
+                            req.session.destroy();
                             return res.redirect('/')
                         })
                 }
