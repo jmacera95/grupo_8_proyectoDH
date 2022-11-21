@@ -100,7 +100,7 @@ const productController = {
                     }
                 )
                 .then(response => {
-                    return res.send(response);
+                    return res.redirect(`/products/product-detail/${response.id}`);
                 })
             }
         }
