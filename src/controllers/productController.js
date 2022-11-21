@@ -3,6 +3,7 @@ const fs = require('fs');
 const { validationResult } = require('express-validator');
 const db = require('../database/models');
 const { Op } = require("sequelize");
+const fetch = require("node-fetch");
 
 // const's for business logic related validations
 const currentYear = (new Date).getFullYear();
@@ -59,10 +60,15 @@ const productController = {
             }
         )
             .then(vehicles => {
-                return res.render('productCreate', {minYearOfManufacture: minYearOfManufacture, maxYearOfManufacture: maxYearOfManufacture, vehicles: vehicles}); 
-            })
-        
-    },
+                fetch("https://apis.datos.gob.ar/georef/api/provincias")
+                    .then(response => response.json())
+                    .then(data => {
+                            return res.render('productCreate', {minYearOfManufacture: minYearOfManufacture, maxYearOfManufacture: maxYearOfManufacture, vehicles: vehicles, provinces: data.provincias});
+                            }
+                        )
+                    })                
+            }
+    ,
     saveNewProduct: (req, res, next) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -74,7 +80,12 @@ const productController = {
                 }
             )
                 .then(vehicles => {
-                    return res.render('productCreate', { errors: errors.mapped(), old: req.body, minYearOfManufacture: minYearOfManufacture, maxYearOfManufacture: maxYearOfManufacture, vehicles: vehicles });
+                    fetch("https://apis.datos.gob.ar/georef/api/provincias")
+                    .then(response => response.json())
+                    .then(data => {
+                        return res.render('productCreate', { errors: errors.mapped(), old: req.body, minYearOfManufacture: minYearOfManufacture, maxYearOfManufacture: maxYearOfManufacture, vehicles: vehicles, provinces: data.provincias });
+                    })
+                    
                 })
         } else {
             if (!req.file) {
@@ -121,7 +132,11 @@ const productController = {
         })
             .then(
                 vehicle => {
-                    return res.render('productEdit', {producto: vehicle});
+                    fetch("https://apis.datos.gob.ar/georef/api/provincias")
+                    .then(response => response.json())
+                    .then(data => {
+                        return res.render('productEdit', {producto: vehicle, provinces: data.provincias});
+                    })                    
                 }
             )
     },
