@@ -15,8 +15,8 @@
                 <article>
                     <h4><i class="far fa-user-circle"></i> Datos Personales</h4>
                     
-                    <p><%= user.firstName %> <%= user.lastName %></p>
-                    <p><%= user.phone %></p>
+                    <p><%= user.first_name %> <%= user.last_name %></p>
+                    <p><%= user.phone_number %></p>
                     <p><%= user.email %></p>
                 </article>
                 <br>
@@ -25,13 +25,16 @@
                     <p>* * * * * *</p>
                 </article>
             </div>
-            <% if (user.userType=="admin") { %>
+            <% if (user.user_type.user_type=="admin") { %>
                 <form action="/products/create" method="GET">
                     <input type="submit" value="Crear Nuevo Producto">
                 </form>
             <% } %>
             <form action="/user/logout" method="GET" id="user-logout-form">
                 <i class="fa-solid fa-right-from-bracket"></i> <input type="submit" value="Cerrar Sesión">
+            </form>
+            <form action="/user/edit/<%= user.id %>" method="GET" id="user-logout-form">
+                <i class="fa-solid fa-right-from-bracket"></i> <input type="submit" value="Editar">
             </form>
         </main>
         <%- include('./partials/footer') %>

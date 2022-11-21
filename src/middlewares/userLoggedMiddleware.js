@@ -1,17 +1,10 @@
-const fs = require('fs');
-const path = require('path');
+const db = require('../database/models');
 
-const usersJSONPath = path.join(__dirname, '../database/users.json');
-const getUsers = () => {
-    const usersJson = fs.readFileSync(usersJSONPath);
-    return JSON.parse(usersJson);
-};
-
-function userLoggedMiddleware(req, res, next) {
+async function userLoggedMiddleware(req, res, next) {
     res.locals.isLogged = false;
 
-    const emailInCookie = req.cookies.userEmail;
-    const userFromCookie = getUsers().find(user => user.email == emailInCookie);
+    const emailInCookie = req.cookies.userEmail != undefined ? req.cookies.userEmail : null;
+    const userFromCookie = await db.Users.findAll({include: "user_type", where: {email: emailInCookie}}).then(user => user[0]); 
 
     if (userFromCookie) {
         delete userFromCookie.password;
