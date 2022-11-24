@@ -62,3 +62,14 @@
     - Desarrollar código de forma individual y luego hacer revisiones grupales
 4. Hacer menos
     - no relajarnos con los tiempos del proyecto
+
+# Retro sprint 5
+1. Comenzar a hacer
+    - sumar estilos y agregar mas diseños a las vistas
+2. Hacer más
+    - mejor distribucion de las tareas entre nosotros
+3. Continuar haciendo
+    - Desarrollar código de forma individual y luego hacer revisiones grupales
+    - hacer uso de trello para status y seguimiento de las tareas 
+4. Hacer menos
+    - dejar para ultimo momento el desarrollo de codigo
