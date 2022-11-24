@@ -73,3 +73,17 @@
     - hacer uso de trello para status y seguimiento de las tareas 
 4. Hacer menos
     - dejar para ultimo momento el desarrollo de codigo
+
+# Retro sprint 6
+1. Comenzar a hacer
+    - trabajar sobre las deudas tecnicas y de UI que tiene el proyecto
+    - respetar las reuniones semanales
+    - tener mas iniciativa en desarrollar tareas adicionales al sprint en curso
+2. Hacer más
+    - realizar mas code review cruzado
+    - hacer uso de trello para status y seguimiento de las tareas
+3. Continuar haciendo
+    - buena distribucion de las tareas entre nosotros
+    - desarrollar cantidad de codigo de forma equitativa
+4. Hacer menos
+    - commitear a origen datos y archivos que deberian ser ignorados
