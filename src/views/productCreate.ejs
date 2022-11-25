@@ -9,6 +9,7 @@
                     
                     <div>
                         <select name="vehicle_model" id="vehicle_model">
+                            <option value="">Modelo</option>
                             <% for( let i = 0; i < vehicles.length; i++ ) { %>
                                 <option value="<%= vehicles[i].id %>" <%= locals.old && locals.old.vehicle_model == vehicles[i].id ? "selected" : null %>><%=vehicles[i].name%> </option>   
                             <% } %>
@@ -17,11 +18,11 @@
 
                     <div>
                         <input type="number" min="85000" max="200000" name="kilometraje" id="kilometraje" placeholder="Kilometraje *" required value="<%= locals.old && locals.old.kilometraje ? locals.old.kilometraje : null %>">
-                        <% if (locals.errors && locals.errors.kilometraje) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.kilometraje.msg %></p>
-                            </div>
+                        <div class="is-invalid" id="kilometers-errors">
+                        <% if (locals.errors && locals.errors.kilometraje) { %>                            
+                                <p><%= locals.errors.kilometraje.msg %></p>                            
                         <% } %>
+                        </div>
                     </div>
 
                     <div>
@@ -176,6 +177,7 @@
             </main>
             <%- include('./partials/footer') %>
         </body>
+        <script src="/js/products/createEditValidations.js"></script>
         </html>
 
 
