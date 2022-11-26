@@ -229,7 +229,8 @@ footer #social-media a i {
     color:#842029;
     background-color: #F8D7DA;
     text-align: center;
-    border-radius: 8px;
+    border-radius: 10px;
+    font-size: 0.7rem;
   }
 /*END alert-warning CSS SECTION*/
 

@@ -36,11 +36,11 @@
                             <option value="blue" <%= locals.old && locals.old.color == "blue" ? "selected" : null %>>Azul</option>
                             <option value="red" <%= locals.old && locals.old.color == "red" ? "selected" : null %>>Red</option>
                         </select>
-                        <% if (locals.errors && locals.errors.color) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.color.msg %></p>
-                            </div>
-                        <% } %>
+                        <div class="is-invalid" id="color-errors">
+                            <% if (locals.errors && locals.errors.color) { %>                            
+                                    <p><%= locals.errors.color.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
 
                     <div>
