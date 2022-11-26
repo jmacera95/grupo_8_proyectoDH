@@ -1,5 +1,5 @@
 window.addEventListener("load", (e) => {
-    const form = document.querySelector("form");
+    const form = document.querySelector("#create-form");
     const errors = {};
 
     const kilometers = document.getElementById("kilometraje");
@@ -31,9 +31,15 @@ window.addEventListener("load", (e) => {
             const errorMessage = "Debes completar el campo kilometraje.";
             errors.kilometers = errorMessage;
         }
-        console.log(Object.keys(errors).length);
         if (Object.keys(errors).length > 0) {
-            console.log(errors);
+            const errorsList = document.getElementById("errors_list");
+            errorsList.innerHTML = "";
+            errorsList.classList.add("alert-warning");
+            errorsList.style.listStyleType = "none";
+            Object.keys(errors).forEach(error => {
+                errorsList.innerHTML += `<li>${errors[error]}</li>`
+            }
+            )
             e.preventDefault();
         } 
     });
