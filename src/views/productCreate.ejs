@@ -4,24 +4,30 @@
         <body>
             <%- include('./partials/header') %>
             <main class="create">
-                <form action="/products/create" method="POST" class="create-product-form" enctype="multipart/form-data">
+                <form id="create-form" action="/products/create" method="POST" class="create-product-form" enctype="multipart/form-data">
                     <h3>Crea un Nuevo Producto</h3>
-                    
+                    <ul class="errors" id="errors_list"></ul>
                     <div>
-                        <select name="vehicle_model" id="vehicle_model">
+                        <select name="vehicle_model" id="vehicle_model" required>
+                            <option value="" selected>Selecciona un modelo...</option>
                             <% for( let i = 0; i < vehicles.length; i++ ) { %>
                                 <option value="<%= vehicles[i].id %>" <%= locals.old && locals.old.vehicle_model == vehicles[i].id ? "selected" : null %>><%=vehicles[i].name%> </option>   
                             <% } %>
                         </select>
+                        <div id="vehicle_model-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.vehicle_model) { %>                            
+                                    <p><%= locals.errors.vehicle_model.msg %></p>                            
+                            <% } %>
+                        </div>
                     </div>
 
                     <div>
                         <input type="number" min="85000" max="200000" name="kilometraje" id="kilometraje" placeholder="Kilometraje *" required value="<%= locals.old && locals.old.kilometraje ? locals.old.kilometraje : null %>">
-                        <% if (locals.errors && locals.errors.kilometraje) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.kilometraje.msg %></p>
-                            </div>
+                        <div class="is-invalid" id="kilometers-errors">
+                        <% if (locals.errors && locals.errors.kilometraje) { %>                            
+                                <p><%= locals.errors.kilometraje.msg %></p>                            
                         <% } %>
+                        </div>
                     </div>
 
                     <div>
@@ -35,11 +41,11 @@
                             <option value="blue" <%= locals.old && locals.old.color == "blue" ? "selected" : null %>>Azul</option>
                             <option value="red" <%= locals.old && locals.old.color == "red" ? "selected" : null %>>Red</option>
                         </select>
-                        <% if (locals.errors && locals.errors.color) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.color.msg %></p>
-                            </div>
-                        <% } %>
+                        <div class="is-invalid" id="color-errors">
+                            <% if (locals.errors && locals.errors.color) { %>                            
+                                    <p><%= locals.errors.color.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
 
                     <div>
@@ -49,29 +55,29 @@
                                 <option value="<%= province.nombre %>" <%= locals.old && locals.old.provincia == province.nombre ? "selected" : null %>><%= province.nombre %> </option>
                             <% }) %>
                         </select>
-                        <% if (locals.errors && locals.errors.provincia) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.provincia.msg %></p>
-                            </div>
-                        <% } %>
+                        <div id="province-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.provincia) { %>
+                                    <p><%= locals.errors.provincia.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
                     
                     <div>
                         <input type="text" name="legal_identifier" id="legal_identifier" placeholder="Patente *" required value="<%= locals.old && locals.old.legal_identifier ? locals.old.legal_identifier : null %>">
-                        <% if (locals.errors && locals.errors.legal_identifier) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.legal_identifier.msg %></p>
-                            </div>
-                        <% } %>
+                        <div id="legal_identifier-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.legal_identifier) { %>                            
+                                    <p><%= locals.errors.legal_identifier.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
 
                     <div>
-                        <input type="number" name="precio" id="precio" step="1000" placeholder="Precio (AR$) *" required value="<%= locals.old && locals.old.precio ? locals.old.precio : null %>">
-                        <% if (locals.errors && locals.errors.precio) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.precio.msg %></p>
-                            </div>
-                        <% } %> 
+                        <input type="number" name="precio" id="precio" min="1" step="1000" placeholder="Precio (AR$) *" required value="<%= locals.old && locals.old.precio ? locals.old.precio : null %>">
+                        <div id="price-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.precio) { %>
+                                    <p><%= locals.errors.precio.msg %></p>
+                            <% } %> 
+                        </div>
                     </div>
                     
                     <div>
@@ -80,21 +86,21 @@
                             <option value="1" <%= locals.old && locals.old.cantidadDuenios == "1" ? "selected" : null %>>1</option>
                             <option value="2" <%= locals.old && locals.old.cantidadDuenios == "2" ? "selected" : null %>>2</option>
                         </select>
-                        <% if (locals.errors && locals.errors.cantidadDuenios) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.cantidadDuenios.msg %></p>
-                            </div>
-                        <% } %>
+                        <div id="total_owners-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.cantidadDuenios) { %>
+                                    <p><%= locals.errors.cantidadDuenios.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
                     
                     <div>
                         <label for="fechaService">Fecha Último Service *</label>
                         <input type="date" name="fechaService" id="fechaService" value="<%= locals.old && locals.old.fechaService ? locals.old.fechaService : null %>" required>
-                        <% if (locals.errors && locals.errors.fechaService) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.fechaService.msg %></p>
-                            </div>
-                        <% } %>
+                        <div class="is-invalid" id="last_service_date-errors">
+                            <% if (locals.errors && locals.errors.fechaService) { %>
+                                    <p><%= locals.errors.fechaService.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
                     
                     <div>
@@ -103,31 +109,31 @@
                             <option value="fabrica" <%= locals.old && locals.old.embrague == "fabrica" ? "selected" : null %>>De Fábrica</option>
                             <option value="repuesto" <%= locals.old && locals.old.embrague == "repuesto" ? "selected" : null %>>Repuesto</option>
                         </select>
-                        <% if (locals.errors && locals.errors.embrague) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.embrague.msg %></p>
-                            </div>
-                        <% } %>
+                        <div id="clutch_status-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.embrague) { %>
+                                    <p><%= locals.errors.embrague.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
                     
                     <div>
                         <label for="antiguedadCorrea">Antiguedad Correa de Distribución *</label>
                         <input type="number" name="antiguedadCorrea" id="antiguedadCorrea" step="500" min="0" required value="<%= locals.old && locals.old.antiguedadCorrea ? locals.old.antiguedadCorrea : null %>">
-                        <% if (locals.errors && locals.errors.antiguedadCorrea) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.antiguedadCorrea.msg %></p>
-                            </div>
-                        <% } %>
+                        <div id="timing_belt_age_kilometers-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.antiguedadCorrea) { %>
+                                    <p><%= locals.errors.antiguedadCorrea.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
                     
                     <div>
                         <label for="alineacionBalanceo">Alineación y Balanceo *</label>
                         <input type="date" name="alineacionBalanceo" id="alineacionBalanceo" required value="<%= locals.old && locals.old.alineacionBalanceo ? locals.old.alineacionBalanceo : null %>">
-                        <% if (locals.errors && locals.errors.alineacionBalanceo) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.alineacionBalanceo.msg %></p>
-                            </div>
-                        <% } %>
+                        <div id="last_balancing_alignment_date-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.alineacionBalanceo) { %>
+                                    <p><%= locals.errors.alineacionBalanceo.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
                     
                     <div>
@@ -137,11 +143,11 @@
                             <option value="tiene-ambos" <%= locals.old && locals.old.airbag == "tiene-ambos" ? "selected" : null %>>Tiene - Adelante y Atrás</option>
                             <option value="no" <%= locals.old && locals.old.airbag == "no" ? "selected" : null %>>No tiene</option>
                         </select>
-                        <% if (locals.errors && locals.errors.airbag) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.airbag.msg %></p>
-                            </div>
-                        <% } %>
+                        <div id="airbag_status-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.airbag) { %>
+                                    <p><%= locals.errors.airbag.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
 
                     <div>
@@ -150,21 +156,21 @@
                             <option value="true" <%= locals.old && locals.old.destacado == "true" ? "selected" : null %>>Sí</option>
                             <option value="false" <%= locals.old && locals.old.destacado == "false" ? "selected" : null %> <%= !locals.old ? "selected" : null %>>No</option>
                         </select>
-                        <% if (locals.errors && locals.errors.destacado) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.destacado.msg %></p>
-                            </div>
-                        <% } %>
+                        <div id="outstanding-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.destacado) { %>
+                                    <p><%= locals.errors.destacado.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
                     
                     <div>
                         <label for="img">Imagen *</label>
                         <input type="file" name="img" id="img" accept=".jpg,.png" required>
-                        <% if (locals.errors && locals.errors.img) { %>
-                            <div class="is-invalid">
-                                <p class="is-invalid"><%= locals.errors.img.msg %></p>
-                            </div>
-                        <% } %>
+                        <div id="img-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.img) { %>
+                                    <p class="is-invalid"><%= locals.errors.img.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
                     
                     <div id="boton-crear">
@@ -175,7 +181,8 @@
 
             </main>
             <%- include('./partials/footer') %>
-        </body>
+            <script src="/js/products/createEditValidations.js"></script>
+        </body>        
         </html>
 
 
