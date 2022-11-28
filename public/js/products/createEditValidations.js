@@ -22,11 +22,26 @@ window.addEventListener("load", async (e) => {
   const legalIdentifierErrors = document.getElementById("legal_identifier-errors");
   const price = document.getElementById("precio");
   const priceErrors = document.getElementById("price-errors");
+  const totalOwners = document.getElementById("cantidadDuenios");
+  const totalOwnersErrors = document.getElementById("total_owners-errors");
+  const validTotalOwners = [1, 2];
+  const lastServiceDate = document.getElementById("fechaService");
+  const lastServiceDateErrors = document.getElementById("last_service_date-errors");
+  const clutchStatus = document.getElementById("embrague");
+  const clutchStatusErrors = document.getElementById("clutch_status-errors");
+  const validClutchStatus = ["fabrica", "repuesto"];
+  const timingBeltAgeKilometers = document.getElementById("antiguedadCorrea");
+  const timingBeltAgeKilometersErrors = document.getElementById("timing_belt_age_kilometers-errors");
+  const lastBalancingAlignmentDate = document.getElementById("alineacionBalanceo");
+  const lastBalancingAlignmentDateErrors = document.getElementById("last_balancing_alignment_date-errors");
+  const airbagStatus = document.getElementById("airbag");
+  const airbagStatusErrors = document.getElementById("airbag_status-errors");
+  const validAirbagStatus = ["tiene-adelante", "tiene-ambos", "no"];
 
   // on-time vallidations
   kilometers.addEventListener("change", (e) => {
     if (kilometers.value == "") {
-      const errorMessage = "Debes completar el campo kilometraje.";
+      const errorMessage = "Debes completar el campo Kilometraje.";
       kilometersErrors.innerHTML = `<p>${errorMessage}</p>`;
       errors.kilometers = errorMessage;
       kilometers.focus();
@@ -73,7 +88,7 @@ window.addEventListener("load", async (e) => {
 
   legalIdentifier.addEventListener("change", (e) => {
     if (legalIdentifier.value == "") {
-        const errorMessage = "Debes completar el campo patente.";
+        const errorMessage = "Debes completar el campo Patente.";
         legalIdentifierErrors.innerHTML = `<p>${errorMessage}</p>`;
         errors.legalIdentifier = errorMessage;
         legalIdentifier.focus();
@@ -85,7 +100,7 @@ window.addEventListener("load", async (e) => {
 
   price.addEventListener("change", (e) => {
     if (price.value == "") {
-      const errorMessage = "Debes completar el campo precio.";
+      const errorMessage = "Debes completar el campo Precio.";
       priceErrors.innerHTML = `<p>${errorMessage}</p>`;
       errors.price = errorMessage;
       price.focus();
@@ -97,6 +112,91 @@ window.addEventListener("load", async (e) => {
     } else {
       priceErrors.innerHTML = "";
       delete errors.price;
+    }
+  });
+
+  totalOwners.addEventListener("change", (e) => {
+    if (totalOwners.value == "") {
+      const errorMessage = "Debes completar el campo Cantidad de Dueños.";
+      totalOwnersErrors.innerHTML = `<p>${errorMessage}</p>`;
+      errors.totalOwners = errorMessage;
+      totalOwners.focus();
+    } else if (!validTotalOwners.includes(Number(totalOwners.value))) {
+      const errorMessage = "El vehículo debe haber tenido como mínimo un dueño y como máximo dos.";
+      totalOwnersErrors.innerHTML = `<p>${errorMessage}</p>`;
+      errors.totalOwners = errorMessage;
+      totalOwners.focus();
+    } else {
+      totalOwnersErrors.innerHTML = "";
+      delete errors.totalOwners;
+    }
+  });
+
+  lastServiceDate.addEventListener("change", (e) => {
+    if (lastServiceDate.value == "") {
+      const errorMessage = "Debes completar el campo Fecha Último Service.";
+      lastServiceDateErrors.innerHTML = `<p>${errorMessage}</p>`;
+      errors.lastServiceDate = errorMessage;
+      lastServiceDate.focus();
+    } else if (new Date(lastServiceDate.value) > new Date()) {
+      const errorMessage = "La Fecha Último Service no puede ser mayor a la fecha actual.";
+      lastServiceDateErrors.innerHTML = `<p>${errorMessage}</p>`;
+      errors.lastServiceDate = errorMessage;
+      lastServiceDate.focus();
+    } else {
+      lastServiceDateErrors.innerHTML = "";
+      delete errors.lastServiceDate;
+    }
+  });
+
+  clutchStatus.addEventListener("change", (e) => {
+    if (clutchStatus.value == "") {
+      const errorMessage = "Debes completar el campo Embrague.";
+      clutchStatusErrors.innerHTML = `<p>${errorMessage}</p>`;
+      errors.clutchStatus = errorMessage;
+      clutchStatus.focus();
+    } else if (!validClutchStatus.includes(clutchStatus.value)) {
+      const errorMessage = "Selecciona un valor válido para el campo Embrague.";
+      clutchStatusErrors.innerHTML = `<p>${errorMessage}</p>`;
+      errors.clutchStatus = errorMessage;
+      clutchStatus.focus();
+    } else {
+      clutchStatusErrors.innerHTML = "";
+      delete errors.clutchStatus;
+    }
+  });
+
+  timingBeltAgeKilometers.addEventListener("change", (e) => {
+    if (timingBeltAgeKilometers.value == "") {
+      const errorMessage = "Debes completar el campo Antiguedad Correa de Distribución.";
+      timingBeltAgeKilometersErrors.innerHTML = `<p>${errorMessage}</p>`;
+      errors.timingBeltAgeKilometers = errorMessage;
+      timingBeltAgeKilometers.focus();
+    } else if (!(Number(timingBeltAgeKilometers.value) % 1) == 0 || Number(timingBeltAgeKilometers.value) <= 0) {
+      const errorMessage = "La antiguedad de la correa de distribución no debe contener decimales y debe ser mayor a cero.";
+      timingBeltAgeKilometersErrors.innerHTML = `<p>${errorMessage}</p>`;
+      errors.timingBeltAgeKilometers = errorMessage;
+      timingBeltAgeKilometers.focus();
+    } else {
+      timingBeltAgeKilometersErrors.innerHTML = "";
+      delete errors.timingBeltAgeKilometers;
+    }
+  });
+
+  lastBalancingAlignmentDate.addEventListener("change", (e) => {
+    if (lastBalancingAlignmentDate.value == "") {
+      const errorMessage = "Debes completar el campo Alineación y Balanceo.";
+      lastBalancingAlignmentDateErrors.innerHTML = `<p>${errorMessage}</p>`;
+      errors.lastBalancingAlignmentDate = errorMessage;
+      lastBalancingAlignmentDate.focus();
+    } else if (new Date(lastBalancingAlignmentDate.value) > new Date()) {
+      const errorMessage = "La fecha de la última alineación y balanceo no puede ser mayor a la fecha actual.";
+      lastBalancingAlignmentDateErrors.innerHTML = `<p>${errorMessage}</p>`;
+      errors.lastBalancingAlignmentDate = errorMessage;
+      lastBalancingAlignmentDate.focus();
+    } else {
+      lastBalancingAlignmentDateErrors.innerHTML = "";
+      delete errors.lastBalancingAlignmentDate;
     }
   });
 
@@ -124,7 +224,27 @@ window.addEventListener("load", async (e) => {
     if (price.value == "") {
         const errorMessage = "Debes completar el campo precio.";
         errors.price = errorMessage;
-      }
+    }
+    if (totalOwners.value == "") {
+      const errorMessage = "Debes completar el campo Cantidad de Dueños.";
+      errors.totalOwners = errorMessage;
+    }
+    if (lastServiceDate.value == "") {
+      const errorMessage = "Debes completar el campo Fecha Último Service.";
+      errors.lastServiceDate = errorMessage;
+    }
+    if (clutchStatus.value == "") {
+      const errorMessage = "Debes completar el campo Embrague.";
+      errors.clutchStatus = errorMessage;
+    }
+    if (timingBeltAgeKilometers.value == "") {
+      const errorMessage = "Debes completar el campo Antiguedad Correa de Distribución.";
+      errors.timingBeltAgeKilometers = errorMessage;
+    }
+    if (lastBalancingAlignmentDate.value == "") {
+      const errorMessage = "Debes completar el campo Alineación y Balanceo.";
+      errors.lastBalancingAlignmentDate = errorMessage;
+    }
 
     const errorsList = document.getElementById("errors_list");
     errorsList.innerHTML = "";
@@ -145,9 +265,10 @@ window.addEventListener("load", async (e) => {
       window.scrollTo({ top: 0, behavior: "smooth" });
 
       e.preventDefault();
-    } else {
-      form.submit();
-    }
+    } 
+    // else {
+    //   form.submit();
+    // }
   });
 });
 

@@ -81,21 +81,21 @@
                             <option value="1" <%= locals.old && locals.old.cantidadDuenios == "1" ? "selected" : null %>>1</option>
                             <option value="2" <%= locals.old && locals.old.cantidadDuenios == "2" ? "selected" : null %>>2</option>
                         </select>
-                        <% if (locals.errors && locals.errors.cantidadDuenios) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.cantidadDuenios.msg %></p>
-                            </div>
-                        <% } %>
+                        <div id="total_owners-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.cantidadDuenios) { %>
+                                    <p><%= locals.errors.cantidadDuenios.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
                     
                     <div>
                         <label for="fechaService">Fecha Último Service *</label>
                         <input type="date" name="fechaService" id="fechaService" value="<%= locals.old && locals.old.fechaService ? locals.old.fechaService : null %>" required>
-                        <% if (locals.errors && locals.errors.fechaService) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.fechaService.msg %></p>
-                            </div>
-                        <% } %>
+                        <div class="is-invalid" id="last_service_date-errors">
+                            <% if (locals.errors && locals.errors.fechaService) { %>
+                                    <p><%= locals.errors.fechaService.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
                     
                     <div>
@@ -104,31 +104,31 @@
                             <option value="fabrica" <%= locals.old && locals.old.embrague == "fabrica" ? "selected" : null %>>De Fábrica</option>
                             <option value="repuesto" <%= locals.old && locals.old.embrague == "repuesto" ? "selected" : null %>>Repuesto</option>
                         </select>
-                        <% if (locals.errors && locals.errors.embrague) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.embrague.msg %></p>
-                            </div>
-                        <% } %>
+                        <div id="clutch_status-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.embrague) { %>
+                                    <p><%= locals.errors.embrague.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
                     
                     <div>
                         <label for="antiguedadCorrea">Antiguedad Correa de Distribución *</label>
                         <input type="number" name="antiguedadCorrea" id="antiguedadCorrea" step="500" min="0" required value="<%= locals.old && locals.old.antiguedadCorrea ? locals.old.antiguedadCorrea : null %>">
-                        <% if (locals.errors && locals.errors.antiguedadCorrea) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.antiguedadCorrea.msg %></p>
-                            </div>
-                        <% } %>
+                        <div id="timing_belt_age_kilometers-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.antiguedadCorrea) { %>
+                                    <p><%= locals.errors.antiguedadCorrea.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
                     
                     <div>
                         <label for="alineacionBalanceo">Alineación y Balanceo *</label>
                         <input type="date" name="alineacionBalanceo" id="alineacionBalanceo" required value="<%= locals.old && locals.old.alineacionBalanceo ? locals.old.alineacionBalanceo : null %>">
-                        <% if (locals.errors && locals.errors.alineacionBalanceo) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.alineacionBalanceo.msg %></p>
-                            </div>
-                        <% } %>
+                        <div id="last_balancing_alignment_date-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.alineacionBalanceo) { %>
+                                    <p><%= locals.errors.alineacionBalanceo.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
                     
                     <div>
@@ -138,11 +138,11 @@
                             <option value="tiene-ambos" <%= locals.old && locals.old.airbag == "tiene-ambos" ? "selected" : null %>>Tiene - Adelante y Atrás</option>
                             <option value="no" <%= locals.old && locals.old.airbag == "no" ? "selected" : null %>>No tiene</option>
                         </select>
-                        <% if (locals.errors && locals.errors.airbag) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.airbag.msg %></p>
-                            </div>
-                        <% } %>
+                        <div id="airbag_status-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.airbag) { %>
+                                    <p><%= locals.errors.airbag.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
 
                     <div>
