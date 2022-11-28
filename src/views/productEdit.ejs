@@ -4,18 +4,28 @@
         <body>
             <%- include('./partials/header') %>
             <main class="register">
-                <form action="/products/edit/<%= producto.id %>?_method=PUT" method="POST" class="edit-product-form" enctype="multipart/form-data">
+                <form id="create-edit-form" action="/products/edit/<%= producto.id %>?_method=PUT" method="POST" class="edit-product-form" enctype="multipart/form-data">
                     <h3>Editar Producto</h3>
-                    
+                    <ul class="errors" id="errors_list"></ul>
                     <div>
                         <select name="vehicle_model" id="vehicle_model" disabled>
                             <option value="<%= producto.vehicles_models.id %>" selected><%=producto.vehicles_models.name%> </option>   
                         </select>
+                        <div id="vehicle_model-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.vehicle_model) { %>                            
+                                    <p><%= locals.errors.vehicle_model.msg %></p>                            
+                            <% } %>
+                        </div>
                     </div>
 
                     <div>
                         <label for="kilometraje">Kilometraje</label> 
                         <input type="number" min="85000" max="200000" name="kilometraje" id="kilometraje" value="<%= producto.kilometers %>">
+                        <div class="is-invalid" id="kilometers-errors">
+                            <% if (locals.errors && locals.errors.kilometraje) { %>                            
+                                    <p><%= locals.errors.kilometraje.msg %></p>                            
+                            <% } %>
+                        </div>
                     </div>
 
 
@@ -30,11 +40,11 @@
                             <option value="blue" <%= producto.color == "blue" ? "selected" : null %>>Azul</option>
                             <option value="red" <%= producto.color == "red" ? "selected" : null %>>Red</option>
                         </select>
-                        <% if (locals.errors && locals.errors.color) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.color.msg %></p>
-                            </div>
-                        <% } %>
+                        <div class="is-invalid" id="color-errors">
+                            <% if (locals.errors && locals.errors.color) { %>                            
+                                    <p><%= locals.errors.color.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
 
                     <div>
@@ -44,16 +54,30 @@
                                 <option value="<%= province.nombre %>" <%= producto.location_province == province.nombre ? "selected" : null %>><%= province.nombre %> </option>
                             <% }) %>
                         </select>
-                        <% if (locals.errors && locals.errors.provincia) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.provincia.msg %></p>
-                            </div>
-                        <% } %>
+                        <div id="province-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.provincia) { %>
+                                    <p><%= locals.errors.provincia.msg %></p>
+                            <% } %>
+                        </div>
+                    </div>
+
+                    <div>
+                        <input type="text" name="legal_identifier" id="legal_identifier" placeholder="Patente *" required value="<%= producto.legal_identifier %>">
+                        <div id="legal_identifier-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.legal_identifier) { %>                            
+                                    <p><%= locals.errors.legal_identifier.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
                     
                     <div>
                         <label for="precio">Precio</label> 
-                        <input type="number" name="precio" id="precio" step="1000" value="<%= producto.price %>"> 
+                        <input type="number" name="precio" id="precio" step="1000" value="<%= producto.price %>">
+                        <div id="price-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.precio) { %>
+                                    <p><%= locals.errors.precio.msg %></p>
+                            <% } %> 
+                        </div> 
                     </div>
 
                     <div>
@@ -62,11 +86,21 @@
                             <option value="1" <%= producto.total_owners == 1 ? "selected" : null %>>1</option>
                             <option value="2" <%= producto.total_owners == 2 ? "selected" : null %>>2</option>
                         </select>
+                        <div id="total_owners-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.cantidadDuenios) { %>
+                                    <p><%= locals.errors.cantidadDuenios.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
 
                     <div>
                         <label for="fechaService">Fecha Último Service *</label>
                         <input type="date" name="fechaService" id="fechaService" value="<%= producto.last_service_date %>">
+                        <div class="is-invalid" id="last_service_date-errors">
+                            <% if (locals.errors && locals.errors.fechaService) { %>
+                                    <p><%= locals.errors.fechaService.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
 
                     <div>
@@ -75,16 +109,31 @@
                             <option value="fabrica" <%= producto.clutch_status == "fabrica" ? "selected" : null %>>De Fábrica</option>
                             <option value="repuesto" <%= producto.clutch_status == "repuesto" ? "selected" : null %>>Repuesto</option>
                         </select>
+                        <div id="clutch_status-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.embrague) { %>
+                                    <p><%= locals.errors.embrague.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
 
                      <div>
                         <label for="antiguedadCorrea">Antiguedad Correa de Distribución</label>
                         <input type="number" name="antiguedadCorrea" id="antiguedadCorrea" step="500" value="<%= producto.timing_belt_age_kilometers %>">
+                        <div id="timing_belt_age_kilometers-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.antiguedadCorrea) { %>
+                                    <p><%= locals.errors.antiguedadCorrea.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
 
                     <div>
                         <label for="alineacionBalanceo">Alineación y Balanceo</label>
                         <input type="date" name="alineacionBalanceo" id="alineacionBalanceo" value="<%= producto.last_balancing_alignment_date %>">
+                        <div id="last_balancing_alignment_date-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.alineacionBalanceo) { %>
+                                    <p><%= locals.errors.alineacionBalanceo.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
 
                     <div>
@@ -94,6 +143,11 @@
                             <option value="tiene-ambos" <%= producto.airbag_status == "tiene-ambos" ? "selected" : null %>>Tiene - Adelante y Atrás</option>
                             <option value="no" <%= producto.airbag_status == "no" ? "selected" : null %>>No tiene</option>
                         </select>
+                        <div id="airbag_status-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.airbag) { %>
+                                    <p><%= locals.errors.airbag.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
 
                     <div>
@@ -102,12 +156,22 @@
                             <option value="true" <%= producto.outstanding == true ? "selected" : null %>>Si</option>
                             <option value="false" <%= producto.outstanding == false ? "selected" : null %>>No</option>
                         </select>
+                        <div id="outstanding-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.destacado) { %>
+                                    <p><%= locals.errors.destacado.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
 
                     <div>
                         <label for="img">Imagen</label>
                         <img src="/images/products/<%= producto.image_path %> ">
                         <input type="file" name="img" id="img" accept=".jpg,.png" value="<%= producto.image_path %>">
+                        <div id="img-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.img) { %>
+                                    <p class="is-invalid"><%= locals.errors.img.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
                     
                     <div id="boton-editar">
@@ -126,6 +190,7 @@
 
             </main>
             <%- include('./partials/footer') %>
+            <script src="/js/products/createEditValidations.js"></script>
         </body>
         </html>
 
