@@ -8,12 +8,17 @@
                     <h3>Crea un Nuevo Producto</h3>
                     <ul class="errors" id="errors_list"></ul>
                     <div>
-                        <select name="vehicle_model" id="vehicle_model">
-                            <option value="">Modelo</option>
+                        <select name="vehicle_model" id="vehicle_model" required>
+                            <option value="" selected>Selecciona un modelo...</option>
                             <% for( let i = 0; i < vehicles.length; i++ ) { %>
                                 <option value="<%= vehicles[i].id %>" <%= locals.old && locals.old.vehicle_model == vehicles[i].id ? "selected" : null %>><%=vehicles[i].name%> </option>   
                             <% } %>
                         </select>
+                        <div id="vehicle_model-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.vehicle_model) { %>                            
+                                    <p><%= locals.errors.vehicle_model.msg %></p>                            
+                            <% } %>
+                        </div>
                     </div>
 
                     <div>
@@ -67,7 +72,7 @@
                     </div>
 
                     <div>
-                        <input type="number" name="precio" id="precio" step="1000" placeholder="Precio (AR$) *" required value="<%= locals.old && locals.old.precio ? locals.old.precio : null %>">
+                        <input type="number" name="precio" id="precio" min="1" step="1000" placeholder="Precio (AR$) *" required value="<%= locals.old && locals.old.precio ? locals.old.precio : null %>">
                         <div id="price-errors" class="is-invalid">
                             <% if (locals.errors && locals.errors.precio) { %>
                                     <p><%= locals.errors.precio.msg %></p>
@@ -151,21 +156,21 @@
                             <option value="true" <%= locals.old && locals.old.destacado == "true" ? "selected" : null %>>Sí</option>
                             <option value="false" <%= locals.old && locals.old.destacado == "false" ? "selected" : null %> <%= !locals.old ? "selected" : null %>>No</option>
                         </select>
-                        <% if (locals.errors && locals.errors.destacado) { %>
-                            <div class="is-invalid">
-                                <p><%= locals.errors.destacado.msg %></p>
-                            </div>
-                        <% } %>
+                        <div id="outstanding-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.destacado) { %>
+                                    <p><%= locals.errors.destacado.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
                     
                     <div>
                         <label for="img">Imagen *</label>
                         <input type="file" name="img" id="img" accept=".jpg,.png" required>
-                        <% if (locals.errors && locals.errors.img) { %>
-                            <div class="is-invalid">
-                                <p class="is-invalid"><%= locals.errors.img.msg %></p>
-                            </div>
-                        <% } %>
+                        <div id="img-errors" class="is-invalid">
+                            <% if (locals.errors && locals.errors.img) { %>
+                                    <p class="is-invalid"><%= locals.errors.img.msg %></p>
+                            <% } %>
+                        </div>
                     </div>
                     
                     <div id="boton-crear">

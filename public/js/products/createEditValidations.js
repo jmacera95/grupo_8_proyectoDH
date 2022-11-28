@@ -2,6 +2,9 @@ window.addEventListener("load", async (e) => {
   // variables declaration
   const form = document.querySelector("#create-form");
   const errors = {};
+  const vehicleModel = document.getElementById("vehicle_model");
+  const vehicleModelErrors = document.getElementById("vehicle_model-errors");
+  const validVehicleModels = await fetch("http://localhost:3030/api/products/vehicles_models/active").then(response => response.json()).then(vehiclesModels => vehiclesModels.data.map(vehicleModel => vehicleModel.id));
   const kilometers = document.getElementById("kilometraje");
   const kilometersErrors = document.getElementById("kilometers-errors");
   const color = document.getElementById("color");
@@ -37,8 +40,31 @@ window.addEventListener("load", async (e) => {
   const airbagStatus = document.getElementById("airbag");
   const airbagStatusErrors = document.getElementById("airbag_status-errors");
   const validAirbagStatus = ["tiene-adelante", "tiene-ambos", "no"];
+  const outstanding = document.getElementById("destacado");
+  const outstandingErrors = document.getElementById("outstanding-errors");
+  const validOutstanding = ["true", "false"];
+  const image = document.getElementById("img");
+  const imageErrors = document.getElementById("img-errors");
+  const validImageExtensions = ["jpg", "png"];
 
   // on-time vallidations
+  vehicleModel.addEventListener("change", (e) => {
+    if (vehicleModel.value == "") {
+      const errorMessage = "Debes completar el campo Modelo.";
+      vehicleModelErrors.innerHTML = `<p>${errorMessage}</p>`;
+      errors.vehicleModel = errorMessage;
+      vehicleModel.focus();
+    } else if (!validVehicleModels.includes(Number(vehicleModel.value))) {
+      const errorMessage = "Selecciona un modelo de vehículo válido.";
+      vehicleModelErrors.innerHTML = `<p>${errorMessage}</p>`;
+      errors.vehicleModel = errorMessage;
+      vehicleModel.focus();
+    } else {
+      vehicleModelErrors.innerHTML = "";
+      delete errors.vehicleModel;
+    }
+  });
+
   kilometers.addEventListener("change", (e) => {
     if (kilometers.value == "") {
       const errorMessage = "Debes completar el campo Kilometraje.";
@@ -104,8 +130,8 @@ window.addEventListener("load", async (e) => {
       priceErrors.innerHTML = `<p>${errorMessage}</p>`;
       errors.price = errorMessage;
       price.focus();
-    } else if (!(Number(price.value) % 1) == 0) {
-      const errorMessage = "El precio no debe contener decimales.";
+    } else if (!(Number(price.value) % 1) == 0 || Number(price.value) <= 0) {
+      const errorMessage = "El precio no debe contener decimales y debe ser mayor a cero.";
       priceErrors.innerHTML = `<p>${errorMessage}</p>`;
       errors.price = errorMessage;
       price.focus();
@@ -200,11 +226,66 @@ window.addEventListener("load", async (e) => {
     }
   });
 
+  airbagStatus.addEventListener("change", (e) => {
+    if (airbagStatus.value == "") {
+      const errorMessage = "Debes completar el campo Airbag.";
+      airbagStatusErrors.innerHTML = `<p>${errorMessage}</p>`;
+      errors.airbagStatus = errorMessage;
+      airbagStatus.focus();
+    } else if (!validAirbagStatus.includes(airbagStatus.value)) {
+      const errorMessage = "Selecciona un valor válido para el campo Airbag.";
+      airbagStatusErrors.innerHTML = `<p>${errorMessage}</p>`;
+      errors.airbagStatus = errorMessage;
+      airbagStatus.focus();
+    } else {
+      airbagStatusErrors.innerHTML = "";
+      delete errors.airbagStatus;
+    }
+  });
+
+  outstanding.addEventListener("change", (e) => {
+    if (outstanding.value == "") {
+      const errorMessage = "Debes completar el campo Destacado.";
+      outstandingErrors.innerHTML = `<p>${errorMessage}</p>`;
+      errors.outstanding = errorMessage;
+      outstanding.focus();
+    } else if (!validOutstanding.includes(outstanding.value)) {
+      const errorMessage = "Selecciona un valor válido para el campo Destacado.";
+      outstandingErrors.innerHTML = `<p>${errorMessage}</p>`;
+      errors.outstanding = errorMessage;
+      outstanding.focus();
+    } else {
+      outstandingErrors.innerHTML = "";
+      delete errors.outstanding;
+    }
+  });
+
+  image.addEventListener("change", (e) => {
+    if (image.value == "") {
+      const errorMessage = "Debes subir una imagen del vehículo.";
+      imageErrors.innerHTML = `<p>${errorMessage}</p>`;
+      errors.image = errorMessage;
+      image.focus();
+    } else if (!validImageExtensions.includes(image.value.split(".").pop())) {
+      const errorMessage = "Los formatos aceptados para la imagen del vehículo son 'jpg' y 'png'.";
+      imageErrors.innerHTML = `<p>${errorMessage}</p>`;
+      errors.image = errorMessage;
+      image.focus();
+    } else {
+      imageErrors.innerHTML = "";
+      delete errors.image;
+    }
+  });
+
   // on-submit validations
   form.addEventListener("submit", (e) => {
     e.preventDefault(); // for debugging and development
 
     // Only some validations are performed again in case the field didn't suffer a change event
+    if (vehicleModel.value == "") {
+      const errorMessage = "Debes completar el campo Modelo.";
+      errors.vehicleModel = errorMessage;
+    }
     if (kilometers.value == "") {
       const errorMessage = "Debes completar el campo kilometraje.";
       errors.kilometers = errorMessage;
@@ -244,6 +325,18 @@ window.addEventListener("load", async (e) => {
     if (lastBalancingAlignmentDate.value == "") {
       const errorMessage = "Debes completar el campo Alineación y Balanceo.";
       errors.lastBalancingAlignmentDate = errorMessage;
+    }
+    if (airbagStatus.value == "") {
+      const errorMessage = "Debes completar el campo Airbag.";
+      errors.airbagStatus = errorMessage;
+    }
+    if (outstanding.value == "") {
+      const errorMessage = "Debes completar el campo Destacado.";
+      errors.outstanding = errorMessage;
+    }
+    if (image.value == "") {
+      const errorMessage = "Debes subir una imagen del vehículo.";
+      errors.image = errorMessage;
     }
 
     const errorsList = document.getElementById("errors_list");

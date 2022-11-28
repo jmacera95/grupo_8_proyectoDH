@@ -20,7 +20,7 @@ const productsValidations = {
             .notEmpty().withMessage('Debes completar el campo Patente').bail(),
         body('precio')
             .notEmpty().withMessage('Debes completar el campo Precio.').bail()
-            .isInt().withMessage('El precio debe ser un número entero.').bail(),
+            .isInt({min: 1}).withMessage('El precio debe ser un número entero positivo.').bail(),
         body('cantidadDuenios')
             .notEmpty().withMessage('Debes compeltar el campo Cantidad de dueños.').bail()
             .isIn(['1', '2']).withMessage('El vehículo no puede haber tenido más de dos dueños.').bail(),
