@@ -1,6 +1,6 @@
 window.addEventListener("load", async (e) => {
   // variables declaration
-  const form = document.querySelector("#create-form");
+  const form = document.querySelector("#create-edit-form");
   const errors = {};
   const vehicleModel = document.getElementById("vehicle_model");
   const vehicleModelErrors = document.getElementById("vehicle_model-errors");
@@ -261,7 +261,7 @@ window.addEventListener("load", async (e) => {
   });
 
   image.addEventListener("change", (e) => {
-    if (image.value == "") {
+    if (image.value == "" && !window.location.pathname.includes('edit')) {
       const errorMessage = "Debes subir una imagen del vehículo.";
       imageErrors.innerHTML = `<p>${errorMessage}</p>`;
       errors.image = errorMessage;
@@ -279,8 +279,6 @@ window.addEventListener("load", async (e) => {
 
   // on-submit validations
   form.addEventListener("submit", (e) => {
-    e.preventDefault(); // for debugging and development
-
     // Only some validations are performed again in case the field didn't suffer a change event
     if (vehicleModel.value == "") {
       const errorMessage = "Debes completar el campo Modelo.";
@@ -334,7 +332,7 @@ window.addEventListener("load", async (e) => {
       const errorMessage = "Debes completar el campo Destacado.";
       errors.outstanding = errorMessage;
     }
-    if (image.value == "") {
+    if (image.value == "" && !window.location.pathname.includes('edit')) {
       const errorMessage = "Debes subir una imagen del vehículo.";
       errors.image = errorMessage;
     }
@@ -359,9 +357,9 @@ window.addEventListener("load", async (e) => {
 
       e.preventDefault();
     } 
-    // else {
-    //   form.submit();
-    // }
+    else {
+      form.submit();
+    }
   });
 });
 
