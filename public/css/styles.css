@@ -224,6 +224,12 @@ footer #social-media a i {
 }
 /*END is-invalid CSS SECTION*/
 
+/*START is-invalid CSS SECTION*/
+.is-valid {
+    border: solid 1px lightgreen !important;
+}
+/*END is-invalid CSS SECTION*/
+
 /*START alert-warning CSS SECTION*/
 .alert-warning{
     color:#842029;

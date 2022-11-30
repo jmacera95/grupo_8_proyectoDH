@@ -23,6 +23,7 @@ window.addEventListener("load", async (e) => {
   const validProvinces = await getProvinces();
   const legalIdentifier = document.getElementById("legal_identifier");
   const legalIdentifierErrors = document.getElementById("legal_identifier-errors");
+  const existingLegalIdentifiers = await fetch("http://localhost:3030/api/products").then(response => response.json()).then(vehicles => vehicles.data.map(vehicle => vehicle.legal_identifier));
   const price = document.getElementById("precio");
   const priceErrors = document.getElementById("price-errors");
   const totalOwners = document.getElementById("cantidadDuenios");
@@ -77,8 +78,7 @@ window.addEventListener("load", async (e) => {
       errors.kilometers = errorMessage;
       kilometers.focus();
     } else if (kilometers.value < 85000 || kilometers.value > 200000) {
-      const errorMessage =
-        "El kilometraje no puede ser menor a 85.000 ni mayor a 200.000 kilómetros.";
+      const errorMessage = "El kilometraje no puede ser menor a 85.000 ni mayor a 200.000 kilómetros.";
       kilometersErrors.innerHTML = `<p>${errorMessage}</p>`;
       errors.kilometers = errorMessage;
       kilometers.focus();
@@ -112,17 +112,25 @@ window.addEventListener("load", async (e) => {
     }
   });
 
-  legalIdentifier.addEventListener("change", (e) => {
+  legalIdentifier.addEventListener("keyup", (e) => {
     if (legalIdentifier.value == "") {
-        const errorMessage = "Debes completar el campo Patente.";
+      const errorMessage = "Debes completar el campo Patente.";
+      legalIdentifierErrors.innerHTML = `<p>${errorMessage}</p>`;
+      errors.legalIdentifier = errorMessage;
+      legalIdentifier.classList.remove("is-valid");
+      legalIdentifier.focus();
+  } else if (existingLegalIdentifiers.includes(legalIdentifier.value)) {
+        const errorMessage = "Este vehículo ya existe en nuestra base de datos.";
         legalIdentifierErrors.innerHTML = `<p>${errorMessage}</p>`;
         errors.legalIdentifier = errorMessage;
+        legalIdentifier.classList.remove("is-valid");
         legalIdentifier.focus();
     } else {
-        legalIdentifierErrors.innerHTML = "";
-        delete errors.legalIdentifier;
+      legalIdentifier.classList.add("is-valid");
+      legalIdentifierErrors.innerHTML = "";
+      delete errors.legalIdentifier;
     }
-  });
+  })
 
   price.addEventListener("change", (e) => {
     if (price.value == "") {
