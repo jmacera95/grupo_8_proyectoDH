@@ -62,7 +62,7 @@
                     </div>
 
                     <div>
-                        <input type="text" name="legal_identifier" id="legal_identifier" placeholder="Patente *" required value="<%= producto.legal_identifier %>">
+                        <input type="text" name="legal_identifier" id="legal_identifier" placeholder="Patente *" required value="<%= producto.legal_identifier %>" disabled>
                         <div id="legal_identifier-errors" class="is-invalid">
                             <% if (locals.errors && locals.errors.legal_identifier) { %>                            
                                     <p><%= locals.errors.legal_identifier.msg %></p>

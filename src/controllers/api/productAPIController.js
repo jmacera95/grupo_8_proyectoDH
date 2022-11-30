@@ -7,7 +7,23 @@ const minYearOfManufacture = currentYear-10;
 const maxYearOfManufacture = currentYear-5;
 
 const productAPIController = {
-    activeVehicleModelsList : (req, res) => {
+    productList: (req, res) => {
+        db.Vehicles.findAll()
+            .then(
+                vehicles => {
+                    let response = {
+                        meta: {
+                            status : 200,
+                            total: vehicles.length,
+                            url: 'api/products'
+                        },
+                        data: vehicles
+                    }
+                        return res.json(response);
+                }
+            )
+    },
+    activeVehicleModelsList: (req, res) => {
         db.VehiclesModels.findAll(
             {
                 where: {
