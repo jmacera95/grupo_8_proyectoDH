@@ -62,8 +62,9 @@
                         </div>
                     </div>
                     
-                    <div>
+                    <div id="legal_identifier-div">
                         <input type="text" name="legal_identifier" id="legal_identifier" placeholder="Patente *" required value="<%= locals.old && locals.old.legal_identifier ? locals.old.legal_identifier : null %>">
+                        <i id="valid-legal-identifier" class="fa-solid fa-check"></i>
                         <div id="legal_identifier-errors" class="is-invalid">
                             <% if (locals.errors && locals.errors.legal_identifier) { %>                            
                                     <p><%= locals.errors.legal_identifier.msg %></p>
