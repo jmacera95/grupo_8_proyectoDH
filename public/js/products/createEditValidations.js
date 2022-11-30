@@ -101,8 +101,7 @@ window.addEventListener("load", async (e) => {
       errors.kilometers = errorMessage;
       kilometers.focus();
     } else if (kilometers.value < 85000 || kilometers.value > 200000) {
-      const errorMessage =
-        "El kilometraje no puede ser menor a 85.000 ni mayor a 200.000 kilómetros.";
+      const errorMessage = "El kilometraje no puede ser menor a 85.000 ni mayor a 200.000 kilómetros.";
       kilometersErrors.innerHTML = `<p>${errorMessage}</p>`;
       errors.kilometers = errorMessage;
       kilometers.focus();
@@ -166,7 +165,7 @@ window.addEventListener("load", async (e) => {
       legalIdentifierErrors.innerHTML = "";
       delete errors.legalIdentifier;
     }
-  });
+  })
 
   price.addEventListener("change", (e) => {
     if (price.value == "") {
