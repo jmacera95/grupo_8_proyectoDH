@@ -18,6 +18,11 @@
                 <div class="campos">
                     <label for="firstName">Nombre *</label>
                     <input type="text" name="firstName" id="firstName" class="hola">
+                    <div class="is-invalid" id="color-errors">
+                        <% if (locals.errors && locals.errors.firstName) { %>                            
+                                <p><%= locals.errors.color.msg %></p>
+                        <% } %>
+                    </div>
                 </div>
 
                 <div class="campos">
