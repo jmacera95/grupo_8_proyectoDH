@@ -4,12 +4,18 @@ const bcrypt = require('bcryptjs');
 const db = require('../database/models');
 const { Op } = require("sequelize");
 const { send } = require('process');
+const { validationResult } = require('express-validator');
 
 const usersController = {
     register: (req, res) => {
         res.render('register');
     },
-    postRegister: (req, res) => {
+    postRegister: (req, res,next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.render('register',{errors: errors.mapped()})
+        
+        } else {    
         db.Users.findAll()
             .then(users => {
                 const userExist = users.find(user => (user.email === req.body.email))
@@ -25,7 +31,6 @@ const usersController = {
                 } else {
                     const password = bcrypt.hashSync(req.body.password, 10)
                     db.Users.create({
-                        id: users.length + 1,
                         first_name: req.body.firstName,
                         last_name: req.body.lastName,
                         email: req.body.email,
@@ -41,7 +46,7 @@ const usersController = {
                         })
                 }
             }) 
-        },
+    }},
     
         
     login: (req, res) => {
