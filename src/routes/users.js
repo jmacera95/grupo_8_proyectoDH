@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const path = require('path')
+const path = require('path');
 const usersController = require('../controllers/usersController');
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
-const multer = require('multer')
+const multer = require('multer');
+const { editValidations } = require('../validations/usersValidations');
 
 const storage = multer.diskStorage(
     {
@@ -27,7 +28,7 @@ router.post('/login', usersController.processLogin);
 router.get('/profile', authMiddleware, usersController.profile);
 
 router.get('/edit/:id', usersController.edit)
-router.put('/edit/:id', usersController.actualizar);
+router.put('/edit/:id', editValidations ,usersController.actualizar);
 router.delete('/delete/:id', usersController.delete);
 
 router.get('/logout', usersController.logout);
