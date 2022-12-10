@@ -8,6 +8,8 @@ const mainRoutes = require('./routes/main');
 const productsRoutes = require('./routes/products');
 const userRoutes = require('./routes/users');
 const cartRoutes = require('./routes/cart');
+// api routers
+const productsAPIRoutes = require('./routes/api/products');
 
 const express = require('express');
 const app = express();
@@ -29,6 +31,9 @@ app.use('/', mainRoutes)
 app.use('/products', productsRoutes);
 app.use('/user', userRoutes);
 app.use('/cart', cartRoutes);
+
+// api routes
+app.use('/api/products', productsAPIRoutes);
 
 app.listen(3030, () => {
     console.log('Server has started in http://localhost:3030/');

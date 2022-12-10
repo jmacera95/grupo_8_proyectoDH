@@ -40,6 +40,20 @@
 .create-product-form img {
     width: 20%;
 }
+
+#legal_identifier-div {
+    position: relative;
+}
+
+#valid-legal-identifier {
+    color: green;
+    display: inline;
+    position: absolute;
+    right: 3px;
+    top: 8px;
+    display: none;
+}
+
 /* END CREATE FORM CSS SECTION */
 
 @media (min-width: 769px) {

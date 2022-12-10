@@ -224,6 +224,22 @@ footer #social-media a i {
 }
 /*END is-invalid CSS SECTION*/
 
+/*START is-invalid CSS SECTION*/
+.is-valid {
+    border: solid 1px green !important;
+}
+/*END is-invalid CSS SECTION*/
+
+/*START alert-warning CSS SECTION*/
+.alert-warning{
+    color:#842029;
+    background-color: #F8D7DA;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 0.7rem;
+  }
+/*END alert-warning CSS SECTION*/
+
 @media (min-width: 769px) {
     /*START HEADER CSS SECTION*/
     header .logo {
