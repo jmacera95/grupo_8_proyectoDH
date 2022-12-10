@@ -33,7 +33,7 @@ const usersValidations = {
         ,
         body('password')
             .notEmpty().withMessage('Debes elegir una Contraseña').bail()
-            .isStrongPassword().withMessage('La contraseña debe contener por lo menos una mayuscula, minuscula, simbolo y minimo 8 caracteres')
+            .isStrongPassword().withMessage('La contraseña debe contener al menos una mayuscula, minuscula, simbolo y minimo 8 caracteres')
             // Default options:
             // { minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1,
             //   minSymbols: 1, returnScore: false, pointsPerUnique: 1, pointsPerRepeat: 0.5,

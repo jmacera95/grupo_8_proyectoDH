@@ -12,13 +12,13 @@
             
             <div class="general">
                 <h3>Ingresá tus datos</h3>
-            <form action="/user/register" method="POST" class="form1" enctype="multipart/form-data">
+            <form action="/user/register" method="POST" class="form1 create-edit-form" enctype="multipart/form-data">
                         
                 
                 <div class="campos">
                     <label for="firstName" class="prueba">Nombre *</label>
                     <input type="text" name="firstName" id="firstName" class="campo" value= <%= locals.old && locals.old.firstName ? locals.old.firstName : null %>>
-                    <div class="is-invalid" id="first-name">
+                    <div class="is-invalid" id="first-name-errors">
                         <% if (locals.errors && locals.errors.firstName) { %>                            
                                 <p><%= locals.errors.firstName.msg %></p>                            
                         <% } %>
@@ -28,7 +28,7 @@
                 <div class="campos">
                     <label for="lastName">Apellido *</label>
                     <input type="text" name="lastName" class="campo" id="lastName" value= <%= locals.old && locals.old.lastName ? locals.old.lastName : null %>>
-                    <div class="is-invalid" id="last-Name">
+                    <div class="is-invalid" id="last-name-errors">
                         <% if (locals.errors && locals.errors.lastName) { %>                            
                                 <p><%= locals.errors.lastName.msg %></p>                            
                         <% } %>
@@ -39,7 +39,7 @@
                 <div class="campos">
                     <label for="cuit">CUIT *</label>
                     <input type="text" name="cuit" class="campo" id="cuit" value= <%= locals.old && locals.old.cuit ? locals.old.cuit : null %>>
-                    <div class="is-invalid" id="cuit">
+                    <div class="is-invalid" id="cuit-errors">
                         <% if (locals.errors && locals.errors.cuit) { %>                            
                                 <p><%= locals.errors.cuit.msg %></p>                            
                         <% } %>
@@ -49,7 +49,7 @@
                 <div class="campos">
                     <label for="phone">Telefono *</label>
                     <input type="tel" name="phone" class="campo" id="phone" value= <%= locals.old && locals.old.phone ? locals.old.phone : null %>>
-                    <div class="is-invalid" id="phone">
+                    <div class="is-invalid" id="phone-errors">
                         <% if (locals.errors && locals.errors.phone) { %>                            
                                 <p><%= locals.errors.phone.msg %></p>                            
                         <% } %>
@@ -59,7 +59,7 @@
                 <div class="campos">
                     <label for="email">Email *</label>
                     <input type="email" name="email" class="campo" id="email" value= <%= locals.old && locals.old.email ? locals.old.email : null %>>
-                    <div class="is-invalid" id="phone">
+                    <div class="is-invalid" id="email-errors">
                     <% if (locals.errors && locals.errors.email) { %>
                             <p><%= locals.errors.email.msg %> </p>
                     <% } %>  
@@ -69,7 +69,7 @@
                 <div class="campos">
                     <label for="cp">Código Postal *</label>
                     <input type="text" name="cp" id="cp"class="campo" value= <%= locals.old && locals.old.cp ? locals.old.cp : null %>>
-                    <div class="is-invalid" id="cp">
+                    <div class="is-invalid" id="cp-errors">
                         <% if (locals.errors && locals.errors.cp) { %>                            
                                 <p><%= locals.errors.cp.msg %></p>                            
                         <% } %>
@@ -78,8 +78,8 @@
 
                 <div class="campos">
                     <label for="password">Contraseña *</label>
-                    <input type="password" name="password" class="campo" id="password" value= <%= locals.old && locals.old.password ? locals.old.password : null %>>
-                    <div class="is-invalid" id="password">
+                    <input type="password" name="password" class="campo" id="password">
+                    <div class="is-invalid" id="password-errors">
                         <% if (locals.errors && locals.errors.password) { %>                            
                                 <p><%= locals.errors.password.msg %></p>                            
                         <% } %>
@@ -88,7 +88,12 @@
 
                 <div class="campos">
                     <label for="checkpassword">Confirmar Contraseña *</label>
-                    <input type="password" name="checkpassword" class="campo" id="checkpassword">
+                    <input type="password" name="checkpassword" class="campo" id="checkPassword">
+                    <div class="is-invalid" id="check-password-errors">
+                        <% if (locals.errors && locals.errors.checkpassword) { %>                            
+                                <p><%= locals.errors.checkpassword.msg %></p>                            
+                        <% } %>
+                    </div>
                 </div>
 
                 <div id="terminos-condiciones">
@@ -110,6 +115,6 @@
         </main>
         
         <%- include('./partials/footer') %>
-        <script src="" async defer></script>
+        <script src="/js/users/createEditValidations.js"></script>
     </body>
 </html>
