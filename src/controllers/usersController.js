@@ -107,6 +107,16 @@ const usersController = {
     },
 
     actualizar: (req, res, next) => {
+        
+        const errors = validationResult(req);
+        
+        if (!errors.isEmpty()) {
+            db.Users.findByPk(req.params.id)
+                        .then(data => {
+                            return res.render('userEdit', {errors: errors.mapped(),usuario: data });
+                        })         
+            
+        } else {
             db.Users.update(
                 {
                     first_name: req.body.firstName,
@@ -132,7 +142,7 @@ const usersController = {
                             return res.redirect(`/user/profile`);
                         })
                 })
-    },
+    }},
 
     delete: (req, res) => {
         db.Users.findByPk(req.params.id)

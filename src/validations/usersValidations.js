@@ -46,6 +46,15 @@ const usersValidations = {
             // ver si sirve matches()
         ,
     ],
+
+    editValidations: [
+        body('firstName')
+            .notEmpty().withMessage('Debes completar el campo Nombre').bail()
+            .isLength({ min: 3 }).withMessage('Revisar la longitud del Nombre').bail()
+        ,
+    ]
 }
+
+
 
 module.exports = usersValidations;
