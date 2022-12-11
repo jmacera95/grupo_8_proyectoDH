@@ -108,7 +108,8 @@ const usersController = {
     actualizar: (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.render('userEdit',{errors: errors.mapped()})
+            db.Users.findByPk(req.params.id)
+            .then(user => {return res.render('userEdit',{errors: errors.mapped(), old: req.body, usuario: user})})
         } else {
             db.Users.update(
                 {
