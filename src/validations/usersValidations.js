@@ -29,7 +29,9 @@ const usersValidations = {
         ,
         body('cp')
             .notEmpty().withMessage('Debes completar el campo Código Postal').bail()
-            .isPostalCode('any').withMessage('Debe ser un código postal válido')
+            .isLength({min:4 , max:4}).withMessage('Debe ser un código postal válido')
+
+            // .isPostalCode('any').withMessage('Debe ser un código postal válido')
         ,
         body('password')
             .notEmpty().withMessage('Debes elegir una Contraseña').bail()

@@ -12,8 +12,9 @@
             
             <div class="general">
                 <h3>Ingresá tus datos</h3>
-            <form action="/user/register" method="POST" class="form1 create-edit-form" enctype="multipart/form-data">
-                        
+                <ul class="errors" id="errors_list"></ul>      
+            <form action="/user/register" method="POST" class="form1" id="create-edit-form" enctype="multipart/form-data">
+                          
                 
                 <div class="campos">
                     <label for="firstName" class="prueba">Nombre *</label>
@@ -41,7 +42,7 @@
                     <input type="text" name="cuit" class="campo" id="cuit" value= <%= locals.old && locals.old.cuit ? locals.old.cuit : null %>>
                     <div class="is-invalid" id="cuit-errors">
                         <% if (locals.errors && locals.errors.cuit) { %>                            
-                                <p><%= locals.errors.cuit.msg %></p>                            
+                                <p><%= locals.errors.cuit.msg %> <a id="anses-link" href="https://www.anses.gob.ar/consulta/constancia-de-cuil">¿No conoces tu CUIT?</a></p>                           
                         <% } %>
                     </div>
                 </div>
@@ -109,7 +110,7 @@
 
             <div class="inicia-sesion">
                 <div>¿Ya tenés cuenta? </div>
-                <a href="/user/login">Iniciá Sesión</a></li>
+                <a href="/user/login">Iniciá Sesión</a>
             </div>
         </div>
         </main>

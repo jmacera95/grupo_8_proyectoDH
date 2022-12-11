@@ -26,6 +26,11 @@ window.addEventListener("load", async (e) => {
       firstNameErrors.innerHTML = `<p>${errorMessage}</p>`;
       errors.firstName = errorMessage;
       firstName.focus();
+    } else if (firstName.value.length <= 1) {
+      const errorMessage = "Debes ingresar un Nombre válido";
+      firstNameErrors.innerHTML = `<p>${errorMessage}</p>`;
+      errors.firstName = errorMessage;
+      firstName.focus();
     } else {
       firstNameErrors.innerHTML = "";
       delete errors.firstName;
@@ -37,18 +42,28 @@ window.addEventListener("load", async (e) => {
       lastNameErrors.innerHTML = `<p>${errorMessage}</p>`;
       errors.lastName = errorMessage;
       lastName.focus();
+    } else if (lastName.value.length <= 1) {
+      const errorMessage = "Debes ingresar un Apellido válido";
+      lastNameErrors.innerHTML = `<p>${errorMessage}</p>`;
+      errors.lastName = errorMessage;
+      lastName.focus();
     } else {
       lastNameErrors.innerHTML = "";
       delete errors.lastName;
     }
   });
-  
+
   cuit.addEventListener("change", (e) => {
     if (cuit.value == "") {
-      const errorMessage = "Debes completar con tu CUIT";
+      const errorMessage = "Debes completar el campo CUIT";
       cuitErrors.innerHTML = `<p>${errorMessage}</p>`;
       errors.cuit = errorMessage;
       cuit.focus();
+    } else if (cuit.value.length != 11) {
+        const errorMessage = "Debes completar el campo CUIT";
+        cuitErrors.innerHTML = `<p>${errorMessage} <a id="anses-link" href="https://www.anses.gob.ar/consulta/constancia-de-cuil">¿No conoces tu CUIT?</a></p>`;
+        errors.cuit = errorMessage;
+        cuit.focus();
     } else {
       cuitErrors.innerHTML = "";
       delete errors.cuit;
@@ -57,7 +72,7 @@ window.addEventListener("load", async (e) => {
 
   phone.addEventListener("change", (e) => {
     if (phone.value == "") {
-      const errorMessage = "Debes completar con tu CUIT";
+      const errorMessage = "Debes completar el campo Telefono";
       phoneErrors.innerHTML = `<p>${errorMessage}</p>`;
       errors.phone = errorMessage;
       phone.focus();
@@ -69,7 +84,7 @@ window.addEventListener("load", async (e) => {
 
   email.addEventListener("change", (e) => {
     if (email.value == "") {
-      const errorMessage = "Debes completar con tu CUIT";
+      const errorMessage = "Debes completar el campo Email";
       emailErrors.innerHTML = `<p>${errorMessage}</p>`;
       errors.email = errorMessage;
       email.focus();
@@ -81,7 +96,12 @@ window.addEventListener("load", async (e) => {
 
   cp.addEventListener("change", (e) => {
     if (cp.value == "") {
-      const errorMessage = "Debes completar con tu CUIT";
+      const errorMessage = "Debes completar el campo Código Postal";
+      cpErrors.innerHTML = `<p>${errorMessage}</p>`;
+      errors.cp = errorMessage;
+      cp.focus();
+    } else if (cp.value <= 1000 || cp.value >= 9999) {
+      const errorMessage = "El Código Postal ingresado es incorrecto";
       cpErrors.innerHTML = `<p>${errorMessage}</p>`;
       errors.cp = errorMessage;
       cp.focus();
@@ -109,7 +129,7 @@ window.addEventListener("load", async (e) => {
       checkPasswordErrors.innerHTML = `<p>${errorMessage}</p>`;
       errors.checkPassword = errorMessage;
       checkPassword.focus();
-    } else if (checkPassword.value != password.value){
+    } else if (checkPassword.value != password.value) {
       const errorMessage = "La contraseña no coincide con la ingresada anteriormente";
       checkPasswordErrors.innerHTML = `<p>${errorMessage}</p>`;
       errors.checkPassword = errorMessage;
@@ -120,13 +140,76 @@ window.addEventListener("load", async (e) => {
       delete errors.checkPassword;
     }
   });
-  // on-submit validations
 
- form.addEventListener("submit", (e) => {
+  // on-submit validations
+  form.addEventListener("submit", (e) => {
+    
     // Only some validations are performed again in case the field didn't suffer a change event
-    if (vehicleModel.value == "") {
-      const errorMessage = "Debes completar el campo Modelo.";
-      errors.vehicleModel = errorMessage;
+    if (firstName.value == "") {
+      const errorMessage = "Debes completar el campo Nombre.";
+      errors.firstName = errorMessage;
     }
-    })
+    if (lastName.value == "") {
+      const errorMessage = "Debes completar el campo Apellido.";
+      errors.lastName = errorMessage;
+    }
+    if (cuit.value == "") {
+      const errorMessage = "Debes completar el campo CUIT.";
+      errors.cuit = errorMessage;
+    }
+    if (phone.value == "") {
+      const errorMessage = "Debes completar el campo Telefono.";
+      errors.phone = errorMessage;
+    }
+    if (email.value == "") {
+      const errorMessage = "Debes completar el campo email.";
+      errors.email = errorMessage;
+    }
+    if (cp.value == "") {
+      const errorMessage = "Debes completar el campo Código Postal.";
+      errors.cp = errorMessage;
+    }
+    if (cp.value <= 1000 || cp.value >= 9999) {
+      const errorMessage = "El Código Postal ingresado es incorrecto.";
+      errors.cp = errorMessage;
+    }
+    if (password.value == "") {
+      const errorMessage = "Debes completar el campo Contraseña.";
+      errors.password = errorMessage;
+    }
+    if (checkPassword.value == "") {
+      const errorMessage = "Debes completar el campo Confirmar Contraseña.";
+      errors.checkPassword = errorMessage;
+    }
+    if (checkPassword.value != password.value) {
+      const errorMessage = "La contraseña no coincide con la ingresada anteriormente";
+      errors.checkPassword = errorMessage;
+    }
+    const errorsList = document.getElementById("errors_list");
+    errorsList.innerHTML = "";
+    console.log(errors)
+
+    if (Object.keys(errors).length > 0) {
+      // remove each input specific error message so we can group them all in errors list in top of form
+      document.querySelectorAll(".is-invalid").forEach((field) => {
+        field.innerHTML = "";
+      });
+
+      // populate errors list in top of form
+      errorsList.classList.add("alert-warning");
+      errorsList.style.listStyleType = "none";
+      Object.keys(errors).forEach((error) => {
+        errorsList.innerHTML += `<li>${errors[error]}</li>`;
+      });
+
+      // scroll to top of view for errors to be visible
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      e.preventDefault();
+
+    } else {
+      form.submit();
+    }
+
+  })
 })

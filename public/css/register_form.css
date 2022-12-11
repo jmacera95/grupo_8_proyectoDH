@@ -6,6 +6,15 @@ main.register .inicia-sesion {
     justify-content: center;    
 }
 
+#anses-link{
+    color: red;
+}
+
+.alert-warning {
+    font-size: 15px;
+    
+}
+
 .campos {
     display: flex;
     flex-direction: column;
