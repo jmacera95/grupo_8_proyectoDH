@@ -60,10 +60,10 @@ window.addEventListener("load", async (e) => {
       errors.cuit = errorMessage;
       cuit.focus();
     } else if (cuit.value.length != 11) {
-        const errorMessage = "Debes completar el campo CUIT";
-        cuitErrors.innerHTML = `<p>${errorMessage} <a id="anses-link" href="https://www.anses.gob.ar/consulta/constancia-de-cuil">¿No conoces tu CUIT?</a></p>`;
-        errors.cuit = errorMessage;
-        cuit.focus();
+      const errorMessage = "Debes completar el campo CUIT";
+      cuitErrors.innerHTML = `<p>${errorMessage} <a id="anses-link" href="https://www.anses.gob.ar/consulta/constancia-de-cuil">¿No conoces tu CUIT?</a></p>`;
+      errors.cuit = errorMessage;
+      cuit.focus();
     } else {
       cuitErrors.innerHTML = "";
       delete errors.cuit;
@@ -143,7 +143,7 @@ window.addEventListener("load", async (e) => {
 
   // on-submit validations
   form.addEventListener("submit", (e) => {
-    
+
     // Only some validations are performed again in case the field didn't suffer a change event
     if (firstName.value == "") {
       const errorMessage = "Debes completar el campo Nombre.";
