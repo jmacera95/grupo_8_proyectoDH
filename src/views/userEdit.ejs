@@ -19,7 +19,7 @@
                             <label for="firstName">Nombre *</label>
                             <input type="text" name="firstName" id="firstName" class="hola"
                                 value="<%= locals.old ? locals.old.firstName : usuario.first_name %>">
-                                <div class="is-invalid" id="firstName">
+                                <div class="is-invalid" id="first-name-errors">
                                     <% if (locals.errors && locals.errors.firstName) { %>                            
                                             <p><%= locals.errors.firstName.msg %></p>                            
                                     <% } %>
@@ -29,7 +29,7 @@
                         <div class="campos">
                             <label for="lastName">Apellido *</label>
                             <input type="text" name="lastName" id="lastName" value="<%= locals.old ? locals.old.lastName : usuario.last_name %>">
-                            <div class="is-invalid" id="lastName">
+                            <div class="is-invalid" id="last_name">
                                 <% if(locals.errors && locals.errors.lastName) { %>
                                     <p>
                                         <%= locals.errors.lastName.msg %>
@@ -41,7 +41,7 @@
                         <div class="campos">
                             <label for="cuit">CUIT *</label>
                             <input type="text" name="cuit" id="cuit" value="<%= locals.old ? locals.old.cuit : usuario.legal_identifier %>">
-                            <div class="is-invalid" id="cuit">
+                            <div class="is-invalid" id="cuit-errors">
                                 <% if(locals.errors && locals.errors.cuit) { %>
                                     <p>
                                         <%= locals.errors.cuit.msg %>
@@ -53,12 +53,17 @@
                         <div class="campos">
                             <label for="phone">Telefono *</label>
                             <input type="tel" name="phone" id="phone" value="<%= locals.old ? locals.old.phone : usuario.phone_number %>">
+                            <div class="is-invalid" id="phone-errors">
+                                <% if (locals.errors && locals.errors.phone) { %>                            
+                                        <p><%= locals.errors.phone.msg %></p>                            
+                                <% } %>
+                            </div>
                         </div>
 
                         <div class="campos">
                             <label for="email">Email *</label>
                             <input type="email" name="email" id="email" value="<%= locals.old ? locals.old.email : usuario.email %> ">
-                            <div class="is-invalid" id="email">
+                            <div class="is-invalid" id="email-errors">
                                 <% if(locals.errors && locals.errors.email) { %>
                                     <p>
                                         <%= locals.errors.email.msg %>
@@ -70,7 +75,7 @@
                         <div class="campos">
                             <label for="cp">Código Postal *</label>
                             <input type="text" name="cp" id="cp" value="<%= locals.old ? locals.old.cp : usuario.postal_code %>">
-                            <div class="is-invalid" id="cp">
+                            <div class="is-invalid" id="cp-errors">
                                 <% if(locals.errors && locals.errors.cp) { %>
                                     <p>
                                         <%= locals.errors.cp.msg %>
