@@ -49,6 +49,17 @@ const usersValidations = {
         ,
     ],
 
+    loginValidations: [
+        body('email')
+            .notEmpty().withMessage('Debes ingresar tu email').bail()
+            .isEmail().withMessage('El email no es valido').bail()
+            ,
+        body('password')
+            .notEmpty().withMessage('Debes ingresar la contraseña').bail()
+    ],
+
+
+
     editValidations: [
         body('firstName')
             .notEmpty().withMessage('Debes completar el campo Nombre').bail()

@@ -187,7 +187,7 @@ window.addEventListener("load", async (e) => {
     }
     const errorsList = document.getElementById("errors_list");
     errorsList.innerHTML = "";
-    console.log(errors)
+
 
     if (Object.keys(errors).length > 0) {
       // remove each input specific error message so we can group them all in errors list in top of form

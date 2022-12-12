@@ -55,6 +55,12 @@ const usersController = {
     },
 
     processLogin: (req, res) => {
+
+        const errors = validationResult(req);
+        
+        if (!errors.isEmpty()) {
+            return res.render('login', {errors: errors.mapped()});
+        } else {
         db.Users.findAll(
             {
                 include: "user_type"
@@ -95,7 +101,7 @@ const usersController = {
                 })
             })
 
-    },
+    }},
 
     edit: (req, res) => {
         db.Users.findByPk(req.params.id)
