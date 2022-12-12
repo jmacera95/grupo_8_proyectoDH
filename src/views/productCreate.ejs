@@ -9,7 +9,7 @@
                     <ul class="errors" id="errors_list"></ul>
                     <div>
                         <select name="vehicle_model" id="vehicle_model" required>
-                            <option value="" selected>Selecciona un modelo...</option>
+                            <option value="" selected disabled>Selecciona un modelo...</option>
                             <% for( let i = 0; i < vehicles.length; i++ ) { %>
                                 <option value="<%= vehicles[i].id %>" <%= locals.old && locals.old.vehicle_model == vehicles[i].id ? "selected" : null %>><%=vehicles[i].name%> </option>   
                             <% } %>
@@ -33,6 +33,7 @@
                     <div>
                         <label for="color">Color *</label>
                         <select name="color" id="color" required>
+                            <option value="" selected disabled>Selecciona un color...</option>
                             <option value="black" <%= locals.old && locals.old.color == "black" ? "selected" : null %>>Negro</option>
                             <option value="white" <%= locals.old && locals.old.color == "white" ? "selected" : null %>>Blanco</option>
                             <option value="grey" <%= locals.old && locals.old.color == "grey" ? "selected" : null %>>Gris</option>
@@ -51,6 +52,7 @@
                     <div>
                         <label for="provincia">Provincia *</label>
                         <select name="provincia" id="provincia" required>
+                            <option value="" selected disabled>Selecciona una Provincia...</option>
                             <% provinces.forEach(province => { %>
                                 <option value="<%= province.nombre %>" <%= locals.old && locals.old.provincia == province.nombre ? "selected" : null %>><%= province.nombre %> </option>
                             <% }) %>
@@ -84,6 +86,7 @@
                     <div>
                         <label for="cantidadDuenios">Cantidad de Dueños *</label>
                         <select name="cantidadDuenios" id="cantidadDuenios" required>
+                            <option value="" selected disabled>Dueños...</option>
                             <option value="1" <%= locals.old && locals.old.cantidadDuenios == "1" ? "selected" : null %>>1</option>
                             <option value="2" <%= locals.old && locals.old.cantidadDuenios == "2" ? "selected" : null %>>2</option>
                         </select>
@@ -107,6 +110,7 @@
                     <div>
                         <label for="embrague">Embrague *</label>
                         <select name="embrague" id="embrague" required>
+                            <option value="" selected disabled>Selecciona una opción...</option>
                             <option value="fabrica" <%= locals.old && locals.old.embrague == "fabrica" ? "selected" : null %>>De Fábrica</option>
                             <option value="repuesto" <%= locals.old && locals.old.embrague == "repuesto" ? "selected" : null %>>Repuesto</option>
                         </select>
@@ -140,6 +144,7 @@
                     <div>
                         <label for="airbag">Airbag *</label>
                         <select name="airbag" id="airbag" required>
+                            <option value="" selected disabled>Seleccione una opción...</option>
                             <option value="tiene-adelante" <%= locals.old && locals.old.airbag == "tiene-adelante" ? "selected" : null %>>Tiene - Solo Adelante</option>
                             <option value="tiene-ambos" <%= locals.old && locals.old.airbag == "tiene-ambos" ? "selected" : null %>>Tiene - Adelante y Atrás</option>
                             <option value="no" <%= locals.old && locals.old.airbag == "no" ? "selected" : null %>>No tiene</option>
