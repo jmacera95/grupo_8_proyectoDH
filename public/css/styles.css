@@ -57,7 +57,7 @@ header form input[type="search"]::placeholder {
   }
   
 header form button[type="submit"] {
-    text-indent: -999px;
+    text-indent: -100999px;
     overflow: hidden;
     width: 40px;
     padding: 0;

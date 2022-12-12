@@ -12,11 +12,16 @@
             <div class="general">
                 <h3>Perfil del Usuario</h3>
             <form action="/user/edit/<%= usuario.id %>?_method=PUT" method="POST" class="form1">
-                        
+            
                 
                 <div class="campos">
                     <label for="firstName">Nombre *</label>
-                    <input type="text" name="firstName" id="firstName" class="hola" value="<%= usuario.first_name %>">
+                    <input type="text" name="firstName" id="firstName" class="hola" value="<%= usuario.first_name %>">   
+                    <div class="is-invalid" id="first-name-errors">
+                        <% if (locals.errors && locals.errors.firstName) { %>                            
+                                <p><%= locals.errors.firstName.msg %></p>                            
+                        <% } %>
+                    </div>
                 </div>
 
                 <div class="campos">

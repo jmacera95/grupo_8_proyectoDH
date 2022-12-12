@@ -4,55 +4,58 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-    <%- include('./partials/head', {title: "Login", style: "login_form"}) %>
+<%- include('./partials/head', {title: "Login" , style: "login_form" }) %>
+
     <body>
         <%- include('./partials/header') %>
-        <main class="login">
-            <h4>Inicia Sesión</h4>
+            <main class="login">
+                <h4>Inicia Sesión</h4>
+                <ul class="errors" id="errors_list"></ul>
+                <form class="form" id="login-form" action="/user/login" method="POST" class="form">
+                    <h3 class="indicacion">Ingresá tus datos</h3>
+                    <p id="prueba">
+                        <label id="definicion1" for="email">Email *</label>
+                    <div><input class="campo" type="email" name="email" id="email" value=<%=locals.old &&
+                            locals.old.email ? locals.old.email : null %> ></div>
+                    <div class="invalid" id="email-errors">
+                        <% if (locals.errors && locals.errors.email) { %>
+                            <p>
+                                <%= locals.errors.email.msg %>
+                            </p>
+                            <% } %>
+                    </div>
+                    </p>
 
-            <form class="form" action="/user/login" method="POST" class="form">
-                <h3 class="indicacion">Ingresá tus datos</h3>
-                <p id="prueba">
-                    <label id="definicion1" for="email">Email *</label>
-                    <div><input class="campo" type="email" name="email" id="email" value=<%= locals.old && locals.old.email ? locals.old.email : null %> ></div>
-                    <% if (locals.errors && locals.errors.email) { %>
-                        <div>
-                            <span><%= locals.errors.email.msg %> </span>
-                        </div>
-                    <% } %>
-                </p>
+                    <p>
+                        <label id="definicion2" for="password">Contraseña *</label>
+                    <div><input class="campo" type="password" name="password" id="password" value=<%=locals.old &&
+                            locals.old.password ? locals.old.password : null %>></div>
+                    <div class="invalid" id="password-errors">
+                        <% if (locals.errors && locals.errors.password) { %>
+                            <p>
+                                <%= locals.errors.password.msg %>
+                            </p>
+                            <% } %>
+                    </div>
+                    </p>
 
-                <p>
-                    <label id="definicion2" for="password">Contraseña *</label>
-                    <div><input class="campo" type="password" name="password" id="password" value=<%= locals.old && locals.old.password ? locals.old.password : null %>></div>
-                    <% if (locals.errors && locals.errors.password) { %>
-                        <div>
-                            <span><%= locals.errors.password.msg %> </span>
-                        </div>
-                    <% } %>
-                </p> 
+                    <p class="recuerdame">
+                        <input type="checkbox" name="remember_me" id="remember_me">
+                        <label for="remember_me">Recuerdame</label>
+                    </p>
 
-                <p class="recuerdame">   
-                    <input type="checkbox" name="remember_me" id="remember_me">
-                    <label for="remember_me">Recuerdame</label>
-                </p>
-                
-                <p> 
-                <input type="submit" class="inicio-sesion" name="inicio-sesion" value="Iniciar Sesión"> 
-                </p>
-            
-            </form>
+                    <p>
+                        <input type="submit" class="inicio-sesion" name="inicio-sesion" value="Iniciar Sesión">
+                    </p>
 
-            <div class="registrate">
-                <div>¿No tenés cuenta? </div>
-                <a href="/user/register">Registrate</a></li>
-            </div>
+                </form>
 
+                <div class="registrate">
+                    <div>¿No tenés cuenta? </div>
+                    <a href="/user/register">Registrate</a></li>
+                </div>
 
-
-
-
-        </main>
-        <%- include('./partials/footer') %>
-        <script src="" async defer></script>
+            </main>
+            <%- include('./partials/footer') %>
+                <script src="/js/users/loginValidations.js"></script>
     </body>

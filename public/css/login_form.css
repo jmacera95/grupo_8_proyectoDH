@@ -3,12 +3,12 @@ main.login {
     text-align: center;
 }
 
-
 main.login .form {
-    border: 1px solid #ebebeb;
+    border: 0.5px solid rgba(187, 178, 178, 0.705);
     font-size: 10px;
     margin: 0 25%;
     margin-bottom: 0px;
+    border-radius: 20px;
 }
 
 main.login .indicacion {
@@ -16,7 +16,6 @@ main.login .indicacion {
    color: #707079;
    margin-bottom: 20px;
 }
-
 
 main.login .campo {
     width: 150px;
@@ -57,7 +56,6 @@ main.login .registrate {
 
 @media (min-width: 769px) {
     main.login .form {
-        border: 1px solid #ebebebf5;
         font-size: 13px;
         margin: 0 25%;
         margin-bottom: 0px;
