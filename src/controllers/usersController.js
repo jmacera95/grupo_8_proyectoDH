@@ -104,24 +104,19 @@ const usersController = {
     }},
 
     edit: (req, res) => {
-        db.Users.findByPk(req.params.id)
-            .then(
-                userEdit => {
-                    return res.render('userEdit', { usuario: userEdit })
-                }
-            )
+            db.Users.findByPk(req.params.id)
+                .then(
+                    userEdit => {
+                        return res.render('userEdit', { usuario: userEdit })
+                    }
+                )
     },
 
-    actualizar: (req, res, next) => {
-        
+    actualizar: (req, res) => {
         const errors = validationResult(req);
-        
         if (!errors.isEmpty()) {
             db.Users.findByPk(req.params.id)
-                        .then(data => {
-                            return res.render('userEdit', {errors: errors.mapped(),usuario: data });
-                        })         
-            
+            .then(user => {return res.render('userEdit',{errors: errors.mapped(), old: req.body, usuario: user})})
         } else {
             db.Users.update(
                 {
@@ -143,12 +138,13 @@ const usersController = {
                             include: "user_type"
                         }
                     )
-                        .then(user => {
-                            req.session.userLogged = user;
-                            return res.redirect(`/user/profile`);
-                        })
+                    .then(user => {
+                        req.session.userLogged = user;
+                        return res.redirect(`/user/profile`);
+                    })                
                 })
-    }},
+        }
+    },
 
     delete: (req, res) => {
         db.Users.findByPk(req.params.id)
