@@ -5,6 +5,7 @@
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
     <%- include('./partials/head', {title: "Register", style: "register_form"}) %>
+    <script src="/js/users/createEditValidations.js"></script>
     <body>
         <%- include('./partials/header') %>
         <main class="register">
@@ -97,6 +98,12 @@
                     </div>
                 </div>
 
+                <div class="imagenes">
+                    <label for="image">Imagen de Perfil</label>
+                    <input type="file" name="image" accept=".png, .jpeg">
+                </div>
+
+
                 <div id="terminos-condiciones">
                     <input type="checkbox" name="terminos" id="terminos">
                     <label for="terminos">Acepto terminos y condiciones</label>
@@ -116,6 +123,5 @@
         </main>
         
         <%- include('./partials/footer') %>
-        <script src="/js/users/createEditValidations.js"></script>
     </body>
 </html>

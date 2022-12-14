@@ -38,7 +38,7 @@ const usersController = {
                             legal_identifier: req.body.cuit,
                             postal_code: req.body.cp,
                             password: password,
-                            image_path: req.file.filename,
+                            image_path: (req.body.image ? req.body.image : '../../public/images/perfil-empty.png'),
                             user_type_id: 2
                         })
                             .then(response => {
@@ -104,24 +104,19 @@ const usersController = {
     }},
 
     edit: (req, res) => {
-        db.Users.findByPk(req.params.id)
-            .then(
-                userEdit => {
-                    return res.render('userEdit', { usuario: userEdit })
-                }
-            )
+            db.Users.findByPk(req.params.id)
+                .then(
+                    userEdit => {
+                        return res.render('userEdit', { usuario: userEdit })
+                    }
+                )
     },
 
-    actualizar: (req, res, next) => {
-        
+    actualizar: (req, res) => {
         const errors = validationResult(req);
-        
         if (!errors.isEmpty()) {
             db.Users.findByPk(req.params.id)
-                        .then(data => {
-                            return res.render('userEdit', {errors: errors.mapped(),usuario: data });
-                        })         
-            
+            .then(user => {return res.render('userEdit',{errors: errors.mapped(), old: req.body, usuario: user})})
         } else {
             db.Users.update(
                 {
@@ -143,12 +138,13 @@ const usersController = {
                             include: "user_type"
                         }
                     )
-                        .then(user => {
-                            req.session.userLogged = user;
-                            return res.redirect(`/user/profile`);
-                        })
+                    .then(user => {
+                        req.session.userLogged = user;
+                        return res.redirect(`/user/profile`);
+                    })                
                 })
-    }},
+        }
+    },
 
     delete: (req, res) => {
         db.Users.findByPk(req.params.id)
@@ -180,4 +176,4 @@ const usersController = {
 
 }
 
-module.exports = usersController;
+module.exports = usersController

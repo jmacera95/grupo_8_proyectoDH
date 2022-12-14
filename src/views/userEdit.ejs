@@ -4,72 +4,106 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-    <%- include('./partials/head', {title: "Register", style: "user_edit"}) %>
+<%- include('./partials/head', {title: "Register" , style: "user_edit" }) %>
+<script src="/js/users/createEditValidations.js"></script>
     <body>
         <%- include('./partials/header') %>
-        <main class="register">
-            
-            <div class="general">
-                <h3>Perfil del Usuario</h3>
-            <form action="/user/edit/<%= usuario.id %>?_method=PUT" method="POST" class="form1">
-            
-                
-                <div class="campos">
-                    <label for="firstName">Nombre *</label>
-                    <input type="text" name="firstName" id="firstName" class="hola" value="<%= usuario.first_name %>">   
-                    <div class="is-invalid" id="first-name-errors">
-                        <% if (locals.errors && locals.errors.firstName) { %>                            
-                                <p><%= locals.errors.firstName.msg %></p>                            
-                        <% } %>
-                    </div>
-                </div>
+            <main class="register">
 
-                <div class="campos">
-                    <label for="lastName">Apellido *</label>
-                    <input type="text" name="lastName" id="lastName" value="<%= usuario.last_name %>">
-                </div>
+                <div class="general">
+                    <h3>Perfil del Usuario</h3>
+                    <form action="/user/edit/<%=usuario.id %>?_method=PUT" method="POST" class="form1">
 
-                <div class="campos">
-                    <label for="cuit">CUIT *</label>
-                    <input type="text" name="cuit" id="cuit" value="<%= usuario.legal_identifier %>">
-                </div>
 
-                <div class="campos">
-                    <label for="phone">Telefono *</label>
-                    <input type="tel" name="phone" id="phone" value="<%= usuario.phone_number %>">
-                </div>
+                        <div class="campos">
+                            <label for="firstName">Nombre *</label>
+                            <input type="text" name="firstName" id="firstName" class="hola"
+                                value="<%= locals.old ? locals.old.firstName : usuario.first_name %>">
+                                <div class="is-invalid" id="first-name-errors">
+                                    <% if (locals.errors && locals.errors.firstName) { %>                            
+                                            <p><%= locals.errors.firstName.msg %></p>                            
+                                    <% } %>
+                                </div>
+                        </div>
 
-                <div class="campos">
-                    <label for="email">Email *</label>
-                    <input type="email" name="email" id="email" value="<%= usuario.email %> ">
+                        <div class="campos">
+                            <label for="lastName">Apellido *</label>
+                            <input type="text" name="lastName" id="lastName" value="<%= locals.old ? locals.old.lastName : usuario.last_name %>">
+                            <div class="is-invalid" id="last_name">
+                                <% if(locals.errors && locals.errors.lastName) { %>
+                                    <p>
+                                        <%= locals.errors.lastName.msg %>
+                                    </p>
+                                    <% } %>
+                            </div>
+                        </div>
+
+                        <div class="campos">
+                            <label for="cuit">CUIT *</label>
+                            <input type="text" name="cuit" id="cuit" value="<%= locals.old ? locals.old.cuit : usuario.legal_identifier %>">
+                            <div class="is-invalid" id="cuit-errors">
+                                <% if(locals.errors && locals.errors.cuit) { %>
+                                    <p>
+                                        <%= locals.errors.cuit.msg %>
+                                    </p>
+                                    <% } %>
+                            </div>
+                        </div>
+
+                        <div class="campos">
+                            <label for="phone">Telefono *</label>
+                            <input type="tel" name="phone" id="phone" value="<%= locals.old ? locals.old.phone : usuario.phone_number %>">
+                            <div class="is-invalid" id="phone-errors">
+                                <% if (locals.errors && locals.errors.phone) { %>                            
+                                        <p><%= locals.errors.phone.msg %></p>                            
+                                <% } %>
+                            </div>
+                        </div>
+
+                        <div class="campos">
+                            <label for="email">Email *</label>
+                            <input type="email" name="email" id="email" value="<%= locals.old ? locals.old.email : usuario.email %> ">
+                            <div class="is-invalid" id="email-errors">
+                                <% if(locals.errors && locals.errors.email) { %>
+                                    <p>
+                                        <%= locals.errors.email.msg %>
+                                    </p>
+                                    <% } %>
+                            </div>
+                        </div>
+
+                        <div class="campos">
+                            <label for="cp">Código Postal *</label>
+                            <input type="text" name="cp" id="cp" value="<%= locals.old ? locals.old.cp : usuario.postal_code %>">
+                            <div class="is-invalid" id="cp-errors">
+                                <% if(locals.errors && locals.errors.cp) { %>
+                                    <p>
+                                        <%= locals.errors.cp.msg %>
+                                    </p>
+                                    <% } %>
+                            </div>
+                        </div>
+
+                        <div class="botones">
+
+                            <div id="boton-registro">
+                                <input type="submit" class="registro" name="registro" value="Actualizar datos">
+                            </div>
+
+
+                        </div>
+
+                    </form>
+                    <form action="/user/delete/<%= usuario.id %>?_method=DELETE" method="POST" class="edit-user-form">
+                        <div id="boton-eliminar">
+                            <input type="submit" class="eliminar" name="eliminar" value="Borrar Cuenta">
+                        </div>
+                    </form>
 
                 </div>
+            </main>
 
-                <div class="campos">
-                    <label for="cp">Código Postal *</label>
-                    <input type="text" name="cp" id="cp" value="<%= usuario.postal_code %>">
-                </div>
-                
-                <div class="botones">
-                    
-                    <div id="boton-registro">
-                        <input type="submit" class="registro" name="registro" value="Actualizar datos"> 
-                    </div>
-                    
-                    
-                </div>
-                
-            </form>
-            <form action="/user/delete/<%= usuario.id %>?_method=DELETE" method="POST" class="edit-user-form">
-                <div id="boton-eliminar">
-                    <input type="submit" class="eliminar" name="eliminar" value="Borrar Cuenta"> 
-                </div>
-            </form>
-
-        </div>
-        </main>
-        
-        <%- include('./partials/footer') %>
-        <script src="" async defer></script>
+            <%- include('./partials/footer') %>
     </body>
+
 </html>
