@@ -83,6 +83,13 @@ main.register #boton-registro {
     margin-bottom: 10px;
 }
 
+.imagenes {
+    margin-top: 20px;
+    align-items: center;
+    font-size: 14px;
+    padding-left: 5%;
+}
+
 @media (min-width: 480px) {
     .campos {
         width: 70%;
