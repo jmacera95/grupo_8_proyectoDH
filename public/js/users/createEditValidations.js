@@ -1,4 +1,4 @@
-window.addEventListener("load", async (e) => {
+window.addEventListener("load", (e) => {
   // variables declaration
   const form = document.querySelector("#create-edit-form");
   const errors = {};
@@ -20,13 +20,13 @@ window.addEventListener("load", async (e) => {
   const checkPasswordErrors = document.getElementById("check-password-errors");
 
   // on-time vallidations
-  firstName.addEventListener("change", (e) => {
+  firstName.addEventListener("input", (e) => {
     if (firstName.value == "") {
       const errorMessage = "Debes completar el campo Nombre";
       firstNameErrors.innerHTML = `<p>${errorMessage}</p>`;
       errors.firstName = errorMessage;
       firstName.focus();
-    } else if (firstName.value.length <= 1) {
+    } else if (firstName.value.length <= 2) {
       const errorMessage = "Debes ingresar un Nombre válido";
       firstNameErrors.innerHTML = `<p>${errorMessage}</p>`;
       errors.firstName = errorMessage;
@@ -36,7 +36,7 @@ window.addEventListener("load", async (e) => {
       delete errors.firstName;
     }
   });
-  lastName.addEventListener("change", (e) => {
+  lastName.addEventListener("input", (e) => {
     if (lastName.value == "") {
       const errorMessage = "Debes completar el campo Apellido";
       lastNameErrors.innerHTML = `<p>${errorMessage}</p>`;
@@ -53,14 +53,15 @@ window.addEventListener("load", async (e) => {
     }
   });
 
-  cuit.addEventListener("change", (e) => {
-    if (cuit.value == "") {
-      const errorMessage = "Debes completar el campo CUIT";
+  cuit.addEventListener("input", (e) => {
+    const parseValue = parseInt(cuit.value)
+    if (!parseValue) {
+      const errorMessage = "Debes completar el campo CUIT con numeros";
       cuitErrors.innerHTML = `<p>${errorMessage}</p>`;
       errors.cuit = errorMessage;
       cuit.focus();
     } else if (cuit.value.length != 11) {
-      const errorMessage = "Debes completar el campo CUIT";
+      const errorMessage = "Debe tener una longitud de 11 caracteteres";
       cuitErrors.innerHTML = `<p>${errorMessage} <a id="anses-link" href="https://www.anses.gob.ar/consulta/constancia-de-cuil">¿No conoces tu CUIT?</a></p>`;
       errors.cuit = errorMessage;
       cuit.focus();
@@ -70,19 +71,25 @@ window.addEventListener("load", async (e) => {
     }
   });
 
-  phone.addEventListener("change", (e) => {
-    if (phone.value == "") {
-      const errorMessage = "Debes completar el campo Telefono";
+  phone.addEventListener("input", (e) => {
+    const parseValue = parseInt(phone.value)
+    if (!parseValue) {
+      const errorMessage = "El campo telefono debe tener numeros unicamente";
       phoneErrors.innerHTML = `<p>${errorMessage}</p>`;
       errors.phone = errorMessage;
       phone.focus();
+    } else if (phone.value.length != 8){
+      const errorMessage = "Debe tener una longitud minima de 8 caracteres"
+      phoneErrors.innerHTML = `<p>${errorMessage}</p>`
+      errors.phone = errorMessage
+      phone.focus()
     } else {
       phoneErrors.innerHTML = "";
       delete errors.phone;
     }
   });
 
-  email.addEventListener("change", (e) => {
+  email.addEventListener("input", (e) => {
     if (email.value == "") {
       const errorMessage = "Debes completar el campo Email";
       emailErrors.innerHTML = `<p>${errorMessage}</p>`;
@@ -94,9 +101,10 @@ window.addEventListener("load", async (e) => {
     }
   });
 
-  cp.addEventListener("change", (e) => {
-    if (cp.value == "") {
-      const errorMessage = "Debes completar el campo Código Postal";
+  cp.addEventListener("input", (e) => {
+    const parseValue = parseInt(cp.value)
+    if (!parseValue) {
+      const errorMessage = "El código postal deben ser unicamente numeros";
       cpErrors.innerHTML = `<p>${errorMessage}</p>`;
       errors.cp = errorMessage;
       cp.focus();
@@ -111,9 +119,9 @@ window.addEventListener("load", async (e) => {
     }
   });
 
-  password.addEventListener("change", (e) => {
-    if (password.value == "") {
-      const errorMessage = "Debes elegir una contraseña";
+  password.addEventListener("input", (e) => {
+    if (password.value.length <= 5) {
+      const errorMessage = "La contraseña debe tener mas de 6 caracteres";
       passwordErrors.innerHTML = `<p>${errorMessage}</p>`;
       errors.password = errorMessage;
       password.focus();
@@ -123,7 +131,7 @@ window.addEventListener("load", async (e) => {
     }
   });
 
-  checkPassword.addEventListener("change", (e) => {
+  checkPassword.addEventListener("input", (e) => {
     if (checkPassword.value == "") {
       const errorMessage = "Debes confirmar la contraseña anteriormente ingresada";
       checkPasswordErrors.innerHTML = `<p>${errorMessage}</p>`;
@@ -143,6 +151,8 @@ window.addEventListener("load", async (e) => {
 
   // on-submit validations
   form.addEventListener("submit", (e) => {
+
+    e.preventDefault();
 
     // Only some validations are performed again in case the field didn't suffer a change event
     if (firstName.value == "") {
@@ -205,7 +215,6 @@ window.addEventListener("load", async (e) => {
       // scroll to top of view for errors to be visible
       window.scrollTo({ top: 0, behavior: "smooth" });
 
-      e.preventDefault();
 
     } else {
       form.submit();
