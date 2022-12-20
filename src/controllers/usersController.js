@@ -38,7 +38,7 @@ const usersController = {
                             legal_identifier: req.body.cuit,
                             postal_code: req.body.cp,
                             password: password,
-                            image_path: (req.body.image ? req.body.image : '../../public/images/perfil-empty.png'),
+                            image_path: (req.file ? req.file.filename : 'perfil-empty.png'),
                             user_type_id: 2
                         })
                             .then(response => {
