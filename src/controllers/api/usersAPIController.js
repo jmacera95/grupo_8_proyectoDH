@@ -3,8 +3,12 @@ const path = require("path");
 
 const usersAPIController = {
   getUsers: async (req, res) => {
+    const page = req.query.page ? parseInt(req.query.page) : 0;
+    const resultsPerPage = page !== 0 ? 10 : null;
     const users = await db.Users.findAll({
       attributes: ["id", "first_name", "last_name", "email"],
+      limit: resultsPerPage,
+      offset: resultsPerPage * (page - 1)
     });
     users.map((user) => (user.dataValues.detail = `/api/users/${user.id}`));
     return res.json({
