@@ -87,3 +87,16 @@
     - desarrollar cantidad de codigo de forma equitativa
 4. Hacer menos
     - commitear a origen datos y archivos que deberian ser ignorados
+
+# Retro sprint 7
+1. Comenzar a hacer
+    - trabajar sobre las deudas tecnicas y de UI que tiene el proyecto
+    - juntarnos más periódicamente
+2. Hacer más
+    - hacer uso de trello para status y seguimiento de las tareas
+3. Continuar haciendo
+    - Code review cruzado
+    - Planificación y distribución de tareas entre miembros del equipo
+    - Autonomía en la realización del gitflow
+4. Dejar de hacer
+    - Pasar código a producción sin testear en profundidad la funcionalidad afectada por los cambios realizados
