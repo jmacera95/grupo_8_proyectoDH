@@ -2,6 +2,7 @@ const path = require("path");
 const methodOverride = require("method-override");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
+const cors = require('cors');
 const userLoggedMiddleware = require("./middlewares/userLoggedMiddleware");
 
 const mainRoutes = require("./routes/main");
@@ -33,6 +34,9 @@ app.use(userLoggedMiddleware);
 // app.use((req, res, next) => {
 //     res.status(404).render('not-found');
 // });
+
+// For browser CORS is enabled by default and you need to tell the Browser it's ok for send a request to server that not served your client-side app
+app.use(cors());
 
 app.use("/", mainRoutes);
 app.use("/products", productsRoutes);
