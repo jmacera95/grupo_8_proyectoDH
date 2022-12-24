@@ -1,5 +1,6 @@
 const db = require("../../database/models");
 const path = require("path");
+const bcrypt = require("bcryptjs");
 
 const usersAPIController = {
   getUsers: async (req, res) => {
@@ -49,6 +50,28 @@ const usersAPIController = {
         `../../../public/images/usersImage/${userImagePath.image_path}`
       )
     );
+  },
+  processLogin: (req, res) => {
+    db.Users.findAll({
+      include: "user_type",
+    }).then((users) => {
+      const userToLogin = users.find((user) => user.email == req.body.email);
+      if (userToLogin) {
+        const passwordIsOk = bcrypt.compareSync(
+          req.body.password,
+          userToLogin.password
+        );
+        if (passwordIsOk) {
+          delete userToLogin.dataValues.password;
+          req.session.userLogged = userToLogin;
+          return res.json({ isLogged: true, user: req.session.userLogged });
+        } else {
+          return res.json({ isLogged: false });
+        }
+      } else {
+        return res.json({ isLogged: false });
+      }
+    });
   },
 };
 

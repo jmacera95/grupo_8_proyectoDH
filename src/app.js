@@ -10,6 +10,7 @@ const productsRoutes = require("./routes/products");
 const userRoutes = require("./routes/users");
 const cartRoutes = require("./routes/cart");
 // api routers
+const mainAPIRoutes = require("./routes/api/main");
 const productsAPIRoutes = require("./routes/api/products");
 const userAPIRoutes = require("./routes/api/users");
 
@@ -36,7 +37,7 @@ app.use(userLoggedMiddleware);
 // });
 
 // For browser CORS is enabled by default and you need to tell the Browser it's ok for send a request to server that not served your client-side app
-app.use(cors());
+app.use(cors({origin: 'http://localhost:3000', credentials:true }));
 
 app.use("/", mainRoutes);
 app.use("/products", productsRoutes);
@@ -44,6 +45,7 @@ app.use("/user", userRoutes);
 app.use("/cart", cartRoutes);
 
 // api routes
+app.use("/api", mainAPIRoutes);
 app.use("/api/products", productsAPIRoutes);
 app.use("/api/users", userAPIRoutes);
 

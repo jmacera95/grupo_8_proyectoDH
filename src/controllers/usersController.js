@@ -72,7 +72,7 @@ const usersController = {
                 if (userToLogin) {
                     const passwordIsOk = bcrypt.compareSync(req.body.password, userToLogin.password);
                     if (passwordIsOk) {
-                        delete userToLogin.password;
+                        delete userToLogin.dataValues.password;
                         req.session.userLogged = userToLogin;
 
                         if (req.body.remember_me) {
