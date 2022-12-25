@@ -8,8 +8,11 @@
     <body>
         <%- include('./partials/header') %>
         <main id="user-profile">
-            <div>
+            <div id="profile-header">
                 <h2>Mi Perfil</h2>
+                <form action="/user/logout" method="GET" id="user-logout-form">
+                    <i class="fa-solid fa-right-from-bracket"></i> <input type="submit" value="Cerrar Sesión">
+                </form>
             </div>
             <div id="user-details">
                 <article>
@@ -18,6 +21,9 @@
                     <p><%= user.first_name %> <%= user.last_name %></p>
                     <p><%= user.phone_number %></p>
                     <p><%= user.email %></p>
+                    <form action="/user/edit/<%= user.id %>" method="GET" id="user-edit-form">
+                        <button><i class="fa-solid fa-pencil"></i></button>
+                    </form>
                 </article>
                 <br>
                 <article>
@@ -25,17 +31,16 @@
                     <p>* * * * * *</p>
                 </article>
             </div>
-            <% if (user.user_type.user_type=="admin") { %>
-                <form action="/products/create" method="GET">
-                    <input type="submit" value="Crear Nuevo Producto">
-                </form>
+            <% if (user.user_type.user_type=="admin") { %> 
+                <div id="admin-options">
+                    <form class="admin-option" action="/products/create" method="GET">
+                        <input type="submit" value="Crear Nuevo Producto">
+                    </form>
+                    <form class="admin-option" id="drivit-dashboard-link" action="http://localhost:3000/" method="GET" target="_blank">
+                        <input type="submit" value="DrivIT Dashboard">
+                    </form>
+                </div>
             <% } %>
-            <form action="/user/logout" method="GET" id="user-logout-form">
-                <i class="fa-solid fa-right-from-bracket"></i> <input type="submit" value="Cerrar Sesión">
-            </form>
-            <form action="/user/edit/<%= user.id %>" method="GET" id="user-logout-form">
-                <i class="fa-solid fa-right-from-bracket"></i> <input type="submit" value="Editar">
-            </form>
         </main>
         <%- include('./partials/footer') %>
         <script src="" async defer></script>

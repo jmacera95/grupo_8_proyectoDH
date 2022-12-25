@@ -7,12 +7,37 @@ h2 {
 }
 
 article {
+    position: relative;
     margin: auto auto auto 10px;
     padding: 0 0.5rem;
     border: solid 0.5px #e7e7e9;
     box-shadow: 5px 5px 5px #e7e7e9;
     height: 175px;
     width: 90%;
+}
+
+#user-edit-form {
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+
+#profile-header {
+    position: relative;
+}
+
+#user-logout-form {
+    position: absolute;
+    right: 0;
+    top: -15px
+}
+
+#admin-options {
+    margin-top: 15px;
+}
+
+.admin-option {
+    display: inline;
 }
 
 form {
