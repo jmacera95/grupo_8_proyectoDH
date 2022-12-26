@@ -7,6 +7,7 @@ h2 {
 }
 
 article {
+    position: relative;
     margin: auto auto auto 10px;
     padding: 0 0.5rem;
     border: solid 0.5px #e7e7e9;
@@ -15,11 +16,39 @@ article {
     width: 90%;
 }
 
-form {
+#user-edit-form {
+    position: absolute;
+    top: 0;
+    right: 10px;
     margin: 20px auto auto 10px;
     color: #4ec3e0;
-    
 }
+
+#profile-header {
+    position: relative;
+}
+
+#edit-profile-button {
+    background-color: #ffff;
+    border: none;
+}
+
+#user-logout-form {
+    position: absolute;
+    right: 0;
+    top: -15px;
+    margin: 20px auto auto 10px;
+    color: #4ec3e0;
+}
+
+#admin-options {
+    margin-top: 15px;
+}
+
+.admin-option {
+    display: inline;
+}
+
 
 @media (min-width: 769px) {
     #user-details {
