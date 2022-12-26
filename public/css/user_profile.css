@@ -20,16 +20,25 @@ article {
     position: absolute;
     top: 0;
     right: 10px;
+    margin: 20px auto auto 10px;
+    color: #4ec3e0;
 }
 
 #profile-header {
     position: relative;
 }
 
+#edit-profile-button {
+    background-color: #ffff;
+    border: none;
+}
+
 #user-logout-form {
     position: absolute;
     right: 0;
-    top: -15px
+    top: -15px;
+    margin: 20px auto auto 10px;
+    color: #4ec3e0;
 }
 
 #admin-options {
@@ -40,11 +49,6 @@ article {
     display: inline;
 }
 
-form {
-    margin: 20px auto auto 10px;
-    color: #4ec3e0;
-    
-}
 
 @media (min-width: 769px) {
     #user-details {

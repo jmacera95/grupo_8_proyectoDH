@@ -130,7 +130,7 @@ main .featured-cars a {
     margin: auto;
     margin-bottom: 20px;
     padding: auto 15px;
-    border: solid 1px #caedf6;
+    border: solid 1px #e7e7e9;
     width: 305px;
     display: block;
     text-decoration: none;
@@ -146,7 +146,7 @@ main .featured-cars a article img {
 main .featured-cars a article h3 {
     margin: 0px;
     text-align: left;
-    border-top: solid 1px #caedf6;
+    border-top: solid 1px #e7e7e9;
 }
 
 main .featured-cars a article h4 {
