@@ -1,25 +1,36 @@
 /* START PRODUCT LIST CSS SECTION // */
+main {
+    margin: 20px 10px auto;
+}
 
 .barra-vertical{
-    display: flex;
-    width: 30%;
+    display: none;
 }
+
 .filtros li{
     list-style: none;
-    border: 1px solid;
     padding: 10px;
     justify-content: space-between;
 }
 li.li-filtros{
     display: flex;
 }
+
 button{
     border: none;
     background-color: #ffffff;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color:#11111f;
 }
+
 ul.filtros{
     padding: 0;
-    margin: 10px;
+    margin-top: 0px;
+    border: solid 1px #e7e7e9;
+    text-decoration: none;
+    color:#11111f;
+    box-shadow: 0px 0px 10px #b8b8bc;
 }
 
 div a article img{
@@ -27,6 +38,7 @@ div a article img{
 }
 .contenedor{
     display: flex;
+    font-size: 0.9rem;
 }
 
 .productos{
@@ -41,7 +53,7 @@ div.productos a{
     margin: auto;
     margin-bottom: 20px;
     padding: auto 15px;
-    border: solid 1px #caedf6;
+    border: solid 1px #e7e7e9;
     width: 305px;
     display: block;
     text-decoration: none;
@@ -55,7 +67,7 @@ div.productos a article img{
 div.productos a article h3{
     margin: 0px;
     text-align: left;
-    border-top: solid 1px #caedf6;
+    border-top: solid 1px #e7e7e9;
 }
 div.productos a article h4{
     margin: 0px;
@@ -64,3 +76,12 @@ div.productos a article h4{
 
 
 /* END PRODUCT LIST CSS SECTION */
+
+@media (min-width: 769px) {
+    /*START HEADER CSS SECTION*/
+    .barra-vertical{
+        display: block;
+        width: 40%;
+        padding-right: 15px;
+    }
+}
