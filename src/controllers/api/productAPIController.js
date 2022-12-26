@@ -64,6 +64,25 @@ const productAPIController = {
         );
       },
 
+
+
+
+      validationsProductList: (req, res) => {
+        db.Vehicles.findAll()
+            .then(
+                vehicles => {
+                    let response = {
+                        meta: {
+                            status : 200,
+                            total: vehicles.length,
+                            url: 'api/products/validations'
+                        },
+                        data: vehicles
+                    }
+                        return res.json(response);
+                }
+            )
+    },
     activeVehicleModelsList: (req, res) => {
         db.VehiclesModels.findAll(
             {
