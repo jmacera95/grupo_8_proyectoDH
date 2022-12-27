@@ -46,40 +46,58 @@ const productAPIController = {
     },
 
     getProduct: async (req, res) => {
+        const product = await db.Vehicles.findByPk(req.params.id, {
+            attributes: [
+                "id",
+                "vehicle_model_id",
+                "price",
+                "kilometers",
+                "last_service_date",
+                "color",
+                "last_balancing_alignment_date",
+                "timing_belt_age_kilometers",
+                "airbag_status",
+                "total_owners",
+                "legal_identifier",
+                "location_province",
+                "clutch_status",
+            ]
+        });
+        product.dataValues.image_url = `api/products/${product.id}/image`
+        return res.json(product);
 
-        
 
     },
 
     getProductImage: async (req, res) => {
         const productImagePath = await db.Vehicles.findByPk(req.params.id, {
-          attributes: ["image_path"],
+            attributes: ["image_path"],
         });
         res.set({ "Content-Type": "image/png" });
         return res.sendFile(
-          path.resolve(
-            __dirname,
-            `../../../public/images/products/${productImagePath.image_path}`
-          )
+            path.resolve(
+                __dirname,
+                `../../../public/images/products/${productImagePath.image_path}`
+            )
         );
-      },
+    },
 
 
 
 
-      validationsProductList: (req, res) => {
+    validationsProductList: (req, res) => {
         db.Vehicles.findAll()
             .then(
                 vehicles => {
                     let response = {
                         meta: {
-                            status : 200,
+                            status: 200,
                             total: vehicles.length,
                             url: 'api/products/validations'
                         },
                         data: vehicles
                     }
-                        return res.json(response);
+                    return res.json(response);
                 }
             )
     },
