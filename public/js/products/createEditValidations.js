@@ -33,7 +33,7 @@ window.addEventListener("load", async (e) => {
   );
   const validLegalIdentifierPattern = /^[A-Z0-9]+$/;
   const existingLegalIdentifiers = await fetch(
-    "http://localhost:3030/api/products"
+    "http://localhost:3030/api/products/validations/detalle"
   )
     .then((response) => response.json())
     .then((vehicles) =>
