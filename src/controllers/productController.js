@@ -239,7 +239,36 @@ const productController = {
                         })       
                 }
             )
-    }
+    },
+    addToCart: async (req, res) => {
+        if (req.session.productsInCart===undefined) {
+            req.session.productsInCart = []
+        }
+        const productToAdd = await db.Vehicles.findByPk(req.params.id, {
+            include: [
+                {
+                    model: db.VehiclesModels,
+                    as: "vehicles_models",
+                    include: [{
+                        model: db.Brand,
+                        as: 'model_brand'
+                    }]
+                }
+            ]
+        })
+        if (!req.session.productsInCart.includes(productToAdd)) {
+            req.session.productsInCart.push(productToAdd);
+        }
+        return res.status(204).send();
+    },
+    getCart: (req, res) => {
+        if (req.session.productsInCart===undefined) {
+            req.session.productsInCart = []
+        }
+        const productsInCart = req.session.productsInCart;
+        return res.render('productCart', {products: productsInCart});
+    },
+    removeFromCart: (req, res)
 }
 
 module.exports = productController;
