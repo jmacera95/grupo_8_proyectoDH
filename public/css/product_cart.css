@@ -26,22 +26,21 @@ a.a-cart h4{
     margin: 0;
 }
 div.contenedor-article.boton{
+    display: flex;
+    justify-content: center;
     text-align: center;
 }
-button.eliminar{
-    border: solid 1px #b8b8bc;
-    background-color: #11111f;
-    color: #ffffff;
-    width: 60%;
-    border-radius: 5px;
-}
+
 button.eliminar-desktop{
-    display: none;
+    border: none;
+    background-color: #ffffff;
+    font-size: 1rem;
+    margin: 3px auto auto 3px;
 }
 
-button i{
+/* button i{
     font-size: 25px;
-}
+} */
 
 /* END PRODUCT CART CSS SECTION */
 
@@ -58,16 +57,7 @@ button i{
     button.reserva {
         width: 100%;
     }
-    button.eliminar{
-        /* width: 100%; */
-        display: none;
-    }
-    button.eliminar-desktop{
-        display: block;
-        font-size: 15px;
-        color: #11111f;
-        margin: auto;
-    }
+
     a.a-cart article{
         display: flex;
         align-items: center;

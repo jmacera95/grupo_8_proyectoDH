@@ -4,44 +4,30 @@
         <body>
             <%- include('./partials/header') %>
     <main class="main-cart">
-        <h2 class="titulo-cart">Mi carrito (X items)</h2>
+        <h2 class="titulo-cart">Mi carrito (<%= locals.products && locals.products.length > 0 ? locals.products.length : 0 %>  items)</h2>
             <div class="productos-cart">
-                <a class="a-cart" href="">
-                    <article>
-                        <div class="contenedor-article">
-                            <img src="/images/products/ford-fiesta.jpeg" alt="ford-fiesta">
-                        </div>
-                        <div class="contenedor-article">
-                            <h4>Ford Fiesta - 2012 - 120.000km - Bs. As.</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis pariatur officiis a </p>
-                        </div>
-                        <div class="contenedor-article boton">
-                            <input type="submit" class="reserva" name="reserve-car" value="Reservar ahora"> 
-                        </div>
-                        <div class="contenedor-article boton">
-                            <button class="eliminar">Eliminar</button>
-                            <button class="eliminar-desktop"><i class="fa-solid fa-trash-can"></i></button>
-                        </div>
-                    </article>
-                </a>
-                <a class="a-cart" href="">
-                        <article>
-                            <div class="contenedor-article">
-                                <img src="/images/products/chevrolet-onix.jpeg" alt="chevrolet-onix">
-                            </div>
-                            <div class="contenedor-article">
-                                <h4>Chevrolet Onix - 2014 - 176.000km - Mendoza</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis pariatur officiis a </p>
-                            </div>
-                            <div class="contenedor-article boton">
-                                <input type="submit" class="reserva" name="reserve-car" value="Reservar ahora"> 
-                            </div>
-                            <div class="contenedor-article boton">
-                                <button class="eliminar">Eliminar</button>
-                                <button class="eliminar-desktop"><i class="fa-solid fa-trash-can"></i></button>
-                            </div>
-                    </article>
-                </a>
+                <% if (locals.products && locals.products.length > 0) { %>
+                    <% products.forEach(product => { %>
+                        <a class="a-cart" href="">
+                            <article>
+                                <div class="contenedor-article">
+                                    <img src="/images/products/<%=product.image_path%>" alt="<%=product.vehicles_models.model_brand.name%> <%=product.vehicles_models.model_name%>">
+                                </div>
+                                <div class="contenedor-article">
+                                    <h3><%=product.vehicles_models.model_brand.name%> <%=product.vehicles_models.model_name%></h3>
+                                    <h4><%=product.vehicles_models.year%> - <%=product.kilometers%>km - <%=product.location_province%></h4>
+                                    <h4>$<%=product.price%></h4>
+                                </div>
+                                <div class="contenedor-article boton">
+                                    <input type="submit" class="reserva" name="reserve-car" value="Reservar ahora"> 
+                                    <form action="/products/<%=product.id%>/remove_from_cart" method="POST">
+                                        <button class="eliminar-desktop"><i class="fa-solid fa-trash-can"></i></button>
+                                    </form>
+                                </div>
+                            </article>
+                        </a>
+                    <% }) %>
+                <% } %>
             </div>
     </main>
     <%- include('./partials/footer') %>
