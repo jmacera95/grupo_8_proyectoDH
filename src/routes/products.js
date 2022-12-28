@@ -27,5 +27,6 @@ router.put('/edit/:id', uploadFile.single('img'), resizeImagesMiddleware, produc
 router.delete('/delete/:id', productController.delete);
 router.post('/:id/add_to_cart', productController.addToCart);
 router.get('/cart', productController.getCart);
+router.post('/:id/remove_from_cart', productController.removeFromCart);
 
 module.exports = router;

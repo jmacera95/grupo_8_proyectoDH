@@ -268,7 +268,12 @@ const productController = {
         const productsInCart = req.session.productsInCart;
         return res.render('productCart', {products: productsInCart});
     },
-    removeFromCart: (req, res)
+    removeFromCart: (req, res) => {
+        req.session.productsInCart = req.session.productsInCart.filter(product => {
+            return product.id != req.params.id
+        });
+        return res.render('productCart', {products: req.session.productsInCart});
+    }
 }
 
 module.exports = productController;

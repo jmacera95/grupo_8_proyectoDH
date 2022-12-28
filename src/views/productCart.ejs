@@ -20,7 +20,7 @@
                                 </div>
                                 <div class="contenedor-article boton">
                                     <input type="submit" class="reserva" name="reserve-car" value="Reservar ahora"> 
-                                    <form action="/products/:id/remove_from_cart" method="POST">
+                                    <form action="/products/<%=product.id%>/remove_from_cart" method="POST">
                                         <button class="eliminar-desktop"><i class="fa-solid fa-trash-can"></i></button>
                                     </form>
                                 </div>
