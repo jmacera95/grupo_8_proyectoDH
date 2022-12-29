@@ -16,13 +16,10 @@ const productAPIController = {
                 as: "vehicles_models",
                 attributes: { exclude: ["id", "brand_id"] }
             }],
-            attributes: ["id"],
+            attributes: {exclude: ["vehicle_model_id"]},
         })
-        const unDuenio = await db.Vehicles.findAll({
-            where: {
-                total_owners: 1
-            }
-        });
+
+        const unDuenio = vehicles.filter(vehicle => vehicle.dataValues.total_owners == 1).length;
 
         const dosDuenios = await db.Vehicles.findAll({
             where: {
@@ -30,14 +27,12 @@ const productAPIController = {
             }
         });
 
-        vehicles.map((vehicle) => (vehicle.dataValues.name = vehicle.vehicles_models.model_name));
-        vehicles.map((vehicle) => (vehicle.dataValues.description = vehicle.vehicles_models.name));
         vehicles.map((vehicle) => (vehicle.dataValues.detail = `/api/products/${vehicle.id}`));
 
         const response = {
             count: vehicles.length,
             count_by_category: {
-                un_duenio: unDuenio.length,
+                un_duenio: unDuenio,
                 dos_duenios: dosDuenios.length
             },
             vehicles: vehicles,
