@@ -16,29 +16,20 @@ const productAPIController = {
                 as: "vehicles_models",
                 attributes: { exclude: ["id", "brand_id"] }
             }],
-            attributes: ["id"],
+            attributes: { exclude: ["vehicle_model_id"] },
         })
-        const unDuenio = await db.Vehicles.findAll({
-            where: {
-                total_owners: 1
-            }
-        });
 
-        const dosDuenios = await db.Vehicles.findAll({
-            where: {
-                total_owners: 2
-            }
-        });
+        const oneOwner = vehicles.filter(vehicle => vehicle.dataValues.total_owners == 1).length;
 
-        vehicles.map((vehicle) => (vehicle.dataValues.name = vehicle.vehicles_models.model_name));
-        vehicles.map((vehicle) => (vehicle.dataValues.description = vehicle.vehicles_models.name));
+        const twoOwners = vehicles.filter(vehicle => vehicle.dataValues.total_owners == 2).length;
+
         vehicles.map((vehicle) => (vehicle.dataValues.detail = `/api/products/${vehicle.id}`));
 
         const response = {
             count: vehicles.length,
             count_by_category: {
-                un_duenio: unDuenio.length,
-                dos_duenios: dosDuenios.length
+                one_owner: oneOwner,
+                two_owners: twoOwners
             },
             vehicles: vehicles,
 
@@ -48,25 +39,18 @@ const productAPIController = {
 
     getProduct: async (req, res) => {
         const product = await db.Vehicles.findByPk(req.params.id, {
-            attributes: [
-                "id",
-                "price",
-                "kilometers",
-                "last_service_date",
-                "color",
-                "last_balancing_alignment_date",
-                "timing_belt_age_kilometers",
-                "airbag_status",
-                "total_owners",
-                "legal_identifier",
-                "location_province",
-                "clutch_status",
-            ]
+            attributes: {
+                exclude: [
+                    "vehicle_model_id",
+                    "outstanding",
+                    "image_path"
+                ]
+            }
         });
+        const productt = await db.Vehicles.findByPk(req.params.id, {});
+
         product.dataValues.image_url = `/api/products/${product.id}/image`
         return res.json(product);
-
-
     },
 
     getProductImage: async (req, res) => {
@@ -80,23 +64,6 @@ const productAPIController = {
                 `../../../public/images/products/${productImagePath.image_path}`
             )
         );
-    },
-
-    validationsProductList: (req, res) => {
-        db.Vehicles.findAll()
-            .then(
-                vehicles => {
-                    let response = {
-                        meta: {
-                            status: 200,
-                            total: vehicles.length,
-                            url: 'api/products/validations'
-                        },
-                        data: vehicles
-                    }
-                    return res.json(response);
-                }
-            )
     },
 
     activeVehicleModelsList: (req, res) => {

@@ -33,11 +33,11 @@ window.addEventListener("load", async (e) => {
   );
   const validLegalIdentifierPattern = /^[A-Z0-9]+$/;
   const existingLegalIdentifiers = await fetch(
-    "http://localhost:3030/api/products/validations/detalle"
+    "http://localhost:3030/api/products/"
   )
     .then((response) => response.json())
     .then((vehicles) =>
-      vehicles.data.map((vehicle) => vehicle.legal_identifier.toUpperCase())
+      vehicles.vehicles.map((vehicle) => vehicle.legal_identifier.toUpperCase())
     );
   const validLegalIdentifierCheck = document.getElementById("valid-legal-identifier");
   const price = document.getElementById("precio");
