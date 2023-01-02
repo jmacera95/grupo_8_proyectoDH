@@ -49,7 +49,6 @@ const productAPIController = {
         const product = await db.Vehicles.findByPk(req.params.id, {
             attributes: [
                 "id",
-                "vehicle_model_id",
                 "price",
                 "kilometers",
                 "last_service_date",
@@ -65,8 +64,6 @@ const productAPIController = {
         });
         product.dataValues.image_url = `api/products/${product.id}/image`
         return res.json(product);
-
-
     },
 
     getProductImage: async (req, res) => {
