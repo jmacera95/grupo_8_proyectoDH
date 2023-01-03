@@ -4,7 +4,7 @@ const path = require('path');
 const usersController = require('../controllers/usersController');
 const guestMiddleware = require('../middlewares/guestMiddleware');
 const authMiddleware = require('../middlewares/authMiddleware');
-const multer = require('multer');
+const multer = require('../middlewares/multer');
 const {registerValidations,editValidations,loginValidations} = require('../validations/usersValidations');
 
 const storage = multer.diskStorage(
