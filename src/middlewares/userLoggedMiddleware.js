@@ -4,7 +4,7 @@ async function userLoggedMiddleware(req, res, next) {
     res.locals.isLogged = false;
 
     const emailInCookie = req.cookies.userEmail != undefined ? req.cookies.userEmail : null;
-    const userFromCookie = await db.Users.findAll({include: "user_type", where: {email: emailInCookie}}).then(user => user[0]); 
+    const [userFromCookie] = await db.Users.findAll({include: "user_type", where: {email: emailInCookie}});
 
     if (userFromCookie) {
         delete userFromCookie.password;
