@@ -84,6 +84,7 @@ input[type="search"]:focus {
 .header-navbar ul {
     list-style: none;
     display: flex;
+    font-size: 0.7em;
 }
 
 .header-navbar li {
@@ -249,6 +250,10 @@ footer #social-media a i {
     header form {
         display: flex;
         justify-content: space-between;
+    }
+
+    .header-navbar ul {
+        font-size: 0.95em;
     }
     /*END HEADER CSS SECTION*/
 
