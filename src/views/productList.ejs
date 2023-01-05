@@ -4,22 +4,27 @@
     <body>
         <%- include('./partials/header') %>  
     <main>
+        <% if (locals.hideFilterPanel) { %>
+            <h4>Resultados para tu búsqueda '<%= locals.searchWord %>'</h4>
+        <% } %>
         <div class="contenedor">
-            <div class="barra-vertical">
-                <ul class="filtros">
-                    <li class="li-filtros"><button><i class="fa-solid fa-filter"></i> Ocultar filtros</button> <button>Limpiar</button> </li>
-                    <li class="li-filtros">Precio <i class="fa-solid fa-angle-down"></i></li>
-                    <li class="li-filtros">Año <i class="fa-solid fa-angle-down"></i></li>
-                    <li class="li-filtros">Kilometraje <i class="fa-solid fa-angle-down"></i></li>
-                    <li class="li-filtros">Marca y Modelo <i class="fa-solid fa-angle-down"></i></li>
-                    <li class="li-filtros">Combustible <i class="fa-solid fa-angle-down"></i></li>
-                    <li class="li-filtros">Transmision <i class="fa-solid fa-angle-down"></i></li>
-                    <li class="li-filtros">Tipo <i class="fa-solid fa-angle-down"></i></li>
-                    <li class="li-filtros">Ubicacion <i class="fa-solid fa-angle-down"></i></li>
-                    <li class="li-filtros">Cantidad de dueños <i class="fa-solid fa-angle-down"></i></li>
-                    <li class="li-filtros">Color <i class="fa-solid fa-angle-down"></i></li>
-                </ul>
-            </div>
+            <% if (!locals.hideFilterPanel) { %>
+                <div class="barra-vertical">
+                    <ul class="filtros">
+                        <li class="li-filtros"><button><i class="fa-solid fa-filter"></i> Ocultar filtros</button> <button>Limpiar</button> </li>
+                        <li class="li-filtros">Precio <i class="fa-solid fa-angle-down"></i></li>
+                        <li class="li-filtros">Año <i class="fa-solid fa-angle-down"></i></li>
+                        <li class="li-filtros">Kilometraje <i class="fa-solid fa-angle-down"></i></li>
+                        <li class="li-filtros">Marca y Modelo <i class="fa-solid fa-angle-down"></i></li>
+                        <li class="li-filtros">Combustible <i class="fa-solid fa-angle-down"></i></li>
+                        <li class="li-filtros">Transmision <i class="fa-solid fa-angle-down"></i></li>
+                        <li class="li-filtros">Tipo <i class="fa-solid fa-angle-down"></i></li>
+                        <li class="li-filtros">Ubicacion <i class="fa-solid fa-angle-down"></i></li>
+                        <li class="li-filtros">Cantidad de dueños <i class="fa-solid fa-angle-down"></i></li>
+                        <li class="li-filtros">Color <i class="fa-solid fa-angle-down"></i></li>
+                    </ul>
+                </div>
+            <% } %>
             <div class="productos">
                 <% for(let producto of productos) { %>
                     <a href="/products/product-detail/<%=producto.id%>">
