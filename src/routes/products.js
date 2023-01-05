@@ -7,6 +7,7 @@ const userTypeMiddleware = require('../middlewares/userTypeMiddleware');
 const { productsCreateValidations, productsEditValidations } = require('../validations/productsValidations');
 
 router.get('/', productController.productList);
+router.post('/search', productController.productSearch);
 router.get('/product-detail/:id', productController.productDetail);
 router.get('/create', userTypeMiddleware, productController.create);
 router.post('/create', multerProductsMiddleware.single('img'), resizeImagesMiddleware, productsCreateValidations, productController.saveNewProduct);

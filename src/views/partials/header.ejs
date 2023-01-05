@@ -4,10 +4,10 @@
             <a href="/"><img src="/images/logo.png" alt="drivit-logo" class="drivit-logo"></a>
             <p>DRIVIT</p>
         </div>
-        <form>
-            <input type="search" placeholder="Buscar">
+        <form action="/products/search" method="POST">
+            <input id="search" name="search" type="search" placeholder="Buscar">
             <button type="submit">Search</button>
-          </form>
+        </form>
         <nav class="header-navbar">
             <ul>
                 <li><a href="/products">Comprar</a></li>
