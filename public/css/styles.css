@@ -164,6 +164,7 @@ input[type="submit"] {
     border: none 1px #4ec3e0;
     border-radius: 0.5rem;
     padding: 5px;
+    cursor: pointer;
 }
 
 input[type="submit"]:hover {
