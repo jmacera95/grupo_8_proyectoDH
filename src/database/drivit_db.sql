@@ -84,6 +84,8 @@ INSERT INTO vehicles (vehicle_model_id, price, kilometers, last_service_date, co
 VALUES
 	(1, 2500000, 120000, "2022-01-07", "grey", "2022-10-06", 5000, "tiene-ambos", 1, "MGF842", "Buenos Aires", 
     "fabrica", "focus-2013.png", 1),
+    (1, 2350000, 115000, "2021-01-07", "red", "2022-12-06", 5000, "tiene-ambos", 1, "MGF847", "Córdoba", 
+    "repuest", "focus-2013.png", 0),
     (2, 3500000, 85000, "2021-12-07", "white", "2022-05-06", 15000, "tiene-ambos", 2, "MGX842", "La Pampa", 
     "repuesto", "focus-2015.png", 1),
     (3, 2000000, 97000, "2021-05-07", "red", "2022-04-26", 9000, "tiene-ambos", 1, "FJH675", "Mendoza", 

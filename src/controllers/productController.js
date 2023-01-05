@@ -32,6 +32,32 @@ const productController = {
                 }
             )
     },
+    productSearch : (req, res) => {
+        db.Vehicles.findAll(
+            {
+                include: [
+                    {
+                        model: db.VehiclesModels,
+                        where: {
+                            name: {
+                                [Op.like]: `%${req.body.search}%`
+                            }
+                        },
+                        as: "vehicles_models",
+                        include: [{
+                            model: db.Brand,
+                            as: 'model_brand'
+                        }]
+                    }
+                ]
+            }
+        )
+            .then(
+                vehicles => {
+                    return res.render('productList', {productos: vehicles, hideFilterPanel: true, searchWord: req.body.search});
+                }
+            )
+    },
     productDetail : (req, res) => {
         db.Vehicles.findByPk(req.params.id, {
             include: [
