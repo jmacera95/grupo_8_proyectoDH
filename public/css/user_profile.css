@@ -32,6 +32,7 @@ article {
 #edit-profile-button {
     background-color: #ffff;
     border: none;
+    cursor: pointer;
 }
 
 #user-logout-form {
