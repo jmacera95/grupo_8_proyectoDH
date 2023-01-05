@@ -69,7 +69,7 @@ window.addEventListener("load", async (e) => {
   const validOutstanding = ["true", "false"];
   const image = document.getElementById("img");
   const imageErrors = document.getElementById("img-errors");
-  const validImageExtensions = ["jpg", "png"];
+  const validImageExtensions = ["jpg", "png","jpeg", "PNG","JPG", "JPEG"];
 
   // on-time vallidations
   vehicleModel.addEventListener("change", (e) => {
@@ -321,7 +321,7 @@ window.addEventListener("load", async (e) => {
       image.focus();
     } else if (!validImageExtensions.includes(image.value.split(".").pop())) {
       const errorMessage =
-        "Los formatos aceptados para la imagen del vehículo son 'jpg' y 'png'.";
+        "Los formatos aceptados para la imagen del vehículo son 'jpg' , 'png' y 'jpeg'.";
       imageErrors.innerHTML = `<p>${errorMessage}</p>`;
       errors.image = errorMessage;
       image.focus();

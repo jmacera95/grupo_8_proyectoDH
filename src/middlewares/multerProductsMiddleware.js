@@ -3,7 +3,7 @@ const multer = require("multer");
 
 const storage = multer.memoryStorage();
 function fileFilter(req, file, cb) {
-  const acceptedFileExtensions = [".jpg", ".png", ".jpeg"];
+  const acceptedFileExtensions = [".jpg", ".png", ".jpeg",".JPG", ".PNG", ".JPEG"];
   const isAccepted = acceptedFileExtensions.includes(
     path.extname(file.originalname)
   );

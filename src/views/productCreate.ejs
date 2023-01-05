@@ -75,7 +75,7 @@
                     </div>
 
                     <div>
-                        <input type="number" name="precio" id="precio" min="1" step="1000" placeholder="Precio (AR$) *" required value="<%= locals.old && locals.old.precio ? locals.old.precio : null %>">
+                        <input type="number" name="precio" id="precio" min="0" step="1000" placeholder="Precio (AR$) *" required value="<%= locals.old && locals.old.precio ? locals.old.precio : null %>">
                         <div id="price-errors" class="is-invalid">
                             <% if (locals.errors && locals.errors.precio) { %>
                                     <p><%= locals.errors.precio.msg %></p>
