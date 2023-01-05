@@ -9,13 +9,16 @@ body {
 
 /*START HEADER CSS SECTION*/
 header {
-    display: flex;
-    justify-content: space-between;
     background-color: #edf9fc;
-    align-items: center;
     position: sticky;
     top: 0;
     z-index: 1000;
+}
+
+#header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header .logo {
@@ -203,6 +206,8 @@ footer p {
 
 footer #social-media {
     margin-top: 20px;
+    max-width: 1300px;
+    margin: auto;
 }
 
 footer #social-media a {
@@ -243,6 +248,11 @@ footer #social-media a i {
 
 @media (min-width: 769px) {
     /*START HEADER CSS SECTION*/
+    #header-content {
+        max-width: 1300px;
+        margin: auto;
+    }
+
     header .logo {
         width: 30%;
     }
@@ -259,8 +269,10 @@ footer #social-media a i {
 
     /*START MAIN CSS SECTION*/
     main .banner p {
+        max-width: 1300px;
+        margin: auto;
         font-size: 3rem;
-        padding: 20px 100px 20px 40px;
+        padding: 20px 100px 20px 0;
     }
 
     main .featured-cars {
@@ -268,6 +280,8 @@ footer #social-media a i {
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
+        max-width: 1200px;
+        margin: auto;
     }
 
     /*END MAIN CSS SECTION*/
@@ -276,6 +290,8 @@ footer #social-media a i {
     footer .footer-flex {
         display: flex;
         justify-content: space-between;
+        max-width: 1300px;
+        margin: auto;
     }
 
     footer .footer-flex .footer-info {
@@ -293,11 +309,6 @@ footer #social-media a i {
 }
 
 @media (min-width: 1280px) {
-    body {
-        max-width: 1200px;
-        margin: auto;
-    }
-
     /*START MAIN CSS SECTION*/
     main .featured-cars a article img {
         width: 90%;

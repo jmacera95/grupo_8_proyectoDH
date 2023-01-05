@@ -1,4 +1,5 @@
 main {
+    max-width: 1300px;
     margin: 30px 10px;
 }
 
@@ -57,5 +58,11 @@ article {
 
     article {
         width: 100%;
+    }
+}
+
+@media (min-width: 1200px) {
+    main {
+        margin: 30px auto;
     }
 }

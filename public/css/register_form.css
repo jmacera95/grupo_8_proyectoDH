@@ -1,3 +1,8 @@
+main {
+    max-width: 1300px;
+    margin: auto;
+}
+
 main.register .inicia-sesion {
     margin-top: 5px; 
     margin-bottom: 30px;
@@ -38,10 +43,6 @@ main.register .inicia-sesion {
     position:relative;
     bottom: 5px;
     left: 3px;
-}
-
-main.register h2 {
-    text-align: center;
 }
 
 .general {

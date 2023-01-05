@@ -1,5 +1,8 @@
 /* START PRODUCT CART CSS SECTION */
-
+main {
+    max-width: 1300px;
+    margin: auto;
+}
 h2.titulo-cart{
     color: #11111f;
 }

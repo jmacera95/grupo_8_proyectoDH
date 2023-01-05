@@ -1,4 +1,8 @@
 /* START CREATE FORM CSS SECTION*/
+main {
+    max-width: 1300px;
+    margin: auto;
+}
 
 .create-product-form {
     padding: 20px 5px;

@@ -1,6 +1,7 @@
 /* START PRODUCT LIST CSS SECTION // */
 main {
-    margin: 20px 10px auto;
+    margin: 20px auto auto;
+    max-width: 1300px;
 }
 
 .barra-vertical{
