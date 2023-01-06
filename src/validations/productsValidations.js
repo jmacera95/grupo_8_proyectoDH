@@ -45,7 +45,7 @@ const productsValidations = {
         body('img')
             .custom(
                 (value, { req }) => {
-                    const acceptedFileExtensions = [".jpg", ".png", ".jpeg"];
+                    const acceptedFileExtensions = [".jpg", ".png", ".jpeg",".JPG", ".PNG", ".JPEG"];
                     return acceptedFileExtensions.includes(path.extname(req.file.originalname));
                 }
             ).withMessage("El archivo no posee un formato adecuado. Las extensiones aceptadas son .jpg, .png y .jpeg")
