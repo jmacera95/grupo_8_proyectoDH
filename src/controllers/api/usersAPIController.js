@@ -17,10 +17,10 @@ const usersAPIController = {
       users: users,
     };
     if (page > 1) {
-      response.previous = `api/users/?page=${page - 1}`;
+      response.previous = `/api/users/?page=${page - 1}`;
     }
     if (users.length == 10) {
-      response.next = `api/users/?page=${page + 1}`;
+      response.next = `/api/users/?page=${page + 1}`;
     }
     return res.json(response);
   },
@@ -36,7 +36,7 @@ const usersAPIController = {
         "postal_code",
       ],
     });
-    user.dataValues.image_url = `api/users/${user.id}/image`;
+    user.dataValues.image_url = `/api/users/${user.id}/image`;
     return res.json(user);
   },
   getUserImage: async (req, res) => {

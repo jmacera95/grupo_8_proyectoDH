@@ -10,6 +10,8 @@ const maxYearOfManufacture = currentYear - 5;
 const productAPIController = {
 
     getProducts: async (req, res) => {
+        const page = req.query.page ? parseInt(req.query.page) : 0;
+        const resultsPerPage = page !== 0 ? 10 : null;
         const vehicles = await db.Vehicles.findAll({
             include: [{
                 model: db.VehiclesModels,
@@ -17,6 +19,8 @@ const productAPIController = {
                 attributes: { exclude: ["id", "brand_id"] }
             }],
             attributes: { exclude: ["vehicle_model_id"] },
+            limit: resultsPerPage,
+            offset: resultsPerPage * (page - 1),
         })
 
         const oneOwner = vehicles.filter(vehicle => vehicle.dataValues.total_owners == 1).length;
@@ -34,6 +38,12 @@ const productAPIController = {
             vehicles: vehicles,
 
         };
+        if (page > 1) {
+            response.previous = `/api/products/?page=${page - 1}`;
+          }
+          if (vehicles.length == 10) {
+            response.next = `/api/products/?page=${page + 1}`;
+          }
         return res.json(response);
     },
 
@@ -80,7 +90,7 @@ const productAPIController = {
                         meta: {
                             status: 200,
                             total: vehicles.length,
-                            url: 'api/products/vehicles_models/active'
+                            url: '/api/products/vehicles_models/active'
                         },
                         data: vehicles
                     }
